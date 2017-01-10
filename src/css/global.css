@@ -1,0 +1,27 @@
+body {
+  background-color: #4C4E51;
+  color: #fff; }
+
+.header {
+  background-color: #262626;
+  color: #fff; }
+
+.sidebar-parent {
+  background-color: #36383B;
+  color: #fff;
+  padding-left: 0;
+  padding-right: 0; }
+
+.contaner {
+  background: #fff; }
+  .contaner .form-search-parent {
+    background: #2F3238;
+    padding-top: 20px;
+    padding-bottom: 20px; }
+  .contaner .table-data-parent {
+    padding-top: 20px; }
+    .contaner .table-data-parent .table-data {
+      background-color: #fff;
+      color: #000; }
+
+/*# sourceMappingURL=global.css.map */
