@@ -149,48 +149,12 @@ html(lang='zh-cn')
                                                                 th
                                                                     | 处理
                                                         tbody
-                                                            tr
-                                                                td
-                                                                    | 1
-                                                                td
-                                                                    | 1234567890
-                                                                td
-                                                                    button.btn.btn-default(type="submit") 取消积分
-                                                            tr.warning
-                                                                td
-                                                                    | 2
-                                                                td
-                                                                    | 1234567890
-                                                                td
-                                                                    button.btn.btn-default(type="submit") 取消积分
-                                                            tr.danger
-                                                                td
-                                                                    | 3
-                                                                td
-                                                                    | 1234567890
-                                                                td
-                                                                    button.btn.btn-default(type="submit") 取消积分
-                                                            tr
-                                                                td
-                                                                    | 1
-                                                                td
-                                                                    | 1234567890
-                                                                td
-                                                                    button.btn.btn-default(type="submit") 取消积分
-                                                            tr.warning
-                                                                td
-                                                                    | 2
-                                                                td
-                                                                    | 1234567890
-                                                                td
-                                                                    button.btn.btn-default(type="submit") 取消积分
-                                                            tr.danger
-                                                                td
-                                                                    | 3
-                                                                td
-                                                                    | 1234567890
-                                                                td
-                                                                    button.btn.btn-default(type="submit") 取消积分
+                                                            - for(var i=0;i<10;i++)
+                                                                tr
+                                                                    td #{i}
+                                                                    td 数据
+                                                                    td
+                                                                        button.btn.btn-default(type="submit") 取消积分
                                                 .col-lg-8
                                                     include include/table-data.jade
         script(src='js/jquery.min.js')
