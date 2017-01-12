@@ -9,18 +9,24 @@ html(lang='zh-cn')
         link(href='css/bootstrap.min.css', rel='stylesheet')
         link(href="css/global.css",rel="stylesheet")
     body
-        .container-fluid
-            h1.page-header 登录
-            form
+        .container
+            .wbLogin
                 .row
-                    .col-lg-12
-                        label(for="user") 账号
-                        input.form-control#user(type="text",placeholder="账号")
-                .row
-                    .col-lg-12
-                        label(for="pass") 密码
-                        input.form-control#pass(type="password",placeholder="密码")
-                .row
-                    input.btn.btn-info.btn-lg.col-lg-12(type="submit",value="登录")
+                    .col-lg-4
+                        h1.page-header 登录
+                form
+                    .row
+                        .col-lg-4
+                            label(for="user") 账号
+                            input.form-control#user(type="text",placeholder="账号")
+                    br
+                    .row
+                        .col-lg-4
+                            label(for="pass") 密码
+                            input.form-control#pass(type="password",placeholder="密码")
+                    br
+                    .row
+                        .col-lg-4
+                            input.btn.btn-info(type="submit",value="登录")
         script(src='js/jquery.min.js')
         script(src='js/bootstrap.min.js')

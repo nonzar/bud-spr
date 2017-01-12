@@ -69,11 +69,15 @@ html(lang='zh-cn')
                                                     tr
                                                         th #
                                                         th openid
+                                                        th 操作
                                                 tbody
                                                     - for(var i=0;i<10;i++)
                                                         tr
                                                             td 1
                                                             td 数据
+                                                            td
+                                                                button.btn.btn-default(type="submit") 确认正常
+                                                                button.btn.btn-default(type="submit") 取消积分
                                         .col-lg-8
                                             include include/table-data.jade
         script(src='js/jquery.min.js')
