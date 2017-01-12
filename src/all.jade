@@ -7,11 +7,44 @@ html(lang='zh-cn')
         title bw
         link(href='css/bootstrap.min.css', rel='stylesheet')
         link(href="css/global.css",rel="stylesheet")
+        style.
+            body{
+                background-color: #fff;
+                color: #000;
+            }
+            table a{
+                margin: 0 1em;
+            }
     body
         .container-fluid
             .row
                 .col-lg-12
-                    table.talbe
-
+                    table.table.table-data
+                        thead
+                            tr
+                                th #
+                                th 页面
+                        tbody
+                            tr
+                                td public
+                                td
+                                    a(target="_blank",href="public_index.html") 首页
+                            tr
+                                td ptl
+                                td
+                                    a(target="_blank",href="ptl_index.html") 首页
+                                    a(target="_blank",href="ptl_spr.html") spr
+                            tr
+                                td marketing
+                                td
+                                    a(target="_blank",href="marketing_index.html") 首页
+                                    a(target="_blank",href="marketing_spr.html") spr
+                                    a(target="_blank",href="gift_index.html") 礼物管理
+                                    a(target="_blank",href="")
+                            tr
+                                td gift
+                                td
+                                    a(target="_blank",href="gift_index.html") 礼物管理
+                                    a(target="_blank",href="")
         script(src='js/jquery.min.js')
         script(src='js/bootstrap.min.js')
