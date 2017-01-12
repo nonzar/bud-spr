@@ -39,12 +39,14 @@ html(lang='zh-cn')
                                 .tab-pane.fade.in.active#tab1
                                     .row
                                         .col-lg-12
+                                            br
                                             form.form-inline
                                                 .input-group
                                                     span.input-group-addon 可疑天数
                                                     input.form-control(type="text",placeholder="请输入")
                                                     span.input-group-btn
                                                         button.btn.btn-default(type="button") 搜索
+                                            br
                                         .col-lg-12
                                             .row
                                                 .col-lg-4
@@ -63,6 +65,8 @@ html(lang='zh-cn')
                                                                         button.btn.btn-default(type="submit") 取消积分
                                                 .col-lg-8
                                                     include include/table-data.jade
+                                        .col-lg-12
+                                            include include/pagination.jade
                                 .tab-pane.fade#tab2
                                     .row
                                         .col-lg-4

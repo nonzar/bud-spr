@@ -24,4 +24,11 @@ body {
       background-color: #fff;
       color: #000; }
 
+.wbLogin {
+  background-color: #fff;
+  color: #000;
+  width: 500px;
+  padding: 0 1em 1em;
+  margin: 100px auto 0; }
+
 /*# sourceMappingURL=global.css.map */
