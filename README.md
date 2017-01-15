@@ -1,7 +1,7 @@
 # 接口文档
 
 ### 搜索
-返回指定openid\spr的return
+返回指定openid\spr的结果
 
 **parameters**:
 - **`类型`**
