@@ -11,23 +11,41 @@
 </head>
 <body>
 <div ng-controller="MainCtrl">
-    <div ui-grid="{data:myData}" class="myGrid">
-
+    <div ui-grid="gridApi" class="myGrid">
+        <!--<p>Current page: {{ gridApi.pagination.getPage() }} of {{ gridApi.pagination.getTotalPages() }}</p>-->
+        <!--<button type="button" class="btn btn-success" ng-click="gridApi.pagination.previousPage()">-->
+        <!--previous page-->
+        <!--</button>-->
+        <!--<button type="button" class="btn btn-success" ng-click="gridApi.pagination.nextPage()">-->
+        <!--next page-->
+        <!--</button>-->
+        <!--<button type="button" class="btn btn-success" ng-click="gridApi.pagination.seek(3)">-->
+        <!--go to page 3-->
+        <!--</button>-->
     </div>
 </div>
 <script src="js/jquery.min.js"></script>
-<script src="js/angular.min.js"></script>
+<script src="js/angular.min-1.5.10.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/ui-grid.min.js"></script>
 <script>
     var app = angular.module("app", ['ui.grid', 'ui.grid.pagination']);
     app.controller("MainCtrl", ['$scope', '$http', function ($scope) {
+        $scope.gridApi = {
+            enablePaginationControls: false,
+            paginationPageSize: 2,
+            columnDefs: [
+                {name: "openId"},
+                {name: "id"}
+            ]
+        };
+        return;
         $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qscore", {
             spr: 862094
         }, function (data) {
             data = JSON.parse(data);
             console.log(data);
-            $scope.myData = function (data, arr) {
+            $scope.gridApi.data = function (data, arr) {
                 for (var i = 0; i < data.data.data.length; i++) {
                     arr.push({
                         "id": parseInt(data.data.data[i].id),
