@@ -4,7 +4,7 @@ html(lang='zh-cn')
         meta(charset='utf-8')
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
         meta(name='viewport', content='width=device-width, initial-scale=1')
-        title bud
+        title
         link(href='css/bootstrap.min.css', rel='stylesheet')
         link(href="css/global.css",rel="stylesheet")
     body
@@ -15,70 +15,19 @@ html(lang='zh-cn')
         .container-fluid
             .row
                 .col-lg-2.sidebar-parent
-                    .nav.nav-pills.nav-stacked(role="tablist")
-                        li.active(role="presentation")
-                            a(href="#") 可疑稽查
-                        li(role="presentation")
-                            a(href="#") SPR管理
-                        li(role="presentation")
-                            a(href="#") 礼品管理
+                    //.nav.nav-pills.nav-stacked(role="tablist")
+                    //    li.active(role="presentation")
+                    //        a(href="#") 可疑稽查
+                    //    li(role="presentation")
+                    //        a(href="#") SPR管理
                 .col-lg-10.contaner
                     .row
                         .col-lg-12.form-search-parent
                             include include/form-search.jade
                     .row
                         .col-lg-12.table-data-parent
-                            ul.nav.nav-tabs
-                                li.active
-                                    a(href="#tab1",data-toggle="tab") 7天内可疑openid
-                                li
-                                    a(href="#tab2",data-toggle="tab") 市场部待处理可疑openid
-                            .tab-content
-                                .tab-pane.fade.in.active#tab1
-                                    .row
-                                        .col-lg-12
-                                            form.form-inline
-                                                .input-group
-                                                    span.input-group-addon 可疑次数
-                                                    input.form-control(type="text",placeholder="请输入")
-                                                    span.input-group-btn
-                                                        button.btn.btn-default(type="button") 搜索
-                                        .col-lg-12
-                                            .row
-                                                .col-lg-4
-                                                    table.table.table-data
-                                                        thead
-                                                            tr
-                                                                th #
-                                                                th openid
-                                                                th 处理
-                                                        tbody
-                                                            - for(var i=0;i<10;i++)
-                                                                tr
-                                                                    td #{i}
-                                                                    td 数据
-                                                                    td
-                                                                        button.btn.btn-default(type="submit") 取消积分
-                                                .col-lg-8
-                                                    include include/table-data.jade
-                                .tab-pane.fade#tab2
-                                    .row
-                                        .col-lg-4
-                                            table.table.table-data
-                                                thead
-                                                    tr
-                                                        th #
-                                                        th openid
-                                                        th 操作
-                                                tbody
-                                                    - for(var i=0;i<10;i++)
-                                                        tr
-                                                            td 1
-                                                            td 数据
-                                                            td
-                                                                button.btn.btn-default(type="submit") 确认正常
-                                                                button.btn.btn-default(type="submit") 取消积分
-                                        .col-lg-8
-                                            include include/table-data.jade
+                            include include/table-data.jade
+                        .col-lg-12
+                            include include/pagination.jade
         script(src='js/jquery.min.js')
         script(src='js/bootstrap.min.js')
