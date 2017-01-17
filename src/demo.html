@@ -1,9 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn" ng-app="app">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/global.css" rel="stylesheet"/>
+    <link href="css/angular-ui-grid/ui-grid.css" rel="stylesheet"/>
 </head>
 <body>
+<div ng-controller="MainCtrl">
+    <div ui-grid="{data:myData}" class="myGrid">
+
+    </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/ui-grid.min.js"></script>
+<script>
+    var app = angular.module("app", ['ui.grid', 'ui.grid.pagination']);
+    app.controller("MainCtrl", ['$scope', '$http', function ($scope) {
+        $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qscore", {
+            spr: 862094
+        }, function (data) {
+            data = JSON.parse(data);
+            console.log(data);
+            $scope.myData = function (data, arr) {
+                for (var i = 0; i < data.data.data.length; i++) {
+                    arr.push({
+                        "id": parseInt(data.data.data[i].id),
+                        "openid": data.data.data[i].openid
+                    });
+                }
+                return arr;
+            }(data, []);
+        });
+    }]);
+
+</script>
 </body>
 </html>
