@@ -15,8 +15,7 @@ body {
   margin-top: 20px;
   .form-search {
     background: #2F3238;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 20px;
   }
 }
 
@@ -26,4 +25,8 @@ body {
   width: 500px;
   padding: 0 1em 1em;
   margin: 100px auto 0;
+}
+
+.wbUiGrid{
+  background-color: #fff;
 }
