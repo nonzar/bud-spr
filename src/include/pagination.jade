@@ -1,9 +1,8 @@
-nav
-    ul.pagination
-        li
-            a(href="#") &laquo;
-        - for(var i=0;i<10;i++)
-            li
-                a(href="#") #{i}
-        li
-            a(href="#") &raquo;
+.paginationer
+    label.pull-left
+        b.lab-index 1
+        | /
+        b.lab-total 30
+    .pull-right
+        button.btn.btn-default.btn-prev 上一页
+        button.btn.btn-default.btn-next 下一页
