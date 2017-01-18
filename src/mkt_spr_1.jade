@@ -16,23 +16,54 @@ html(lang='zh-cn',ng-app="app")
         .container-fluid
             .row
                 .col-lg-2.sidebar
-                    br
-                    include include/mkt-sidebar.jade
+                    include include/ptl-sidebar.jade
                 .col-lg-10.contaner
                     .row
                         .col-lg-12
-                            br
-                            form.form-inline.wbSearch(style="text-align:center;")
+                            form.form-inline.wbSearch
                                 .input-group
                                     span.input-group-addon SPR状态码
-                                    input.form-control(type="text",placeholder="请输入",style="width: 500px;")
+                                    input.form-control(type="text",placeholder="请输入",value="862094")
                                     span.input-group-btn
-                                        button.btn.btn-default(type="button") 搜索
-                            br
+                                        button.btn.btn-default.btn-search(type="button") 搜索
                         .col-lg-12
-                            div.wbUiGrid(ng-controller="MainCtrl")
-                                div.grid(ui-grid="gridOptions" ui-grid-pagination)
-                            br
+                            div.wbTable(ng-controller="customersCtrl")
+                                table.table.table-bordered
+                                    thead
+                                        tr
+                                            th(ng-repeat="item in ths") {{item}}
+                                    tbody
+                                        tr(ng-repeat="item in tds")
+                                            td {{item.id}}
+                                            td {{item.code}}
+                                            td {{item.region}}
+                                            td {{item.city}}
+                                            td {{item.type}}
+                                            td {{item.name}}
+                                            td {{item.vendor}}
+                                            td {{item.ptl}}
+                                            td {{item.isover}}
+                                            td
+                                                button.btn.btn-default(type="button") 修改
+                                                button.btn.btn-default.btn-prev(type="button") 确认修改
+                                                button.btn.btn-default.btn-prev(type="button") 取消修改
+                        .col-lg-12
+                            h3 名下所有SPR
+                        .col-lg-12
+                            div.wbAllSpr(ng-controller="customersCtrl2")
+                                table.table.table-bordered
+                                    thead
+                                        tr
+                                            th(ng-repeat="item in ths") {{item}}
+                                    tbody
+                                        tr(ng-repeat="item in tds")
+                                            td {{item.openid}}
+                                            td
+                                                button.btn.btn-default.btn-prev(type="button") 修改
+                                                button.btn.btn-default.btn-prev(type="button") 确认修改
+                                                button.btn.btn-default.btn-prev(type="button") 取消修改
+                                button.btn.btn-default.btn-prev(type="button") 上一页
+                                button.btn.btn-default.btn-next(type="button") 下一页
         script(src='js/jquery.min.js')
         script(src='js/angular.min-1.5.10.js')
         script(src='js/bootstrap.min.js')
