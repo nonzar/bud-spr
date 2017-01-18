@@ -1,5 +1,5 @@
 body {
-  background-color: #4C4E51;
+  //background-color: #4C4E51;
 }
 
 .header {
@@ -7,16 +7,21 @@ body {
   color: #fff;
 }
 
-.sidebar-parent {
-  color: #000;
+.sidebar {
+  margin-top: 20px;
 }
 
 .contaner {
   margin-top: 20px;
   .form-search {
-    background: #2F3238;
-    padding: 20px;
+    input[type="text"] {
+      width: 500px;
+    }
   }
+}
+
+.form-search {
+  margin-bottom: 20px;
 }
 
 .wbLogin {
@@ -25,8 +30,4 @@ body {
   width: 500px;
   padding: 0 1em 1em;
   margin: 100px auto 0;
-}
-
-.wbUiGrid{
-  background-color: #fff;
 }

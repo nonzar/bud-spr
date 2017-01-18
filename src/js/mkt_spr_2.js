@@ -2,12 +2,12 @@ var app = angular.module("app", ['ui.grid', 'ui.grid.pagination']);
 app.controller('MainCtrl', ['$scope', '$http', 'uiGridConstants', function ($scope, $http, uiGridConstants) {
     var paginationOptions = {
         pageNumber: 1,
-        pageSize: 50,
+        pageSize: 5,
         sort: null
     };
     $scope.gridOptions = {
-        paginationPageSizes: [50],
-        paginationPageSize: 50,
+        paginationPageSizes: [5],
+        paginationPageSize: 5,
         useExternalPagination: true,
         useExternalSorting: true,
         columnDefs: [

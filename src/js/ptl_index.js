@@ -1,81 +1,82 @@
-var app = angular.module("app", ['ui.grid', 'ui.grid.pagination']);
-app.controller('MainCtrl', ['$scope', '$http', 'uiGridConstants', function ($scope, $http, uiGridConstants) {
-    var paginationOptions = {
-        pageNumber: 1,
-        pageSize: 50,
-        sort: null
-    };
-    $scope.gridOptions = {
-        paginationPageSizes: [50],
-        paginationPageSize: 50,
-        useExternalPagination: true,
-        useExternalSorting: true,
-        columnDefs: [
-            // {name: '#'},
-            {name: 'openid', enableSorting: false},
-            {name: '产品名称', enableSorting: false},
-            {name: '产品积分', enableSorting: false},
-            {name: '积分时间', enableSorting: false},
-            {name: '渠道分类', enableSorting: false},
-            {name: '大区', enableSorting: false},
-            {name: '城市', enableSorting: false},
-            {name: '促销员id', enableSorting: false},
-            {name: '促销员', enableSorting: false},
-            {name: 'PLT', enableSorting: false}
-        ],
-        onRegisterApi: function (gridApi) {
-            $scope.gridApi = gridApi;
-            $scope.gridApi.core.on.sortChanged($scope, function (grid, sortColumns) {
-                if (sortColumns.length == 0) {
-                    paginationOptions.sort = null;
-                } else {
-                    paginationOptions.sort = sortColumns[0].sort.direction;
-                }
-                getPage();
-            });
-            gridApi.pagination.on.paginationChanged($scope, function (newPage, pageSize) {
-                paginationOptions.pageNumber = newPage;
-                paginationOptions.pageSize = pageSize;
-                getPage();
+var ctrl = {
+    $scope: null,
+    pagination: {},
+    reset: function () {
+        ctrl.pagination = {
+            sort: 0,
+            page: 1
+        };
+    },
+    getPage: function () {
+        if (!ctrl.$scope.ths) {
+            ctrl.$scope.$apply(function () {
+                ctrl.$scope.ths = [
+                    // "#",
+                    "openid",
+                    "产品名称",
+                    "产品积分",
+                    "积分时间",
+                    "渠道分类",
+                    "大区",
+                    "城市",
+                    "促销员id",
+                    "促销员",
+                    "PLT"
+                ];
             });
         }
-    };
-    var getPage = function () {
-        console.log(uiGridConstants);
         $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qscore", function (_data) {
             _data = {
-                sort: 0,
-                page: paginationOptions.pageNumber
+                sort: ctrl.pagination.sort,
+                page: ctrl.pagination.page
             };
             if ($(".form-search-parent select").val() == "spr") {
-                _data.spr = $(".form-search-parent input[type='text']").val() || 862094;
+                _data.spr = $(".form-search-parent input[type='text']").val();
             } else {
-                _data.openid = $(".form-search-parent input[type='text']").val() || 862094;
+                _data.openid = $(".form-search-parent input[type='text']").val();
             }
             console.log(_data);
             return _data;
         }({}), function (data) {
             console.log(data = JSON.parse(data));
-            $scope.gridOptions.totalItems = data.data.totalpages - 1;
-            $scope.gridOptions.data = function (data, arr) {
-                for (var i = 0; i < data.data.data.length; i++) {
-                    arr.push({
-                        // "#": i + 1,
-                        "openid": data.data.data[i].openid,
-                        "产品名称": data.data.data[i].obj,
-                        "产品积分": data.data.data[i].score,
-                        "积分时间": data.data.data[i].act_time,
-                        "渠道分类": data.data.data[i].sprtype,
-                        "大区": data.data.data[i].sprregion,
-                        "城市": data.data.data[i].sprcity,
-                        "促销员id": data.data.data[i].id,
-                        "促销员": data.data.data[i].sprname,
-                        "PLT": data.data.data[i].ptlname
-                    });
-                }
-                return arr;
-            }(data, []);
+            ctrl.$scope.$apply(function () {
+                ctrl.$scope.tds = data.data.data;
+            });
         });
-    };
-    getPage();
-}]);
+    },
+    getPrevPage: function () {
+        ctrl.pagination.page--;
+        ctrl.getPage();
+    },
+    getNextPage: function () {
+        ctrl.pagination.page++;
+        ctrl.getPage();
+    }
+};
+var app = angular.module('app', []);
+app.controller('customersCtrl', function ($scope) {
+    ctrl.$scope = $scope;
+    $scope.ths = [
+        // "#",
+        "openid",
+        "产品名称",
+        "产品积分",
+        "积分时间",
+        "渠道分类",
+        "大区",
+        "城市",
+        "促销员id",
+        "促销员",
+        "PLT"
+    ];
+});
+$(".form-search button").on("click", function () {
+    ctrl.reset();
+    ctrl.getPage(ctrl.$scope);
+});
+$(".wbTable .btn-prev").on("click", function () {
+    ctrl.getPrevPage();
+});
+$(".wbTable .btn-next").on("click", function () {
+    ctrl.getNextPage();
+});
