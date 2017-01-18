@@ -19,17 +19,11 @@ html(lang='zh-cn',ng-app="app")
                     br
                     include include/ptl-sidebar.jade
                 .col-lg-10.contaner
-                    .row
-                        .col-lg-12.form-search-parent
-                            include include/form-search.jade
-                    .row
-                        .col-lg-12
-                            br
-                            div(ng-controller="MainCtrl")
-                                div.grid(ui-grid="gridOptions" ui-grid-pagination)
-                            br
+                    br
+                    div(ng-controller="MainCtrl")
+                        div.grid(ui-grid="gridOptions" ui-grid-pagination)
         script(src='js/jquery.min.js')
         script(src='js/angular.min-1.5.10.js')
         script(src='js/bootstrap.min.js')
         script(src='js/ui-grid.min.js')
-        script(src='js/ptl_index.js')
+        script(src='js/ptl_spr_2.js')

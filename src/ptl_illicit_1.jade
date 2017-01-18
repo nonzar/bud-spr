@@ -20,16 +20,33 @@ html(lang='zh-cn',ng-app="app")
                     include include/ptl-sidebar.jade
                 .col-lg-10.contaner
                     .row
-                        .col-lg-12.form-search-parent
-                            include include/form-search.jade
-                    .row
                         .col-lg-12
                             br
+                            form.form-horizontal(role="form")
+                                .form-group
+                                    label.col-sm-2.control-label 可疑天数
+                                    .col-sm-10
+                                        select.form-control
+                                            - for(var i=0;i<6;i++)
+                                                option #{i + 1}
+                        .col-lg-12
                             div(ng-controller="MainCtrl")
                                 div.grid(ui-grid="gridOptions" ui-grid-pagination)
                             br
+                            //table.table.table-data
+                            //    thead
+                            //        tr
+                            //            th #
+                            //            th openid
+                            //            th 处理
+                            //    tbody
+                            //        tr
+                            //            td #{i}
+                            //            td 数据
+                            //            td
+                            //                button.btn.btn-default(type="submit") 取消积分
         script(src='js/jquery.min.js')
         script(src='js/angular.min-1.5.10.js')
         script(src='js/bootstrap.min.js')
         script(src='js/ui-grid.min.js')
-        script(src='js/ptl_index.js')
+        script(src='js/ptl_illicit_1.js')

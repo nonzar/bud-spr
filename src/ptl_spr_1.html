@@ -26,23 +26,15 @@
         </div>
         <div class="col-lg-10 contaner">
           <div class="row">
-            <div class="col-lg-12 form-search-parent">
-              <form class="form-inline" role="form">
-                <div class="input-group">
-                  <div class="input-group-btn">
-                    <select class="form-control">
-                      <option value="spr">SPR验证码积分记录</option>
-                      <option value="openid">OpenId积分记录</option>
-                    </select>
-                  </div>
-                  <input class="form-control" type="text" placeholder="请输入"><span class="input-group-btn">
+            <div class="col-lg-12"><br>
+              <form class="form-inline wbSearch" style="text-align:center">
+                <div class="input-group"><span class="input-group-addon">SPR状态码</span>
+                  <input class="form-control" type="text" placeholder="请输入" style="width: 500px"><span class="input-group-btn">
                     <button class="btn btn-default" type="button">搜索</button></span>
                 </div>
-              </form>
+              </form><br>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-12"><br>
+            <div class="col-lg-12">
               <div ng-controller="MainCtrl">
                 <div class="grid" ui-grid="gridOptions" ui-grid-pagination></div>
               </div><br>
@@ -55,6 +47,6 @@
     <script src="js/angular.min-1.5.10.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/ui-grid.min.js"></script>
-    <script src="js/ptl_index.js"></script>
+    <script src="js/ptl_spr_1.js"></script>
   </body>
 </html>
