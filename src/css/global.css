@@ -9,8 +9,8 @@ body {
   color: #000; }
 
 .contaner {
-  background: #fff; }
-  .contaner .form-search-parent {
+  margin-top: 20px; }
+  .contaner .form-search {
     background: #2F3238;
     padding-top: 20px;
     padding-bottom: 20px; }
