@@ -3,34 +3,22 @@ var ctrl = {
     pagination: {},
     reset: function () {
         ctrl.pagination = {
-            totalPages: -1,
+            totalPage: -1,
             sort: 0,
             page: 1
         };
     },
     getPage: function () {
-        if (!ctrl.$scope.ths) {
-            ctrl.$scope.$apply(function () {
-                ctrl.$scope.ths = [
-                    '奖品Type',
-                    '名称',
-                    '兑换积分',
-                    '总量',
-                    '兑换数量',
-                    '兑换率'
-                ];
-            });
-        }
         $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qobj", {}, function (data) {
             console.log(data = JSON.parse(data));
-            ctrl.pagination.totalPages = parseInt(data.data.totalpages);
+            ctrl.pagination.totalPage = parseInt(data.data.totalpages);
             ctrl.$scope.$apply(function () {
                 ctrl.$scope.tds = data.data;
             });
         });
     },
     getPrevPage: function () {
-        if (ctrl.pagination.totalPages == -1) {
+        if (ctrl.pagination.totalPage == -1) {
             return;
         }
         if (ctrl.pagination.page <= 1) {
@@ -41,10 +29,10 @@ var ctrl = {
         ctrl.getPage();
     },
     getNextPage: function () {
-        if (ctrl.pagination.totalPages == -1) {
+        if (ctrl.pagination.totalPage == -1) {
             return;
         }
-        else if (ctrl.pagination.page >= ctrl.pagination.totalPages) {
+        else if (ctrl.pagination.page >= ctrl.pagination.totalPage) {
             alert("已经是最后一页。");
             return;
         }
@@ -64,5 +52,5 @@ app.controller('customersCtrl', function ($scope) {
         '兑换率'
     ];
     ctrl.reset();
-    ctrl.getPage(ctrl.$scope);
+    ctrl.getPage();
 });

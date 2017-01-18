@@ -3,29 +3,12 @@ var ctrl = {
     pagination: {},
     reset: function () {
         ctrl.pagination = {
-            totalPages: -1,
+            totalPage: -1,
             sort: 0,
             page: 1
         };
     },
     getPage: function () {
-        if (!ctrl.$scope.ths) {
-            ctrl.$scope.$apply(function () {
-                ctrl.$scope.ths = [
-                    // "#",
-                    "促销员id",
-                    "验证码",
-                    "大区",
-                    "城市",
-                    "城市等级",
-                    "促销员名称",
-                    "渠道",
-                    "PTL",
-                    "状态",
-                    "操作"
-                ];
-            });
-        }
         $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qspr", function (_data) {
             _data = {
                 sort: ctrl.pagination.sort,
@@ -36,14 +19,16 @@ var ctrl = {
             return _data;
         }({}), function (data) {
             console.log(data = JSON.parse(data));
-            ctrl.pagination.totalPages = parseInt(data.data.totalpages);
+            ctrl.pagination.totalPage = parseInt(data.data.totalpages);
+            $(".paginationer .lab-total").text(ctrl.pagination.totalPage);
+            $(".paginationer .lab-index").text(ctrl.pagination.page);
             ctrl.$scope.$apply(function () {
                 ctrl.$scope.tds = [data.data];
             });
         });
     },
     getPrevPage: function () {
-        if (ctrl.pagination.totalPages == -1) {
+        if (ctrl.pagination.totalPage == -1) {
             return;
         }
         if (ctrl.pagination.page <= 1) {
@@ -54,10 +39,10 @@ var ctrl = {
         ctrl.getPage();
     },
     getNextPage: function () {
-        if (ctrl.pagination.totalPages == -1) {
+        if (ctrl.pagination.totalPage == -1) {
             return;
         }
-        else if (ctrl.pagination.page >= ctrl.pagination.totalPages) {
+        else if (ctrl.pagination.page >= ctrl.pagination.totalPage) {
             alert("已经是最后一页。");
             return;
         }
@@ -82,9 +67,9 @@ app.controller('customersCtrl', function ($scope) {
         "操作"
     ];
 });
+ctrl.reset();
 $(".wbSearch button").on("click", function () {
-    ctrl.reset();
-    ctrl.getPage(ctrl.$scope);
+    ctrl.getPage();
 });
 
 //名下所有spr--------------------------------------------------
@@ -93,7 +78,7 @@ var ctrl2 = {
     pagination: {},
     reset: function () {
         ctrl2.pagination = {
-            totalPages: -1,
+            totalPage: -1,
             sort: 0,
             page: 1
         };

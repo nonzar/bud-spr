@@ -3,40 +3,27 @@ var ctrl = {
     pagination: {},
     reset: function () {
         ctrl.pagination = {
-            totalPages: -1,
+            totalPage: -1,
             sort: 0,
-            page: 1
+            page: -1
         };
     },
     getPage: function () {
-        if (!ctrl.$scope.ths) {
-            ctrl.$scope.$apply(function () {
-                ctrl.$scope.ths = [
-                    // {name: '#'},
-                    '记录id',
-                    'openid',
-                    '产品名称',
-                    '兑奖时间',
-                    '姓名',
-                    '电话',
-                    '快递单号',
-                    '地址'
-                ];
-            });
-        }
         $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qaward", {
             type: 0,
             page: ctrl.pagination.page
         }, function (data) {
             console.log(data = JSON.parse(data));
-            ctrl.pagination.totalPages = parseInt(data.data.totalpages);
+            ctrl.pagination.totalPage = parseInt(data.data.totalpages);
+            $(".paginationer .lab-total").text(ctrl.pagination.totalPage);
+            $(".paginationer .lab-index").text(ctrl.pagination.page);
             ctrl.$scope.$apply(function () {
                 ctrl.$scope.tds = data.data.data;
             });
         });
     },
     getPrevPage: function () {
-        if (ctrl.pagination.totalPages == -1) {
+        if (ctrl.pagination.totalPage == -1) {
             return;
         }
         if (ctrl.pagination.page <= 1) {
@@ -47,10 +34,10 @@ var ctrl = {
         ctrl.getPage();
     },
     getNextPage: function () {
-        if (ctrl.pagination.totalPages == -1) {
+        if (ctrl.pagination.totalPage == -1) {
             return;
         }
-        else if (ctrl.pagination.page >= ctrl.pagination.totalPages) {
+        else if (ctrl.pagination.page >= ctrl.pagination.totalPage) {
             alert("已经是最后一页。");
             return;
         }
@@ -73,7 +60,7 @@ app.controller('customersCtrl', function ($scope) {
         '地址'
     ];
     ctrl.reset();
-    ctrl.getPage(ctrl.$scope);
+    ctrl.getPage();
 });
 $(".wbTable .btn-prev").on("click", function () {
     ctrl.getPrevPage();
