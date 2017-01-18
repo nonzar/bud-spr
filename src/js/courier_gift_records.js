@@ -20,8 +20,7 @@ app.controller('MainCtrl', ['$scope', '$http', 'uiGridConstants', function ($sco
             {name: '姓名', enableSorting: false},
             {name: '电话', enableSorting: false},
             {name: '快递单号', enableSorting: false},
-            {name: '地址', enableSorting: false},
-            {name: '操作', enableSorting: false}
+            {name: '地址', enableSorting: false}
         ],
         onRegisterApi: function (gridApi) {
             $scope.gridApi = gridApi;
@@ -59,8 +58,7 @@ app.controller('MainCtrl', ['$scope', '$http', 'uiGridConstants', function ($sco
                         "姓名": none,
                         "电话": none,
                         "快递单号": data.data.data[i].package,
-                        "地址": none,
-                        "操作": "确认"
+                        "地址": none
                     });
                 }
                 return arr;

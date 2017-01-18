@@ -11,8 +11,7 @@ app.controller('MainCtrl', ['$scope', '$http', 'uiGridConstants', function ($sco
             {name: '姓名', enableSorting: false},
             {name: '电话', enableSorting: false},
             {name: '快递单号', enableSorting: false},
-            {name: '地址', enableSorting: false},
-            {name: '操作', enableSorting: false}
+            {name: '地址', enableSorting: false}
         ]
     };
     $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qobj", {}, function (data) {
@@ -28,8 +27,7 @@ app.controller('MainCtrl', ['$scope', '$http', 'uiGridConstants', function ($sco
                     "姓名": none,
                     "电话": none,
                     "快递单号": data.data[i].package,
-                    "地址": none,
-                    "操作": "修改 确认"
+                    "地址": none
                 });
             }
             return arr;
