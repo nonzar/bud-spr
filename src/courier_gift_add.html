@@ -1,34 +1,57 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-cn" ng-app="app">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/angular-ui-grid/ui-grid.css" rel="stylesheet">
     <link href="css/global.css" rel="stylesheet">
   </head>
   <body>
     <div class="container-fluid header">
       <div class="row">
         <div class="col-lg-12">
-          <h1>user name</h1>
+          <h1><a href="all.html">user name</a></h1>
         </div>
       </div>
     </div>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-lg-2 sidebar"><br>
+        <div class="col-lg-2 sidebar">
           <div class="list-group"><a class="list-group-item active" href="javascript:;">礼物管理</a><a class="list-group-item" href="courier_gift_records.html">兑奖记录</a><a class="list-group-item" href="courier_gift_inventory.html">库存情况</a><a class="list-group-item" href="courier_gift_add.html">添加快递</a></div>
         </div>
-        <div class="col-lg-10 contaner"></div>
+        <div class="col-lg-10 contaner">
+          <h3>添加快递</h3>
+          <form role="form">
+            <div class="form-group">
+              <label for="">产品名称</label>
+              <input class="form-control" type="text" placeholder="产品名称">
+            </div>
+            <div class="form-group">
+              <label for="">快递单号</label>
+              <input class="form-control" type="text" placeholder="快递单号">
+            </div>
+            <div class="form-group">
+              <label for="">姓名</label>
+              <input class="form-control" type="text" placeholder="姓名">
+            </div>
+            <div class="form-group">
+              <label for="">电话</label>
+              <input class="form-control" type="text" placeholder="电话">
+            </div>
+            <div class="form-group">
+              <label for="">地址</label>
+              <input class="form-control" type="text" placeholder="地址">
+            </div>
+            <div class="button btn btn-default" type="submit">提交</div>
+          </form>
+        </div>
       </div>
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="js/angular.min-1.5.10.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/ui-grid.min.js"></script>
-    <script src="js/courier_gift_add.js"></script>
+    <script src="js/courier_gift_records.js"></script>
   </body>
 </html>

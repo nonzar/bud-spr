@@ -9,14 +9,17 @@ html(lang='zh-cn')
     body
         .container-fluid
             .row
-                .col-lg-12
+                .col-lg-3
                     h1 Public
                     .list-group
                         a.list-group-item.active(href="login.html") 登录
+                .col-lg-3
                     h1 PTL
                     include include/ptl-sidebar.jade
+                .col-lg-3
                     h1 MKT
                     include include/mkt-sidebar.jade
+                .col-lg-3
                     h1 Courier
                     include include/courier-sidebar.jade
         script(src='js/jquery.min.js')
