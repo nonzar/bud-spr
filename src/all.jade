@@ -6,44 +6,18 @@ html(lang='zh-cn')
         meta(name='viewport', content='width=device-width, initial-scale=1')
         title bw
         link(href='css/bootstrap.min.css', rel='stylesheet')
-        link(href="css/global.css",rel="stylesheet")
-        style.
-            body{
-                background-color: #fff;
-                color: #000;
-            }
-            table a{
-                margin: 0 1em;
-            }
     body
         .container-fluid
             .row
                 .col-lg-12
-                    table.table.table-data
-                        thead
-                            tr
-                                th #
-                                th 页面
-                        tbody
-                            tr
-                                td ptl
-                                td
-                                    a(target="_blank",href="login.html") 登录
-                                    a(target="_blank",href="ptl_index.html") 首页
-                                    a(target="_blank",href="ptl_illicit_2.html") 可疑稽查
-                                    a(target="_blank",href="ptl_spr_1.html") spr
-                            tr
-                                td mkt
-                                td
-                                    a(target="_blank",href="login.html") 登录
-                                    a(target="_blank",href="mkt_index.html",style="text-decoration: underline;") 首页
-                                    a(target="_blank",href="mkt_illicit.html") 可疑稽查
-                                    a(target="_blank",href="mkt_spr.html") spr
-                                    a(target="_blank",href="mkt_gift.html") 礼物管理
-                            tr
-                                td courier
-                                td
-                                    a(target="_blank",href="login.html") 登录
-                                    a(target="_blank",href="courier_gift.html") 礼物管理
+                    h1 Public
+                    .list-group
+                        a.list-group-item.active(href="login.html") 登录
+                    h1 PTL
+                    include include/ptl-sidebar.jade
+                    h1 MKT
+                    include include/mkt-sidebar.jade
+                    h1 Courier
+                    include include/courier-sidebar.jade
         script(src='js/jquery.min.js')
         script(src='js/bootstrap.min.js')
