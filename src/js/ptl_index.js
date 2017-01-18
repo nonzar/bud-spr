@@ -31,10 +31,10 @@ var ctrl = {
                 sort: ctrl.pagination.sort,
                 page: ctrl.pagination.page
             };
-            if ($(".form-search-parent select").val() == "spr") {
-                _data.spr = $(".form-search-parent input[type='text']").val();
+            if ($(".form-search select").val() == "spr") {
+                _data.spr = $(".form-search input[type='text']").val();
             } else {
-                _data.openid = $(".form-search-parent input[type='text']").val();
+                _data.openid = $(".form-search input[type='text']").val();
             }
             console.log(_data);
             return _data;

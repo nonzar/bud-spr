@@ -17,7 +17,8 @@ html(lang='zh-cn',ng-app="app")
                 .col-lg-2.sidebar
                     include include/courier-sidebar.jade
                 .col-lg-10.contaner
-                    div.wbTable(ng-controller="customersCtrl")
+                    h3.page-header 库存情况
+                    .wbTable(ng-controller="customersCtrl")
                         table.table.table-bordered
                             thead
                                 tr
