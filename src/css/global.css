@@ -7,11 +7,11 @@
 
 .contaner {
   margin-top: 20px; }
-  .contaner .form-search input[type="text"] {
-    width: 500px; }
 
 .form-search {
   margin-bottom: 20px; }
+  .form-search input[type="text"] {
+    width: 500px; }
 
 .wbLogin {
   background-color: #fff;
@@ -19,5 +19,10 @@
   width: 500px;
   padding: 0 1em 1em;
   margin: 100px auto 0; }
+
+.wbSearch {
+  margin-bottom: 20px; }
+  .wbSearch input[type="text"] {
+    width: 500px; }
 
 /*# sourceMappingURL=global.css.map */

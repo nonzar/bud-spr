@@ -6,7 +6,6 @@ html(lang='zh-cn',ng-app="app")
         meta(name='viewport', content='width=device-width, initial-scale=1')
         title
         link(href='css/bootstrap.min.css', rel='stylesheet')
-        link(href='css/angular-ui-grid/ui-grid.css', rel='stylesheet')
         link(href="css/global.css",rel="stylesheet")
     body
         .container-fluid.header
@@ -16,14 +15,19 @@ html(lang='zh-cn',ng-app="app")
         .container-fluid
             .row
                 .col-lg-2.sidebar
-                    br
                     include include/ptl-sidebar.jade
                 .col-lg-10.contaner
-                    br
-                    div.wbUiGrid(ng-controller="MainCtrl")
-                        div.grid(ui-grid="gridOptions" ui-grid-pagination)
+                    div.wbTable(ng-controller="customersCtrl")
+                        table.table.table-bordered
+                            thead
+                                tr
+                                    th(ng-repeat="item in ths") {{item}}
+                            tbody
+                                tr(ng-repeat="item in tds")
+                                    td {{item.openid}}
+                        button.btn.btn-default.btn-prev(type="button") 上一页
+                        button.btn.btn-default.btn-next(type="button") 下一页
         script(src='js/jquery.min.js')
         script(src='js/angular.min-1.5.10.js')
         script(src='js/bootstrap.min.js')
-        script(src='js/ui-grid.min.js')
         script(src='js/ptl_spr_2.js')
