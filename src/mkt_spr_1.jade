@@ -20,11 +20,16 @@ html(lang='zh-cn',ng-app="app")
                     include include/mkt-sidebar.jade
                 .col-lg-10.contaner
                     .row
-                        .col-lg-12.form-search-parent
-                            include include/form-search.jade
-                    .row
                         .col-lg-12
                             br
+                            form.form-inline.wbSearch(style="text-align:center;")
+                                .input-group
+                                    span.input-group-addon SPR状态码
+                                    input.form-control(type="text",placeholder="请输入",style="width: 500px;")
+                                    span.input-group-btn
+                                        button.btn.btn-default(type="button") 搜索
+                            br
+                        .col-lg-12
                             div(ng-controller="MainCtrl")
                                 div.grid(ui-grid="gridOptions" ui-grid-pagination)
                             br
@@ -32,4 +37,4 @@ html(lang='zh-cn',ng-app="app")
         script(src='js/angular.min-1.5.10.js')
         script(src='js/bootstrap.min.js')
         script(src='js/ui-grid.min.js')
-        script(src='js/ptl_index.js')
+        script(src='js/ptl_spr_1.js')

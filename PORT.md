@@ -59,7 +59,7 @@
 返回指定spr状态信息。
 
 **parameters**:
-- **`促销员id`**
+- **`促销员id`**: 如果为空则返回所有spr
 
 **return**:
 ```javascript
