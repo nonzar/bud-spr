@@ -57,6 +57,15 @@ app.controller('customersCtrl', function ($scope) {
         "openid",
         "处理"
     ];
+    $scope.setOpendForIllicit = function ($event, openid) {
+        if($event.target.classList.contains("disabled")){
+            return;
+        }
+        Api.ptl.setOpendForIllicit(function () {
+            $event.target.classList.add("disabled");
+            alert("成功");
+        });
+    }
 });
 ctrl.reset();
 $(".form-search button").on("click", function () {

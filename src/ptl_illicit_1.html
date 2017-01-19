@@ -56,7 +56,8 @@
                     <tr ng-repeat="item in tds">
                       <td>{{item.openid}}</td>
                       <td>
-                        <button class="btn btn-default" type="button">列入可疑</button>
+                        <button class="btn btn-info btn-sm" ng-click="">查看</button>
+                        <button class="btn btn-danger btn-sm" ng-click="setOpendForIllicit($event,item.openid)">列入可疑</button>
                       </td>
                     </tr>
                   </tbody>
@@ -77,6 +78,7 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/angular.min-1.5.10.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/global.js"></script>
     <script src="js/ptl_illicit_1.js"></script>
   </body>
 </html>

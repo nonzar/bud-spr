@@ -54,7 +54,8 @@ app.controller('customersCtrl', function ($scope) {
     ctrl.$scope = $scope;
     $scope.ths = [
         // "#",
-        "openid"
+        "openid",
+        "操作"
     ];
     ctrl.reset();
     ctrl.getPage();

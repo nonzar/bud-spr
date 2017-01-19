@@ -33,6 +33,9 @@ html(lang='zh-cn',ng-app="app")
                                     td "电话"
                                     td {{item.package}}
                                     td "地址"
+                                    td
+                                        button.btn.btn-primary.btn-xs
+                                            span.glyphicon.glyphicon-pencil
                         include include/pagination.jade
         script(src='js/jquery.min.js')
         script(src='js/angular.min-1.5.10.js')

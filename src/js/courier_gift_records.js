@@ -5,7 +5,7 @@ var ctrl = {
         ctrl.pagination = {
             totalPage: -1,
             sort: 0,
-            page: -1
+            page: 1
         };
     },
     getPage: function () {
@@ -57,7 +57,8 @@ app.controller('customersCtrl', function ($scope) {
         '姓名',
         '电话',
         '快递单号',
-        '地址'
+        '地址',
+        '操作'
     ];
     ctrl.reset();
     ctrl.getPage();
