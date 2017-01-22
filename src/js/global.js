@@ -104,6 +104,19 @@ Api.getAllSpr = function (para, callback) {
     });
 };
 
+//修改快递资料
+Api.editExpress = function (para, callback) {
+    $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/upak", {
+        id: para.id,
+        pak: para.pak
+    }, function (data) {
+        console.log(data = JSON.parse(data));
+        if (callback) {
+            callback(data);
+        }
+    });
+};
+
 
 
 

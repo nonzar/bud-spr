@@ -60,6 +60,9 @@ app.controller('customersCtrl', function ($scope) {
         '地址',
         '操作'
     ];
+    $scope.confirmChange = function ($event) {
+        alert("没有此接口。");
+    };
     ctrl.reset();
     ctrl.getPage();
 });

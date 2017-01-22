@@ -60,6 +60,22 @@ app.controller('customersCtrl', function ($scope) {
         '地址',
         '操作'
     ];
+    $scope.inputPak = function ($event, id) {
+        var pak = prompt("录入修改快递单号");
+        if (!pak) {
+            return;
+        }
+        Api.editExpress({
+            id: id,
+            pak: pak
+        }, function (data) {
+            alert(data.msg);
+            if (data.code == 0) {
+                return;
+            }
+            $($event.target).parent().parent().find(".tdPackage").text(pak);
+        });
+    };
     ctrl.reset();
     ctrl.getPage();
 });

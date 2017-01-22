@@ -1,3 +1,4 @@
+include include/mixin.jade
 doctype html
 html(lang='zh-cn',ng-app="app")
     head
@@ -27,17 +28,13 @@ html(lang='zh-cn',ng-app="app")
                                 tr(ng-repeat="item in tds")
                                     td {{item.id}}
                                     td {{item.openid}}
-                                    td "产品名称"
+                                    td /
                                     td {{item.act_time}}
-                                    td "姓名"
-                                    td "电话"
-                                    td {{item.package}}
-                                    td "地址"
+                                    td /
+                                    td /
+                                    td.tdPackage {{item.package}}
+                                    td /
                                     td
-                                        button.btn.btn-primary.btn-xs
-                                            span.glyphicon.glyphicon-pencil
+                                        button.btn.btn-success.btn-sm(ng-click="inputPak($event,item.id)") 录入单号
                         include include/pagination.jade
-        script(src='js/jquery.min.js')
-        script(src='js/angular.min-1.5.10.js')
-        script(src='js/bootstrap.min.js')
-        script(src='js/courier_gift_records.js')
+        +includeScriptFiles("js/courier_gift_records.js")

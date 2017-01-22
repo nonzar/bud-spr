@@ -37,14 +37,14 @@
                 <tr ng-repeat="item in tds">
                   <td>{{item.id}}</td>
                   <td>{{item.openid}}</td>
-                  <td>"产品名称"</td>
+                  <td>/</td>
                   <td>{{item.act_time}}</td>
-                  <td>"姓名"</td>
-                  <td>"电话"</td>
+                  <td>/</td>
+                  <td>/</td>
                   <td>{{item.package}}</td>
-                  <td>"地址"</td>
+                  <td>/</td>
                   <td>
-                    <button class="btn btn-default">确认</button>
+                    <button class="btn btn-success btn-sm" ng-click="confirmChange($event)">确认</button>
                   </td>
                 </tr>
               </tbody>
@@ -63,6 +63,7 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/angular.min-1.5.10.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/global.js"></script>
     <script src="js/mkt_gift_records.js"></script>
   </body>
 </html>
