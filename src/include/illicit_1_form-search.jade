@@ -4,6 +4,6 @@ form.form-horizontal.form-search(role="form")
         .col-sm-10
             select.form-control
                 - for(var i=0;i<6;i++)
-                    option(value="\#{i}") #{i+1}以上
+                    option(value=i+1) #{i+1}以上
         .col-sm-1
             button.btn.btn-default 搜索

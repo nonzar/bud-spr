@@ -81,3 +81,6 @@ $(".wbTable .btn-prev").on("click", function () {
 $(".wbTable .btn-next").on("click", function () {
     ctrl.getNextPage();
 });
+$(function () {
+    console.log(common.getURLParameter("openid"));
+});

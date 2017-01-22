@@ -12,13 +12,17 @@ var ctrl = {
         $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/quser", function (_data) {
             _data = {
                 // sort: ctrl.pagination.sort,
-                times: 0,
+                times: parseInt($(".form-search select").val()),
                 page: ctrl.pagination.page
             };
             console.log(_data);
             return _data;
         }({}), function (data) {
             console.log(data = JSON.parse(data));
+            if (data.code == 0) {
+                alert("没有记录");
+                return;
+            }
             ctrl.pagination.totalPage = parseInt(data.data.totalpages);
             $(".paginationer .lab-total").text(ctrl.pagination.totalPage);
             $(".paginationer .lab-index").text(ctrl.pagination.page);
@@ -55,9 +59,14 @@ app.controller('customersCtrl', function ($scope) {
     ctrl.$scope = $scope;
     $scope.ths = [
         // "#",
+        "已核查",
         "openid",
+        "促销员",
+        "异常天数",
         "处理"
     ];
+    $scope.checkDetail = function ($event, openid) {
+    };
     $scope.setOpendForIllicit = function ($event, openid) {
         if ($event.target.classList.contains("disabled")) {
             return;
@@ -66,7 +75,7 @@ app.controller('customersCtrl', function ($scope) {
             $event.target.classList.add("disabled");
             alert("成功");
         });
-    }
+    };
 });
 ctrl.reset();
 $(".form-search button").on("click", function () {
