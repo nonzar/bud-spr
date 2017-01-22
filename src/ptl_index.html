@@ -39,10 +39,6 @@
                     <button class="btn btn-default" type="button">搜索</button></span>
                 </div>
               </form>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-12">
               <div class="wbTable" ng-controller="customersCtrl">
                 <table class="table table-bordered">
                   <thead>
@@ -52,16 +48,15 @@
                   </thead>
                   <tbody>
                     <tr ng-repeat="item in tds">
-                      <td>{{test + item.openid}}</td>
-                      <td>{{item.obj}}</td>
-                      <td>{{item.score}}</td>
-                      <td>{{item.act_time}}</td>
-                      <td>{{item.sprtype}}</td>
-                      <td>{{item.sprregion}}</td>
-                      <td>{{item.sprcity}}</td>
+                      <td>{{item.openid}}</td>
+                      <td>\</td>
+                      <td>\</td>
+                      <td>{{item.id}}</td>
+                      <td>\</td>
+                      <td>\</td>
+                      <td>\</td>
+                      <td>\</td>
                       <td>{{item.sprname}}</td>
-                      <td>{{item.ptlname}}</td>
-                      <td>{{item.ptl}}</td>
                     </tr>
                   </tbody>
                 </table>

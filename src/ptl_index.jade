@@ -22,8 +22,6 @@ html(lang='zh-cn',ng-app="app")
                         .col-lg-12
                             h3.page-header 积分记录查询
                             include include/form-search.jade
-                    .row
-                        .col-lg-12
                             .wbTable(ng-controller="customersCtrl")
                                 table.table.table-bordered
                                     thead
@@ -31,15 +29,14 @@ html(lang='zh-cn',ng-app="app")
                                             th(ng-repeat="item in ths") {{item}}
                                     tbody
                                         tr(ng-repeat="item in tds")
-                                            td {{test + item.openid}}
-                                            td {{item.obj}}
-                                            td {{item.score}}
-                                            td {{item.act_time}}
-                                            td {{item.sprtype}}
-                                            td {{item.sprregion}}
-                                            td {{item.sprcity}}
+                                            td {{item.openid}}
+                                            td \
+                                            td \
+                                            td {{item.id}}
+                                            td \
+                                            td \
+                                            td \
+                                            td \
                                             td {{item.sprname}}
-                                            td {{item.ptlname}}
-                                            td {{item.ptl}}
                                 include include/pagination.jade
         +includeScriptFiles("js/ptl_index.js")

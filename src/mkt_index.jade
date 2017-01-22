@@ -1,3 +1,4 @@
+include include/mixin.jade
 doctype html
 html(lang='zh-cn',ng-app="app")
     head
@@ -6,7 +7,6 @@ html(lang='zh-cn',ng-app="app")
         meta(name='viewport', content='width=device-width, initial-scale=1')
         title 积分记录查询
         link(href='css/bootstrap.min.css', rel='stylesheet')
-        link(href='css/angular-ui-grid/ui-grid.css', rel='stylesheet')
         link(href="css/global.css",rel="stylesheet")
     body
         .container-fluid.header
@@ -29,19 +29,14 @@ html(lang='zh-cn',ng-app="app")
                                             th(ng-repeat="item in ths") {{item}}
                                     tbody
                                         tr(ng-repeat="item in tds")
-                                            td {{test + item.openid}}
-                                            td {{item.obj}}
-                                            td {{item.score}}
-                                            td {{item.act_time}}
-                                            td {{item.sprtype}}
-                                            td {{item.sprregion}}
-                                            td {{item.sprcity}}
+                                            td {{item.openid}}
+                                            td \
+                                            td \
+                                            td {{item.id}}
+                                            td \
+                                            td \
+                                            td \
+                                            td \
                                             td {{item.sprname}}
-                                            td {{item.ptlname}}
-                                            td {{item.ptl}}
                                 include include/pagination.jade
-        script(src='js/jquery.min.js')
-        script(src='js/angular.min-1.5.10.js')
-        script(src='js/bootstrap.min.js')
-
-        script(src='js/ptl_index.js')
+        +includeScriptFiles("js/ptl_index.js")

@@ -24,6 +24,14 @@ var ctrl = {
         }({}), function (data) {
             console.log(data = JSON.parse(data));
             if (data.code == 0) {
+                ctrl.$scope.$apply(function () {
+                    ctrl.$scope.tds = function (arr) {
+                        for (var i = 0; i < ctrl.$scope.ths.length; i++) {
+                            arr[ctrl.$scope.ths[i]] = "";
+                        }
+                        return arr;
+                    }([]);
+                });
                 alert("没有记录");
                 return;
             }
@@ -64,15 +72,14 @@ app.controller('customersCtrl', function ($scope) {
     $scope.ths = [
         // "#",
         "openid",
-        "产品名称",
-        "产品积分",
+        "参与时间",
+        "购买产品",
+        "促销员id",
         "积分时间",
-        "渠道分类",
+        "店铺分类",
         "大区",
         "城市",
-        "促销员id",
-        "促销员",
-        "PLT"
+        "促销员"
     ];
 });
 ctrl.reset();
