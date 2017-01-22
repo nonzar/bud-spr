@@ -1,0 +1,131 @@
+{
+    "code": 1,
+    "msg": "ok",
+    "data": {
+        "data": [
+            {
+                "id": "2",
+                "openid": "o7k0At8VpqhzFYt32UfcPsV5SW_M",
+                "score": "1000",
+                "name": null,
+                "tel": null,
+                "addr": null,
+                "score_times": "3",
+                "invalid_time": "2016-12-15 21:08:32",
+                "ptl_warn": "0",
+                "main_warn": "0"
+            },
+            {
+                "id": "3",
+                "openid": "o7k0At1Z6VOATU9u5lA1k0yTWFEY",
+                "score": "1000",
+                "name": null,
+                "tel": null,
+                "addr": null,
+                "score_times": "4",
+                "invalid_time": "2016-12-15 21:18:33",
+                "ptl_warn": "0",
+                "main_warn": "0"
+            },
+            {
+                "id": "4",
+                "openid": "o7k0AtyGiSqRmHoa_k4vrz7RVZsE",
+                "score": "1218",
+                "name": null,
+                "tel": null,
+                "addr": null,
+                "score_times": "5",
+                "invalid_time": "2016-12-15 21:20:07",
+                "ptl_warn": "0",
+                "main_warn": "0"
+            },
+            {
+                "id": "5",
+                "openid": "o7k0At6iC4eAH_iD1HfZz8loaZ-I",
+                "score": "15",
+                "name": "冯志科",
+                "tel": "13929827585",
+                "addr": "广东省佛山市顺德区顺德区大良凤山中路27-31-33-35号 即一体办公设备有限公司",
+                "score_times": "6",
+                "invalid_time": "2016-12-15 21:20:14",
+                "ptl_warn": "0",
+                "main_warn": "0"
+            },
+            {
+                "id": "9",
+                "openid": "o7k0At8nb6Yw-EZpOZpxbAl2Krec",
+                "score": "1223",
+                "name": null,
+                "tel": null,
+                "addr": null,
+                "score_times": "3",
+                "invalid_time": "2016-12-15 21:21:10",
+                "ptl_warn": "0",
+                "main_warn": "0"
+            },
+            {
+                "id": "10",
+                "openid": "o7k0Atzf77Tl-FW59Vuwy7I2cB_c",
+                "score": "1215",
+                "name": null,
+                "tel": null,
+                "addr": null,
+                "score_times": "4",
+                "invalid_time": "2016-12-15 21:21:21",
+                "ptl_warn": "0",
+                "main_warn": "0"
+            },
+            {
+                "id": "11",
+                "openid": "o7k0AtyHv60a0mmytvoBIGYzpT5U",
+                "score": "1422",
+                "name": null,
+                "tel": null,
+                "addr": null,
+                "score_times": "5",
+                "invalid_time": "2016-12-15 21:22:13",
+                "ptl_warn": "0",
+                "main_warn": "0"
+            },
+            {
+                "id": "12",
+                "openid": "o7k0At-rOPExaO1Kra5fWP0h4CD4",
+                "score": "1012",
+                "name": null,
+                "tel": null,
+                "addr": null,
+                "score_times": "6",
+                "invalid_time": "2016-12-15 21:22:15",
+                "ptl_warn": "0",
+                "main_warn": "0"
+            },
+            {
+                "id": "18",
+                "openid": "o7k0At7qJU0jBWUcIgetKi0wgO7Q",
+                "score": "1006",
+                "name": null,
+                "tel": null,
+                "addr": null,
+                "score_times": "3",
+                "invalid_time": "2016-12-15 21:24:51",
+                "ptl_warn": "0",
+                "main_warn": "0"
+            },
+            {
+                "id": "19",
+                "openid": "o7k0At391Gm0zy1t_l4vTCGioNs0",
+                "score": "1000",
+                "name": null,
+                "tel": null,
+                "addr": null,
+                "score_times": "4",
+                "invalid_time": "2016-12-15 21:24:52",
+                "ptl_warn": "0",
+                "main_warn": "0"
+            }
+        ],
+        "totalrows": "10",
+        "totalpages": 1,
+        "curpage": 1
+    }
+}

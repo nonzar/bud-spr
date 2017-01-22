@@ -23,6 +23,10 @@ var ctrl = {
             return _data;
         }({}), function (data) {
             console.log(data = JSON.parse(data));
+            if (data.code == 0) {
+                alert("没有记录");
+                return;
+            }
             ctrl.pagination.totalPage = parseInt(data.data.totalpages);
             $(".paginationer .lab-total").text(ctrl.pagination.totalPage);
             $(".paginationer .lab-index").text(ctrl.pagination.page);
@@ -82,5 +86,12 @@ $(".wbTable .btn-next").on("click", function () {
     ctrl.getNextPage();
 });
 $(function () {
-    console.log(common.getURLParameter("openid"));
+    var url_openid = common.getURLParameter("openid");
+    console.log(url_openid);
+    if (url_openid) {
+        $(".form-search input[type='text']").val(url_openid);
+        $(".form-search select").val("openid")
+        $(".form-search button").click();
+    }
+    // debugger;
 });
