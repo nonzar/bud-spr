@@ -67,13 +67,20 @@ app.controller('customersCtrl', function ($scope) {
     ];
     $scope.checkDetail = function ($event, openid) {
     };
-    $scope.setOpendForIllicit = function ($event, openid) {
+    $scope.setOpenidForIllicit = function ($event, openid) {
         if ($event.target.classList.contains("disabled")) {
+            alert("已列入可疑");
             return;
         }
-        Api.ptl.setOpendForIllicit(function () {
+        Api.ptl.setOpenidForIllicit({
+            openid: openid
+        }, function (data) {
+            if (data.code == 0) {
+                alert("接口错误，错误参数：setOpenidForIllicit:uopenid");
+                return;
+            }
             $event.target.classList.add("disabled");
-            alert("成功");
+            alert(data.msg);
         });
     };
 });

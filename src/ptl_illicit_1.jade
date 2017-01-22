@@ -36,7 +36,7 @@ html(lang='zh-cn',ng-app="app")
                                             td {{item.main_warn}}
                                             td
                                                 a.btn.btn-info.btn-sm(target="_blank",href="ptl_index.html?openid={{item.openid}}") 查看
-                                                button.btn.btn-danger.btn-sm(ng-click="setOpendForIllicit($event,item.openid)") 列入可疑
+                                                button.btn.btn-danger.btn-sm(ng-click="setOpenidForIllicit($event,item.openid)") 列入可疑
                                 include include/pagination.jade
         script(src='js/jquery.min.js')
         script(src='js/angular.min-1.5.10.js')
