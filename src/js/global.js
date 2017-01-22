@@ -92,8 +92,8 @@ Api.cancleIntegral = function (para, callback) {
     });
 };
 //获取ptl名下促销员
-Api.ptl.getAllSpr = function (para, callback) {
-    $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qptl", {
+Api.getAllSpr = function (para, callback) {
+    $.post(para.ptl ? "http://120.77.53.178/baiwei/baiweistat.php/home/index/qptl" : "http://120.77.53.178/baiwei/baiweistat.php/home/index/qmain", {
         ptl: para.ptlName,
         page: para.page
     }, function (data) {

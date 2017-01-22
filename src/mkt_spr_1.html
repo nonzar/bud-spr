@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SPR查询</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/angular-ui-grid/ui-grid.css" rel="stylesheet">
     <link href="css/global.css" rel="stylesheet">
   </head>
   <body>
@@ -22,7 +21,7 @@
         <div class="col-lg-2 sidebar">
           <div class="list-group"><a class="list-group-item active" href="javascript:;">首页</a><a class="list-group-item" href="mkt_index.html">积分记录查询</a></div>
           <div class="list-group"><a class="list-group-item active" href="javascript:;">可疑稽查</a><a class="list-group-item" href="mkt_illicit_1.html">累计可疑OpenId</a><a class="list-group-item" href="mkt_illicit_2.html">待处理可疑OpenId</a></div>
-          <div class="list-group"><a class="list-group-item active" href="javascript:;">SPR管理</a><a class="list-group-item" href="mkt_spr_1.html">SPR状态查询</a></div>
+          <div class="list-group"><a class="list-group-item active" href="javascript:;">SPR管理</a><a class="list-group-item" href="mkt_spr_1.html">SPR状态查询</a><a class="list-group-item" href="ptl_spr_edit.html">SPR修改</a></div>
           <div class="list-group"><a class="list-group-item active" href="javascript:;">礼物管理</a><a class="list-group-item" href="mkt_gift_records.html">兑奖记录</a><a class="list-group-item" href="mkt_gift_inventory.html">库存情况</a></div>
         </div>
         <div class="col-lg-10 contaner">
@@ -53,10 +52,9 @@
                       <td>{{item.vendor}}</td>
                       <td>{{item.ptl}}</td>
                       <td>{{item.isover}}</td>
-                      <td>
-                        <button class="btn btn-default" type="button">修改</button>
-                        <button class="btn btn-default btn-prev">确认修改</button>
-                        <button class="btn btn-default btn-prev">取消修改</button>
+                      <td><a class="btn btn-sm btn-primary" target="_blank" href="ptl_spr_edit.html?code={{item.code}}">修改</a>
+                        <button class="btn btn-sm btn-success" ng-click="confirmChange($event)">确认修改</button>
+                        <button class="btn btn-sm btn-danger" ng-click="cancelChange($event)">取消修改</button>
                       </td>
                     </tr>
                   </tbody>
@@ -64,7 +62,7 @@
               </div>
             </div>
             <div class="col-lg-12">
-              <h3 class="page-header">名下所有SPR</h3>
+              <h3 class="page-header">所有SPR</h3>
               <div class="wbAllSpr" ng-controller="customersCtrl2">
                 <table class="table table-bordered">
                   <thead>
@@ -74,11 +72,18 @@
                   </thead>
                   <tbody>
                     <tr ng-repeat="item in tds">
-                      <td>{{item.openid}}</td>
-                      <td>
-                        <button class="btn btn-default btn-prev">修改</button>
-                        <button class="btn btn-default btn-prev">确认修改</button>
-                        <button class="btn btn-default btn-prev">取消修改</button>
+                      <td>{{item.id}}</td>
+                      <td>{{item.code}}</td>
+                      <td>{{item.region}}</td>
+                      <td>{{item.city}}</td>
+                      <td>{{item.citytype}}</td>
+                      <td>{{item.name}}</td>
+                      <td>/</td>
+                      <td>{{item.ptl}}</td>
+                      <td>/</td>
+                      <td><a class="btn btn-sm btn-primary" target="_blank" href="ptl_spr_edit.html?code={{item.code}}">修改</a>
+                        <button class="btn btn-sm btn-success" ng-click="confirmChange($event)">确认修改</button>
+                        <button class="btn btn-sm btn-danger" ng-click="cancelChange($event)">取消修改</button>
                       </td>
                     </tr>
                   </tbody>
@@ -99,6 +104,7 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/angular.min-1.5.10.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/ptl_spr_1.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/mkt_spr_1.js"></script>
   </body>
 </html>

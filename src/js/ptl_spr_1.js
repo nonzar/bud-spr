@@ -36,7 +36,7 @@ var ctrl = {
         };
     },
     getPage: function () {
-        Api.ptl.getAllSpr({
+        Api.getAllSpr({
             ptl: "黄瑛杰",//*
             page: ctrl.page
         }, function (data) {

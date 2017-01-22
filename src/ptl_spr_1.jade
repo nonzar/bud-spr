@@ -21,13 +21,7 @@ html(lang='zh-cn',ng-app="app")
                     .row
                         .col-lg-12
                             h3.page-header SPR查询
-                            form.form-inline.wbSearch
-                                .input-group
-                                    span.input-group-addon SPR状态码
-                                    input.form-control(type="text",placeholder="请输入",value="862094")
-                                    span.input-group-btn
-                                        button.btn.btn-default.btn-search(type="button") 搜索
-                        .col-lg-12
+                            include include/ptl_spr-wbSearch.jade
                             .wbTable(ng-controller="customersCtrl")
                                 table.table.table-bordered
                                     thead
@@ -48,7 +42,7 @@ html(lang='zh-cn',ng-app="app")
                                                 a.btn.btn-primary(target="_blank",href="ptl_spr_edit.html?code={{item.code}}") 修改
                         .col-lg-12
                             h3.page-header 名下所有SPR
-                            div.wbAllSpr(ng-controller="customersCtrl2")
+                            .wbAllSpr(ng-controller="customersCtrl2")
                                 table.table.table-bordered
                                     thead
                                         tr
