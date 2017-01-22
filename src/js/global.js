@@ -19,6 +19,36 @@ var Api = {
     mkt: {},
     courier: {}
 };
+//获取spr信息
+Api.getSprInfo = function (para, callback) {
+    // debugger;
+    $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qspr", {
+        spr: para.sprCode
+    }, function (data) {
+        console.log(data = JSON.parse(data));
+        if (callback) {
+            callback(data);
+        }
+    });
+};
+//修改spr信息
+Api.setSprInfo = function (para, callback) {
+    // debugger;
+    $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/uspr", {
+        spr: para.code,
+        name: para.name,
+        region: para.region,
+        city: para.city,
+        qtype: para.qtype,
+        isover: para.isover,
+        ismain: para.ismain
+    }, function (data) {
+        console.log(data = JSON.parse(data));
+        if (callback) {
+            callback(data);
+        }
+    });
+};
 //设置openid为可疑
 Api.ptl.setOpenidForIllicit = function (para, callback) {
     $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/uopenid", {
@@ -32,3 +62,19 @@ Api.ptl.setOpenidForIllicit = function (para, callback) {
         }
     });
 };
+//获取ptl名下促销员
+Api.ptl.getAllSpr = function (para, callback) {
+    $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qptl", {
+        ptl: para.ptlName,
+        page: para.page
+    }, function (data) {
+        console.log(data = JSON.parse(data));
+        if (callback) {
+            callback(data);
+        }
+    });
+};
+
+
+
+

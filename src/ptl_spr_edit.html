@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SPR查询</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/global.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container-fluid header">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1><a href="all.html">user name</a></h1>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-2 sidebar">
+          <div class="list-group"><a class="list-group-item active" href="javascript:;">首页</a><a class="list-group-item" href="ptl_index.html">积分记录查询</a></div>
+          <div class="list-group"><a class="list-group-item active" href="javascript:;">可疑稽查</a><a class="list-group-item" href="ptl_illicit_1.html">累计可疑OpenId</a><a class="list-group-item" href="ptl_illicit_2.html">待确认可疑OpenId</a></div>
+          <div class="list-group"><a class="list-group-item active" href="javascript:;">SPR管理</a><a class="list-group-item" href="ptl_spr_1.html">SPR状态查询</a><a class="list-group-item" href="ptl_spr_edit.html">SPR修改</a></div>
+        </div>
+        <div class="col-lg-10 contaner">
+          <h3 class="page-header">SPR修改</h3>
+          <div class="form-horizontal" role="form">
+            <div class="form-group">
+              <div class="col-sm-11">
+                <div class="input-group">
+                  <div class="input-group-addon">spr验证码</div>
+                  <input class="form-control" id="code" type="text" placeholder="spr验证码" value="006494">
+                </div>
+              </div>
+              <div class="col-sm-1">
+                <button class="btn btn-primary btn-getInfo">查询</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1 control-label" for="name">spr名字</label>
+              <div class="col-sm-11">
+                <input class="form-control" id="name" type="text" placeholder="spr名字">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1 control-label" for="region">大区</label>
+              <div class="col-sm-11">
+                <input class="form-control" id="region" type="text" placeholder="大区">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1 control-label" for="city">城市</label>
+              <div class="col-sm-11">
+                <input class="form-control" id="city" type="text" placeholder="城市">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-1 control-label" for="qtype">店铺类型</label>
+              <div class="col-sm-11">
+                <input class="form-control" id="qtype" type="text" placeholder="店铺类型">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-1"></div>
+              <div class="col-sm-11">
+                <label class="checkbox-inline">
+                  <input id="isover" type="checkbox" value=""> 已经离职
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-1 col-sm-11">
+                <button class="btn btn-primary btn-submit">提交</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/angular.min-1.5.10.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/spr_edit.js"></script>
+  </body>
+</html>

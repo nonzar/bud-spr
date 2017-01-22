@@ -1,0 +1,55 @@
+include include/mixin.jade
+doctype html
+html(lang='zh-cn')
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible',content='IE=edge')
+        meta(name='viewport',content='width=device-width,initial-scale=1')
+        title SPR查询
+        link(href='css/bootstrap.min.css',rel='stylesheet')
+        link(href="css/global.css",rel="stylesheet")
+    body
+        .container-fluid.header
+            .row
+                .col-lg-12
+                    include include/header.jade
+        .container-fluid
+            .row
+                .col-lg-2.sidebar
+                    include include/ptl-sidebar.jade
+                .col-lg-10.contaner
+                    h3.page-header SPR修改
+                    .form-horizontal(role='form')
+                        .form-group
+                            .col-sm-11
+                                .input-group
+                                    .input-group-addon spr验证码
+                                    input#code.form-control(type='text',placeholder='spr验证码',value='006494')
+                            .col-sm-1
+                                button.btn.btn-primary.btn-getInfo 查询
+                        .form-group
+                            label.col-sm-1.control-label(for='name') spr名字
+                            .col-sm-11
+                                input#name.form-control(type='text',placeholder='spr名字')
+                        .form-group
+                            label.col-sm-1.control-label(for='region') 大区
+                            .col-sm-11
+                                input#region.form-control(type='text',placeholder='大区')
+                        .form-group
+                            label.col-sm-1.control-label(for='city') 城市
+                            .col-sm-11
+                                input#city.form-control(type='text',placeholder='城市')
+                        .form-group
+                            label.col-sm-1.control-label(for='qtype') 店铺类型
+                            .col-sm-11
+                                input#qtype.form-control(type='text',placeholder='店铺类型')
+                        .form-group
+                            .col-sm-1
+                            .col-sm-11
+                                label.checkbox-inline
+                                    input#isover(type="checkbox", value="")
+                                    |  已经离职
+                        .form-group
+                            .col-sm-offset-1.col-sm-11
+                                button.btn.btn-primary.btn-submit 提交
+        +includeScriptFiles("js/spr_edit.js")
