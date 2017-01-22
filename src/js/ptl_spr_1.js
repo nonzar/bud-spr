@@ -25,11 +25,11 @@ app.controller('customersCtrl', function ($scope) {
 });
 
 //名下所有spr--------------------------------------------------
-var ctrl2 = {
+var ctrl = {
     $scope: null,
     pagination: {},
     reset: function () {
-        ctrl2.pagination = {
+        ctrl.pagination = {
             totalPage: -1,
             sort: 0,
             page: 1
@@ -38,39 +38,41 @@ var ctrl2 = {
     getPage: function () {
         Api.ptl.getAllSpr({
             ptl: "黄瑛杰",//*
-            page: ctrl2.page
+            page: ctrl.page
         }, function (data) {
-            ctrl2.pagination.totalPages = parseInt(data.data.totalpages);
-            ctrl2.$scope.$apply(function () {
-                ctrl2.$scope.tds = data.data.data;
+            ctrl.pagination.totalPage = parseInt(data.data.totalpages);
+            $(".paginationer .lab-total").text(ctrl.pagination.totalPage);
+            $(".paginationer .lab-index").text(ctrl.pagination.page);
+            ctrl.$scope.$apply(function () {
+                ctrl.$scope.tds = data.data.data;
             });
         });
     },
     getPrevPage: function () {
-        if (ctrl2.pagination.totalPages == -1) {
+        if (ctrl.pagination.totalPage == -1) {
             return;
         }
-        if (ctrl2.pagination.page <= 1) {
+        if (ctrl.pagination.page <= 1) {
             alert("已经是第一页。");
             return;
         }
-        ctrl2.pagination.page--;
-        ctrl2.getPage();
+        ctrl.pagination.page--;
+        ctrl.getPage();
     },
     getNextPage: function () {
-        if (ctrl2.pagination.totalPages == -1) {
+        if (ctrl.pagination.totalPage == -1) {
             return;
         }
-        else if (ctrl2.pagination.page >= ctrl2.pagination.totalPages) {
+        else if (ctrl.pagination.page >= ctrl.pagination.totalPage) {
             alert("已经是最后一页。");
             return;
         }
-        ctrl2.pagination.page++;
-        ctrl2.getPage();
+        ctrl.pagination.page++;
+        ctrl.getPage();
     }
 };
 app.controller('customersCtrl2', function ($scope) {
-    ctrl2.$scope = $scope;
+    ctrl.$scope = $scope;
     $scope.ths = [
         // "#",
         "促销员id",
@@ -84,12 +86,12 @@ app.controller('customersCtrl2', function ($scope) {
         "状态",
         "操作"
     ];
-    ctrl2.reset();
-    ctrl2.getPage(ctrl2.$scope);
+    ctrl.reset();
+    ctrl.getPage(ctrl.$scope);
 });
 $(".wbAllSpr .btn-prev").on("click", function () {
-    ctrl2.getPrevPage();
+    ctrl.getPrevPage();
 });
 $(".wbAllSpr .btn-next").on("click", function () {
-    ctrl2.getNextPage();
+    ctrl.getNextPage();
 });
