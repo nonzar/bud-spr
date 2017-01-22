@@ -65,15 +65,14 @@ app.controller('customersCtrl', function ($scope) {
         "异常天数",
         "处理"
     ];
-    $scope.checkDetail = function ($event, openid) {
-    };
     $scope.setOpenidForIllicit = function ($event, openid) {
         if ($event.target.classList.contains("disabled")) {
             alert("已列入可疑");
             return;
         }
-        Api.ptl.setOpenidForIllicit({
-            openid: openid
+        Api.setOpenidForIllicit({
+            openid: openid,
+            usertype: Api.userType.ptl
         }, function (data) {
             if (data.code == 0) {
                 alert("接口错误，错误参数：setOpenidForIllicit:uopenid");

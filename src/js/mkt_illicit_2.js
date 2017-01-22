@@ -57,6 +57,34 @@ app.controller('customersCtrl', function ($scope) {
         "openid",
         "操作"
     ];
+    $scope.setLegal = function ($event, openid) {
+        if ($event.target.classList.contains("disabled")) {
+            return;
+        }
+        Api.setOpenidForLegal({
+            openid: openid,
+            usertype: Api.userType.mkt
+        }, function (data) {
+            alert(data.msg);
+            if (data.code != 0) {
+                $event.target.classList.add("disabled");
+            }
+        });
+    };
+    $scope.cancleIntegral = function ($event, openid) {
+        if ($event.target.classList.contains("disabled")) {
+            return;
+        }
+        Api.cancleIntegral({
+            openid: openid,
+            usertype: Api.userType.mkt
+        }, function (data) {
+            alert(data.msg);
+            if (data.code != 0) {
+                $event.target.classList.add("disabled");
+            }
+        });
+    };
     ctrl.reset();
     ctrl.getPage();
 });

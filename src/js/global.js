@@ -50,11 +50,40 @@ Api.setSprInfo = function (para, callback) {
     });
 };
 //设置openid为可疑
-Api.ptl.setOpenidForIllicit = function (para, callback) {
+Api.setOpenidForIllicit = function (para, callback) {
     $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/uopenid", {
         openid: para.openid,
         type: 0,
-        main: Api.userType.ptl
+        main: para.usertype
+    }, function (data) {
+        console.log(data = JSON.parse(data));
+        if (callback) {
+            callback(data);
+        }
+    });
+};
+//排除可疑openid
+Api.setOpenidForLegal = function (para, callback) {
+    // debugger;
+    $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/uopenid", {
+        openid: para.openid,
+        type: 1,
+        main: para.usertype
+    }, function (data) {
+        console.log(data = JSON.parse(data));
+        if (callback) {
+            callback(data);
+        }
+    });
+};
+
+//取消openid积分
+Api.cancleIntegral = function (para, callback) {
+    // debugger;
+    $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/uopenid", {
+        openid: para.openid,
+        type: 2,
+        main: para.usertype
     }, function (data) {
         console.log(data = JSON.parse(data));
         if (callback) {

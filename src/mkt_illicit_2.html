@@ -36,9 +36,9 @@
               <tbody>
                 <tr ng-repeat="item in tds">
                   <td>{{item.openid}}</td>
-                  <td>
-                    <button class="btn btn-default" type="button">确认正常</button>
-                    <button class="btn btn-default" type="button">取消积分</button>
+                  <td><a class="btn btn-primary btn-sm" target="_blank" href="ptl_index.html?openid={{item.openid}}">查看</a>
+                    <button class="btn btn-success btn-sm" ng-click="setLegal($event,item.openid)">确认正常</button>
+                    <button class="btn btn-danger btn-sm" ng-click="cancleIntegral($event,item.openid)">取消积分</button>
                   </td>
                 </tr>
               </tbody>
@@ -57,6 +57,7 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/angular.min-1.5.10.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/global.js"></script>
     <script src="js/mkt_illicit_2.js"></script>
   </body>
 </html>
