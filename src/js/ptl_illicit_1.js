@@ -12,6 +12,7 @@ var ctrl = {
         $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/quser", function (_data) {
             _data = {
                 // sort: ctrl.pagination.sort,
+                times: 0,
                 page: ctrl.pagination.page
             };
             console.log(_data);
@@ -58,7 +59,7 @@ app.controller('customersCtrl', function ($scope) {
         "处理"
     ];
     $scope.setOpendForIllicit = function ($event, openid) {
-        if($event.target.classList.contains("disabled")){
+        if ($event.target.classList.contains("disabled")) {
             return;
         }
         Api.ptl.setOpendForIllicit(function () {

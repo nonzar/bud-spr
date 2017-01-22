@@ -4,7 +4,7 @@ html(lang='zh-cn',ng-app="app")
         meta(charset='utf-8')
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
         meta(name='viewport', content='width=device-width, initial-scale=1')
-        title 7天内可疑OpenId
+        title 累计可疑OpenId
         link(href='css/bootstrap.min.css', rel='stylesheet')
         link(href="css/global.css",rel="stylesheet")
     body
@@ -19,16 +19,8 @@ html(lang='zh-cn',ng-app="app")
                 .col-lg-10.contaner
                     .row
                         .col-lg-12
-                            h3.page-header 7天内可疑OpenId
-                            form.form-horizontal.form-search(role="form")
-                                .form-group
-                                    label.col-sm-1.control-label 可疑天数
-                                    .col-sm-10
-                                        select.form-control
-                                            - for(var i=0;i<6;i++)
-                                                option #{i + 1}
-                                    .col-sm-1
-                                        button.btn.btn-default 搜索
+                            h3.page-header 累计可疑OpenId
+                            include include/illicit_1_form-search.jade
                             .wbTable(ng-controller="customersCtrl")
                                 table.table.table-bordered
                                     thead
