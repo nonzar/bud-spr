@@ -1,3 +1,4 @@
+include include/mixin.jade
 doctype html
 html(lang='zh-cn',ng-app="app")
     head
@@ -22,17 +23,6 @@ html(lang='zh-cn',ng-app="app")
                             h3.page-header 累计可疑OpenId
                             include include/illicit_1_form-search.jade
                             .wbTable(ng-controller="customersCtrl")
-                                table.table.table-bordered
-                                    thead
-                                        tr
-                                            th(ng-repeat="item in ths") {{item}}
-                                    tbody
-                                        tr(ng-repeat="item in tds")
-                                            td {{item.openid}}
-                                            td
-                                                button.btn.btn-default(type="button") 列入可疑
+                                include include/ptl_illicit_1-table.jade
                                 include include/pagination.jade
-        script(src='js/jquery.min.js')
-        script(src='js/angular.min-1.5.10.js')
-        script(src='js/bootstrap.min.js')
-        script(src='js/ptl_illicit_1.js')
+        +includeScriptFiles("js/ptl_illicit_1.js")

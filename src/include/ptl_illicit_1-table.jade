@@ -1,0 +1,15 @@
+table.table.table-bordered
+    thead
+        tr
+            th(ng-repeat="item in ths") {{item}}
+    tbody
+        tr(ng-repeat="item in tds")
+            td
+                label
+                    input(type="checkbox")
+            td {{item.openid}}
+            td {{item.name}}
+            td {{item.main_warn}}
+            td
+                a.btn.btn-info.btn-sm(target="_blank",href="ptl_index.html?openid={{item.openid}}") 查看
+                button.btn.btn-danger.btn-sm(ng-click="setOpenidForIllicit($event,item.openid)") 列入可疑
