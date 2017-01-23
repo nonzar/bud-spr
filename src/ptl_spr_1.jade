@@ -31,7 +31,7 @@ html(lang='zh-cn',ng-app="app")
                                         tr(ng-repeat="item in tds")
                                             include include/ptl_spr-table.jade
                                             td
-                                                a.btn.btn-primary(target="_blank",href="ptl_spr_edit.html?code={{item.code}}") 修改
+                                                a.btn.btn-primary(target="_blank",href="sprEdit.html?code={{item.code}}") 修改
                         .col-lg-12
                             h3.page-header 名下所有SPR
                             .wbAllSpr(ng-controller="customersCtrl2")
@@ -43,6 +43,6 @@ html(lang='zh-cn',ng-app="app")
                                         tr(ng-repeat="item in tds")
                                             include include/ptl_spr-table.jade
                                             td
-                                                a.btn.btn-primary(target="_blank",href="ptl_spr_edit.html?code={{item.code}}") 修改
+                                                a.btn.btn-primary(target="_blank",href="sprEdit.html?code={{item.code}}") 修改
                                 include include/pagination.jade
         +includeScriptFiles("js/ptl_spr_1.js")
