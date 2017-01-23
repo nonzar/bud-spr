@@ -4,7 +4,12 @@ body {
 
 .header {
   background-color: #262626;
+  line-height: 30px;
   color: #fff;
+  padding-top:10px;
+  a{
+    color: #fff !important;
+  }
 }
 
 .sidebar {
@@ -19,14 +24,6 @@ body {
   input[type="text"] {
     width: 500px;
   }
-}
-
-.wbLogin {
-  background-color: #fff;
-  color: #000;
-  width: 500px;
-  padding: 0 1em 1em;
-  margin: 100px auto 0;
 }
 
 .wbSearch {

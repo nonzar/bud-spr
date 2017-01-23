@@ -12,16 +12,15 @@
     <div class="container-fluid header">
       <div class="row">
         <div class="col-lg-12">
-          <h1><a href="all.html">user name</a></h1>
+          <p>你好，<a href="all.html">user name</a><a class="pull-right" href="">退出</a></p>
         </div>
       </div>
     </div>
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-2 sidebar">
-          <div class="list-group"><a class="list-group-item active" href="javascript:;">可疑稽查</a><a class="list-group-item" href="mkt_illicit_1.html">累计可疑OpenId</a><a class="list-group-item" href="mkt_illicit_2.html">待处理可疑OpenId</a></div>
-          <div class="list-group"><a class="list-group-item active" href="javascript:;">SPR管理</a><a class="list-group-item" href="mkt_spr_1.html">SPR状态查询</a></div>
-          <div class="list-group"><a class="list-group-item active" href="javascript:;">礼物管理</a><a class="list-group-item" href="mkt_gift_records.html">兑奖记录</a><a class="list-group-item" target="_blank" href="giftInventory.html">库存情况</a></div>
+          <div class="list-group"><a class="list-group-item active" href="javascript:;">可疑稽查</a><a class="list-group-item" href="ptl_illicit_1.html">累计可疑OpenId</a><a class="list-group-item" href="ptl_illicit_2.html">待确认可疑OpenId</a></div>
+          <div class="list-group"><a class="list-group-item active" href="javascript:;">SPR管理</a><a class="list-group-item" href="ptl_spr.html">SPR状态查询</a></div>
         </div>
         <div class="col-lg-10 contaner">
           <div class="row">
@@ -51,17 +50,14 @@
                       <td>{{item.type}}</td>
                       <td>{{item.ptl}}</td>
                       <td>{{item.isover=="1"?"在职":"离职"}}</td>
-                      <td><a class="btn btn-sm btn-primary" target="_blank" href="sprEdit.html?code={{item.code}}">修改</a>
-                        <button class="btn btn-sm btn-success" ng-click="confirmChange($event)">确认修改</button>
-                        <button class="btn btn-sm btn-danger" ng-click="cancelChange($event)">取消修改</button>
-                      </td>
+                      <td><a class="btn btn-primary" target="_blank" href="sprEdit.html?code={{item.code}}">修改</a></td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
             <div class="col-lg-12">
-              <h3 class="page-header">所有SPR</h3>
+              <h3 class="page-header">名下所有SPR</h3>
               <div class="wbAllSpr" ng-controller="customersCtrl2">
                 <table class="table table-bordered">
                   <thead>
@@ -80,10 +76,7 @@
                       <td>{{item.type}}</td>
                       <td>{{item.ptl}}</td>
                       <td>{{item.isover=="1"?"在职":"离职"}}</td>
-                      <td><a class="btn btn-sm btn-primary" target="_blank" href="sprEdit.html?code={{item.code}}">修改</a>
-                        <button class="btn btn-sm btn-success" ng-click="confirmChange($event)">确认修改</button>
-                        <button class="btn btn-sm btn-danger" ng-click="cancelChange($event)">取消修改</button>
-                      </td>
+                      <td><a class="btn btn-primary" target="_blank" href="sprEdit.html?code={{item.code}}">修改</a></td>
                     </tr>
                   </tbody>
                 </table>
@@ -104,6 +97,6 @@
     <script src="js/angular.min-1.5.10.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/global.js"></script>
-    <script src="js/mkt_spr_1.js"></script>
+    <script src="js/ptl_spr_1.js"></script>
   </body>
 </html>

@@ -1,0 +1,12 @@
+body {
+  background: url("../images/login-bg3.jpg") no-repeat 50% 0; }
+
+.wbLogin {
+  background-color: #fff;
+  color: #000;
+  width: 500px;
+  padding: 0 1em 1em;
+  margin: 200px auto 0;
+  border-radius: 5px; }
+
+/*# sourceMappingURL=login.css.map */

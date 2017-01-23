@@ -1,6 +1,10 @@
 .header {
   background-color: #262626;
-  color: #fff; }
+  line-height: 30px;
+  color: #fff;
+  padding-top: 10px; }
+  .header a {
+    color: #fff !important; }
 
 .sidebar {
   margin-top: 20px; }
@@ -9,13 +13,6 @@
   margin-bottom: 20px; }
   .form-search input[type="text"] {
     width: 500px; }
-
-.wbLogin {
-  background-color: #fff;
-  color: #000;
-  width: 500px;
-  padding: 0 1em 1em;
-  margin: 100px auto 0; }
 
 .wbSearch {
   margin-bottom: 20px; }
