@@ -1,3 +1,4 @@
+include include/mixin.jade
 doctype html
 html(lang='zh-cn',ng-app="app")
     head
@@ -29,7 +30,4 @@ html(lang='zh-cn',ng-app="app")
                                     td
                                         a.btn.btn-info.btn-sm(target="_blank",href="integralInfo.html?openid={{item.openid}}") 查看
                         include include/pagination.jade
-        script(src='js/jquery.min.js')
-        script(src='js/angular.min-1.5.10.js')
-        script(src='js/bootstrap.min.js')
-        script(src='js/ptl_illicit_2.js')
+        +includeScriptFiles("js/ptl_illicit_2.js")

@@ -1,0 +1,32 @@
+var app = angular.module("app", []);
+app.controller("ctrlLogin", function ($scope) {
+    $scope.txtUser = "test";
+    $scope.txtPass = "test";
+    $scope.btnLogin = "登录";
+    $scope.login = function ($event) {
+        if (!$scope.txtUser.length) {
+            alert("请输入账号！");
+            return;
+        }
+        if (!$scope.txtPass.length) {
+            alert("请输入密码！");
+            return;
+        }
+        $scope.btnLogin = "登录中...";
+        $.post("http://120.77.53.178/baiwei/baiweistat.php/Home/Index/login", {
+            name: $scope.txtUser,
+            pw: $scope.txtUser
+        }, function (data) {
+            console.log(data = JSON.parse(data));
+            alert(data.msg);
+            if (data.code == 0) {
+                return;
+            }
+            localStorage.setItem("userType", data.data.role);
+            localStorage.setItem("userName", data.data.name);
+            localStorage.setItem("loginTime", +new Date());
+            $scope.btnLogin = "登录成功，跳转中...";
+            window.location.href = "ptl_illicit_1.html";
+        });
+    };
+});

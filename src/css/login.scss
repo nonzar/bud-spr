@@ -1,5 +1,5 @@
 body {
-  background: url("../images/login-bg3.jpg") no-repeat 50% 0;
+  background: #ff1401 url("../images/login-bg3.jpg") no-repeat 50% 0;
 }
 
 .wbLogin {
@@ -9,4 +9,5 @@ body {
   padding: 0 1em 1em;
   margin: 200px auto 0;
   border-radius: 5px;
+  border: #ccc solid 1px;
 }

@@ -1,4 +1,5 @@
 var common = {
+    loginValidityTime: 1 * 24 * 60 * 60,
     getURLParameter: function (sParam) {
         var sPageURL = window.location.search.substring(1);
         var sURLVariables = sPageURL.split("&");
@@ -8,6 +9,15 @@ var common = {
                 return sParameterName[1];
             }
         }
+    },
+    isLogin: function () {
+        if (!localStorage.getItem("userType") || !localStorage.getItem("userName") || !localStorage.getItem("loginTime")) {
+            return false;
+        }
+        if ((parseInt(localStorage.getItem("loginTime")) + common.loginValidityTime) < +new Date()) {
+            return false;
+        }
+        return true;
     }
 };
 var Api = {

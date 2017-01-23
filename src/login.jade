@@ -1,6 +1,6 @@
-//此页面为公共页面
+include include/mixin.jade
 doctype html
-html(lang='zh-cn')
+html(lang='zh-cn',ng-app="app")
     head
         meta(charset='utf-8')
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
@@ -11,7 +11,7 @@ html(lang='zh-cn')
         link(href="css/login.css",rel="stylesheet")
     body
         .container
-            .wbLogin
+            .wbLogin(ng-controller="ctrlLogin")
                 .row
                     .col-lg-12
                         h1.page-header 登录
@@ -19,15 +19,14 @@ html(lang='zh-cn')
                     .row
                         .col-lg-12
                             label(for="user") 账号
-                            input.form-control#user(type="text",placeholder="账号")
+                            input.form-control#user(type="text",placeholder="账号",ng-model="txtUser")
                     br
                     .row
                         .col-lg-12
                             label(for="pass") 密码
-                            input.form-control#pass(type="password",placeholder="密码")
+                            input.form-control#pass(type="password",placeholder="密码",ng-model="txtPass")
                     br
                     .row
                         .col-lg-12
-                            input.btn.btn-info.col-lg-12(type="submit",value="登录")
-        script(src='js/jquery.min.js')
-        script(src='js/bootstrap.min.js')
+                            input.btn.btn-info.col-lg-12(type="submit",ng-model="btnLogin",ng-click="login($event)")
+        +includeScriptFiles("js/login.js")
