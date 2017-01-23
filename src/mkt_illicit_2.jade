@@ -28,7 +28,7 @@ html(lang='zh-cn',ng-app="app")
                                 tr(ng-repeat="item in tds")
                                     td {{item.openid}}
                                     td
-                                        a.btn.btn-primary.btn-sm(target="_blank",href="ptl_index.html?openid={{item.openid}}") 查看
+                                        a.btn.btn-primary.btn-sm(target="_blank",href="integralInfo.html?openid={{item.openid}}") 查看
                                         button.btn.btn-success.btn-sm(ng-click="setLegal($event,item.openid)") 确认正常
                                         button.btn.btn-danger.btn-sm(ng-click="cancleIntegral($event,item.openid)") 取消积分
                         include include/pagination.jade

@@ -23,6 +23,19 @@ html(lang='zh-cn',ng-app="app")
                             h3.page-header 积分记录查询
                             include include/form-search.jade
                             .wbTable(ng-controller="customersCtrl")
-                                include include/ptl_index-table.jade
+                                table.table.table-bordered
+                                    thead
+                                        tr
+                                            th(ng-repeat="item in ths") {{item}}
+                                    tbody
+                                        tr(ng-repeat="item in tds")
+                                            td {{item.openid}}
+                                            td {{item.obj}}
+                                            td {{item.id}}
+                                            td {{item.act_time}}
+                                            td {{item.sprtype}}
+                                            td {{item.sprregion}}
+                                            td {{item.sprcity}}
+                                            td {{item.sprname}}
                                 include include/pagination.jade
-        +includeScriptFiles("js/ptl_index.js")
+        +includeScriptFiles("js/integralInfo.js")
