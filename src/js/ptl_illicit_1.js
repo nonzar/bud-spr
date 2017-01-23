@@ -74,12 +74,11 @@ app.controller('customersCtrl', function ($scope) {
             openid: openid,
             usertype: Api.userType.ptl
         }, function (data) {
+            alert(data.msg);
             if (data.code == 0) {
-                alert("接口错误，错误参数：setOpenidForIllicit:uopenid");
                 return;
             }
             $event.target.classList.add("disabled");
-            alert(data.msg);
         });
     };
 });
