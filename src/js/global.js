@@ -4,7 +4,7 @@ var common = {
         "2": "courier_gift_records.html",//快递
         "3": "ptl_illicit_1.html"//ptl
     },
-    loginValidityTime: 1 * 24 * 60 * 60,
+    loginValidityTime: 1 * 24 * 60 * 60 * 1000,
     getURLParameter: function (sParam) {
         var sPageURL = window.location.search.substring(1);
         var sURLVariables = sPageURL.split("&");
@@ -24,6 +24,16 @@ var common = {
             return false;
         }
         return true;
+    },
+    loginOut: function () {
+        $.post("http://120.77.53.178/baiwei/baiweistat.php/Home/Index/logout", {}, function (data) {
+            console.log(data = JSON.parse(data));
+            localStorage.setItem("userType", "");
+            localStorage.setItem("userName", "");
+            localStorage.setItem("loginTime", "");
+            alert(data.msg);
+            window.location.href = "login.html";
+        });
     }
 };
 var Api = {
