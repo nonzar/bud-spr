@@ -37,11 +37,11 @@
                 <tr ng-repeat="item in tds">
                   <td>{{item.id}}</td>
                   <td>{{item.openid}}</td>
-                  <td>/</td>
+                  <td>{{item.obj}}</td>
                   <td>{{item.act_time}}</td>
                   <td>/</td>
                   <td>/</td>
-                  <td>{{item.package}}</td>
+                  <td class="tdPackage">{{item.package}}</td>
                   <td>/</td>
                   <td>
                     <button class="btn btn-success btn-sm" ng-click="confirmChange($event)">确认</button>

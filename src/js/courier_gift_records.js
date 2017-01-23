@@ -11,6 +11,7 @@ var ctrl = {
     getPage: function () {
         $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qaward", {
             type: 0,
+            role: 2,
             page: ctrl.pagination.page
         }, function (data) {
             console.log(data = JSON.parse(data));
