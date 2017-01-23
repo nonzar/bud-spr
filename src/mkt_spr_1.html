@@ -47,11 +47,11 @@
                       <td>{{item.code}}</td>
                       <td>{{item.region}}</td>
                       <td>{{item.city}}</td>
-                      <td>{{item.type}}</td>
+                      <td>{{item.citytype}}</td>
                       <td>{{item.name}}</td>
-                      <td>{{item.vendor}}</td>
+                      <td>/</td>
                       <td>{{item.ptl}}</td>
-                      <td>{{item.isover}}</td>
+                      <td>{{item.isover=="1"?"在职":"离职"}}</td>
                       <td><a class="btn btn-sm btn-primary" target="_blank" href="ptl_spr_edit.html?code={{item.code}}">修改</a>
                         <button class="btn btn-sm btn-success" ng-click="confirmChange($event)">确认修改</button>
                         <button class="btn btn-sm btn-danger" ng-click="cancelChange($event)">取消修改</button>
@@ -80,7 +80,7 @@
                       <td>{{item.name}}</td>
                       <td>/</td>
                       <td>{{item.ptl}}</td>
-                      <td>/</td>
+                      <td>{{item.isover=="1"?"在职":"离职"}}</td>
                       <td><a class="btn btn-sm btn-primary" target="_blank" href="ptl_spr_edit.html?code={{item.code}}">修改</a>
                         <button class="btn btn-sm btn-success" ng-click="confirmChange($event)">确认修改</button>
                         <button class="btn btn-sm btn-danger" ng-click="cancelChange($event)">取消修改</button>
