@@ -12,14 +12,10 @@ var ctrl = {
         };
     },
     getPage: function () {
-        $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qwarn", function (_data) {
-            _data = {
-                // sort: ctrl.pagination.sort,
-                page: ctrl.pagination.page
-            };
-            console.log(_data);
-            return _data;
-        }({}), function (data) {
+        $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qwarn", {
+            page: ctrl.pagination.page,
+            type: localStorage.getItem("userType")
+        }, function (data) {
             console.log(data = JSON.parse(data));
             ctrl.pagination.totalPage = parseInt(data.data.totalpages);
             $(".paginationer .lab-total").text(ctrl.pagination.totalPage);

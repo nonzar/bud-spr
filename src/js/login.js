@@ -26,7 +26,8 @@ app.controller("ctrlLogin", function ($scope) {
             localStorage.setItem("userName", data.data.name);
             localStorage.setItem("loginTime", +new Date());
             $scope.btnLogin = "登录成功，跳转中...";
-            window.location.href = "ptl_illicit_1.html";
+            //市场部1,快递2,ptl3
+            window.location.href = common.userIndexUrl[data.data.role.toString()];
         });
     };
 });

@@ -27,8 +27,7 @@ $(function () {
             region: $("#region").val(),
             city: $("#city").val(),
             qtype: $("#qtype").val(),
-            isover: $("input[name='isover']:checked").val(),
-            ismain: Api.userType.ptl
+            isover: $("input[name='isover']:checked").val()
         }, function (data) {
             // debugger;
             alert(data.msg);

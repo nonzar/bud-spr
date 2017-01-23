@@ -41,7 +41,6 @@ var ctrl = {
     },
     getPage: function () {
         Api.getAllSpr({
-            ptl: "黄瑛杰",//*
             page: ctrl.page
         }, function (data) {
             ctrl.pagination.totalPage = parseInt(data.data.totalpages);
