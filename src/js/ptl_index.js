@@ -72,7 +72,6 @@ app.controller('customersCtrl', function ($scope) {
     $scope.ths = [
         // "#",
         "openid",
-        "参与时间",
         "购买产品",
         "促销员id",
         "积分时间",

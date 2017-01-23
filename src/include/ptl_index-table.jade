@@ -5,11 +5,10 @@ table.table.table-bordered
     tbody
         tr(ng-repeat="item in tds")
             td {{item.openid}}
-            td \
-            td \
+            td {{item.obj}}
             td {{item.id}}
-            td \
-            td \
-            td \
-            td \
+            td {{item.act_time}}
+            td {{item.sprtype}}
+            td {{item.sprregion}}
+            td {{item.sprcity}}
             td {{item.sprname}}
