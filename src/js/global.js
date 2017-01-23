@@ -12,9 +12,9 @@ var common = {
 };
 var Api = {
     channel: {
-        "1":"中餐",
-        "2":"晚餐",
-        "3":"夜店"
+        "1": "中餐",
+        "2": "晚餐",
+        "3": "夜店"
     },
     userType: {
         ptl: 0,
@@ -114,6 +114,18 @@ Api.editExpress = function (para, callback) {
     $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/upak", {
         id: para.id,
         pak: para.pak
+    }, function (data) {
+        console.log(data = JSON.parse(data));
+        if (callback) {
+            callback(data);
+        }
+    });
+};
+
+//获取Openid详情
+Api.getOpenidInfo = function (para, callback) {
+    $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qopenid", {
+        openid: para.openid
     }, function (data) {
         console.log(data = JSON.parse(data));
         if (callback) {
