@@ -1,3 +1,6 @@
+if (!common.isLogin()) {
+    window.location.href = "login.html";
+}
 $(function () {
     $(".btn-getInfo").on("click", function () {
         Api.getSprInfo({

@@ -11,10 +11,11 @@ var common = {
         }
     },
     isLogin: function () {
+        // debugger;
         if (!localStorage.getItem("userType") || !localStorage.getItem("userName") || !localStorage.getItem("loginTime")) {
             return false;
         }
-        if ((parseInt(localStorage.getItem("loginTime")) + common.loginValidityTime) < +new Date()) {
+        if ((parseInt(localStorage.getItem("loginTime")) + common.loginValidityTime) > +new Date()) {
             return false;
         }
         return true;

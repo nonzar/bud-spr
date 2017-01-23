@@ -1,3 +1,6 @@
+if (!common.isLogin()) {
+    window.location.href = "login.html";
+}
 var app = angular.module('app', []);
 app.controller('customersCtrl', function ($scope) {
     $scope.ths = [

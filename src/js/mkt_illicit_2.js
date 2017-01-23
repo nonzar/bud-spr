@@ -1,3 +1,6 @@
+if (!common.isLogin()) {
+    window.location.href = "login.html";
+}
 var ctrl = {
     $scope: null,
     pagination: {},
