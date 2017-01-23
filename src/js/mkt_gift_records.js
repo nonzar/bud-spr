@@ -55,10 +55,7 @@ app.controller('customersCtrl', function ($scope) {
         'openid',
         '产品名称',
         '兑奖时间',
-        '姓名',
-        '电话',
         '快递单号',
-        '地址',
         '操作'
     ];
     $scope.confirmChange = function ($event) {
