@@ -44,11 +44,14 @@ html(lang='zh-cn')
                             .col-sm-11
                                 input#qtype.form-control(type='text',placeholder='店铺类型')
                         .form-group
-                            .col-sm-1
+                            label.col-sm-1.control-label(for='') 离职
                             .col-sm-11
-                                label.checkbox-inline
-                                    input#isover(type="checkbox", value="")
-                                    |  已经离职
+                                label.radio-inline
+                                    input(type="radio",name="isover",value="0")
+                                    |  是
+                                label.radio-inline
+                                    input(type="radio",name="isover", value="1")
+                                    |  否
                         .form-group
                             .col-sm-offset-1.col-sm-11
                                 button.btn.btn-primary.btn-submit 提交

@@ -13,7 +13,7 @@ $(function () {
             $("#region").val(data.data.region);
             $("#city").val(data.data.city);
             $("#qtype").val(data.data.type);
-            $("#isover")[0].checked = parseInt(data.data.isover) == 0 ? false : true;
+            $("input[name='isover']")[data.data.isover == "1" ? 1 : 0].checked = true;
         });
     });
 
@@ -24,7 +24,7 @@ $(function () {
             region: $("#region").val(),
             city: $("#city").val(),
             qtype: $("#qtype").val(),
-            isover: $("#isover")[0].checked ? 1 : 0,
+            isover: $("input[name='isover']:checked").val(),
             ismain: Api.userType.ptl
         }, function (data) {
             // debugger;

@@ -24,6 +24,7 @@ app.controller('customersCtrl', function ($scope) {
             sprCode: $(".wbSearch input[type='text']").val()
         }, function (data) {
             $scope.$apply(function () {
+                data.data.type = Api.channel[data.data.type];
                 $scope.tds = [data.data];
             });
         });
@@ -49,6 +50,9 @@ var ctrl = {
             $(".paginationer .lab-total").text(ctrl.pagination.totalPage);
             $(".paginationer .lab-index").text(ctrl.pagination.page);
             ctrl.$scope.$apply(function () {
+                for (var i = 0; i < data.data.data.length; i++) {
+                    data.data.data[i].type = Api.channel[data.data.data[i].type];
+                }
                 ctrl.$scope.tds = data.data.data;
             });
         });

@@ -11,6 +11,11 @@ var common = {
     }
 };
 var Api = {
+    channel: {
+        "1":"中餐",
+        "2":"晚餐",
+        "3":"夜店"
+    },
     userType: {
         ptl: 0,
         mkt: 1
