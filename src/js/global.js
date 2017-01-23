@@ -145,6 +145,9 @@ Api.getOpenidInfo = function (para, callback) {
         }
     });
 };
+$(function () {
+    $("#userName").text(localStorage.getItem("userName"));
+});
 
 
 
