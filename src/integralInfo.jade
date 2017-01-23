@@ -17,7 +17,15 @@ html(lang='zh-cn',ng-app="app")
             .row
                 .col-lg-12.contaner
                     h3.page-header 积分记录查询
-                    include include/form-search.jade
+                    form.form-inline.form-search(role="form")
+                        .input-group
+                            .input-group-btn
+                                select.form-control
+                                    option(value="spr") SPR验证码
+                                    option(value="openid") OpenId
+                            input.form-control(type="text",placeholder="请输入",value="862094")
+                            span.input-group-btn
+                                button.btn.btn-default(type="button") 搜索
                     .wbTable(ng-controller="customersCtrl")
                         table.table.table-bordered
                             thead
