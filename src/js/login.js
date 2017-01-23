@@ -1,5 +1,9 @@
 var app = angular.module("app", []);
 app.controller("ctrlLogin", function ($scope) {
+    if (common.isLogin()) {
+        //市场部1,快递2,ptl3
+        window.location.href = common.userIndexUrl[localStorage.getItem("userType")];
+    }
     $scope.txtUser = "test";
     $scope.txtPass = "test";
     $scope.btnLogin = "登录";
