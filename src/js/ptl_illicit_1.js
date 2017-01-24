@@ -84,6 +84,16 @@ app.controller('customersCtrl', function ($scope) {
             $event.target.classList.add("disabled");
         });
     };
+    $scope.setOpenidForChecked = function (checked, openid) {
+        Api.setOpenidForIllicit({
+            openid: openid,
+            ischecked: checked && 1 || 0
+        }, function (data) {
+            alert(data.msg);
+            if (data.code == 0) {
+            }
+        });
+    };
 });
 ctrl.reset();
 $(".form-search button").on("click", function () {

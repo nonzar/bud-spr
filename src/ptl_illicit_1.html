@@ -11,20 +11,20 @@
   <body>
     <div class="container-fluid header">
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-sm-12">
           <p>你好，<a id="userName" href="all.html"></a><a class="pull-right" href="javascript:common.loginOut();">退出</a></p>
         </div>
       </div>
     </div>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-lg-2 sidebar">
+        <div class="col-sm-2 sidebar">
           <div class="list-group"><a class="list-group-item active" href="javascript:;">可疑稽查</a><a class="list-group-item" href="ptl_illicit_1.html">累计可疑OpenId</a><a class="list-group-item" href="ptl_illicit_2.html">待确认可疑OpenId</a></div>
           <div class="list-group"><a class="list-group-item active" href="javascript:;">SPR管理</a><a class="list-group-item" href="ptl_spr.html">SPR状态查询</a></div>
         </div>
-        <div class="col-lg-10 contaner">
+        <div class="col-sm-10 contaner">
           <div class="row">
-            <div class="col-lg-12">
+            <div class="col-sm-12">
               <h3 class="page-header">累计可疑OpenId</h3>
               <form class="form-horizontal form-search" role="form">
                 <div class="form-group">
@@ -54,9 +54,7 @@
                   <tbody>
                     <tr ng-repeat="item in tds">
                       <td>
-                        <label>
-                          <input type="checkbox">
-                        </label>
+                        <input type="checkbox" ng-model="checked" ng-change="setOpenidForChecked(checked,item.openid)">
                       </td>
                       <td>{{item.openid}}</td>
                       <td>{{item.name}}</td>

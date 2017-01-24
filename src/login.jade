@@ -13,20 +13,20 @@ html(lang='zh-cn',ng-app="app")
         .container
             .wbLogin(ng-controller="ctrlLogin")
                 .row
-                    .col-lg-12
+                    .col-sm-12
                         h1.page-header 登录
                 form
                     .row
-                        .col-lg-12
+                        .col-sm-12
                             label(for="user") 账号
                             input.form-control#user(type="text",placeholder="账号",ng-model="txtUser")
                     br
                     .row
-                        .col-lg-12
+                        .col-sm-12
                             label(for="pass") 密码
                             input.form-control#pass(type="password",placeholder="密码",ng-model="txtPass")
                     br
                     .row
-                        .col-lg-12
-                            input.btn.btn-info.col-lg-12(type="submit",ng-model="btnLogin",ng-click="login($event)")
+                        .col-sm-12
+                            input.btn.btn-info.col-sm-12(type="submit",ng-model="btnLogin",ng-click="login($event)")
         +includeScriptFiles("js/login.js")

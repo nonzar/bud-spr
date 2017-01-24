@@ -169,10 +169,22 @@ Api.getOpenidInfo = function (para, callback) {
         }
     });
 };
+
+//设置已核查Openid
+Api.setOpenidForChecked = function (para, callback) {
+    $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/uchecked", {
+        openid: para.openid,
+        ischecked: para.ischecked
+    }, function (data) {
+        console.log(data = JSON.parse(data));
+        if (callback) {
+            callback(data);
+        }
+    });
+};
 $(function () {
     $("#userName").text(localStorage.getItem("userName"));
 });
-
 
 
 

@@ -9,7 +9,7 @@ html(lang='zh-cn')
     body
         .container-fluid
             .row
-                .col-lg-3
+                .col-sm-3
                     h1 Public
                     .list-group
                         a.list-group-item.active(href="javascript:;") 入口
@@ -18,13 +18,13 @@ html(lang='zh-cn')
                         a.list-group-item(href="openidInfo.html") OpenId详情查询
                         a.list-group-item(href="sprEdit.html") SPR修改
                         a.list-group-item(href="giftInventory.html") 库存情况
-                .col-lg-3
+                .col-sm-3
                     h1 PTL
                     include include/ptl-sidebar.jade
-                .col-lg-3
+                .col-sm-3
                     h1 MKT
                     include include/mkt-sidebar.jade
-                .col-lg-3
+                .col-sm-3
                     h1 Courier
                     include include/courier-sidebar.jade
         script(src='js/jquery.min.js')
