@@ -22,6 +22,10 @@ var ctrl = {
             $(".paginationer .lab-total").text(ctrl.pagination.totalPage);
             $(".paginationer .lab-index").text(ctrl.pagination.page);
             ctrl.$scope.$apply(function () {
+                // debugger;
+                for (var i = 0; i < data.data.data.length; i++) {
+                    data.data.data[i].obj = common.gifts[data.data.data[i].obj];
+                }
                 ctrl.$scope.tds = data.data.data;
             });
         });
