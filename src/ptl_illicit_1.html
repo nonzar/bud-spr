@@ -54,7 +54,7 @@
                   <tbody>
                     <tr ng-repeat="item in tds">
                       <td>
-                        <input type="checkbox" ng-model="checked" ng-change="setOpenidForChecked(checked,item.openid)">
+                        <input type="checkbox" ng-model="checkeds[$index]" ng-change="setOpenidForChecked($index,item.openid)">
                       </td>
                       <td>{{item.openid}}</td>
                       <td>{{item.name}}</td>

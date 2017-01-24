@@ -84,7 +84,8 @@ app.controller('customersCtrl', function ($scope) {
             $event.target.classList.add("disabled");
         });
     };
-    $scope.setOpenidForChecked = function (checked, openid) {
+    $scope.checkeds = {};
+    $scope.setOpenidForChecked = function ($index, openid) {
         Api.setOpenidForIllicit({
             openid: openid,
             ischecked: checked && 1 || 0
