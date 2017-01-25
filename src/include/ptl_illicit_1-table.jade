@@ -7,7 +7,7 @@ table.table.table-bordered
             td
                 input(type="checkbox",ng-model="checkeds[$index]",ng-change="setOpenidForChecked($index,item.openid)")
             td {{item.openid}}
-            td {{item.name}}
+            td {{item.lastspr}}
             td {{item.score_times}}
             td
                 a.btn.btn-info.btn-sm(target="_blank",href="integralInfo.html?openid={{item.openid}}") 查看

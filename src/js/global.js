@@ -182,6 +182,19 @@ Api.setOpenidForChecked = function (para, callback) {
         }
     });
 };
+//累计可疑
+Api.getIllicit = function (para, callback) {
+    $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/quser", {
+        times: para.times,
+        page: para.page,
+        ptl: para.ptl
+    }, function (data) {
+        console.log(data = JSON.parse(data));
+        if (callback) {
+            callback(data);
+        }
+    });
+};
 $(function () {
     $("#userName").text(localStorage.getItem("userName"));
 });

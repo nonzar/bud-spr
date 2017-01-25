@@ -19,7 +19,7 @@ app.controller("ctrlLogin", function ($scope) {
         $scope.btnLogin = "登录中...";
         $.post("http://120.77.53.178/baiwei/baiweistat.php/Home/Index/login", {
             name: $scope.txtUser,
-            pw: $scope.txtUser
+            pw: $scope.txtPass
         }, function (data) {
             console.log(data = JSON.parse(data));
             alert(data.msg);
