@@ -65,9 +65,6 @@ app.controller('customersCtrl', function ($scope) {
         '快递单号',
         '操作'
     ];
-    $scope.confirmChange = function ($event) {
-        alert("没有此接口。");
-    };
     ctrl.reset();
     ctrl.getPage();
 });

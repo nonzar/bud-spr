@@ -29,6 +29,5 @@ html(lang='zh-cn',ng-app="app")
                                     include include/gift_records.jade
                                     td
                                         a.btn.btn-info.btn-sm(target="_blank",href="openidInfo.html?openid={{item.openid}}") 查看
-                                        button.btn.btn-success.btn-sm(ng-click="confirmChange($event)") 确认
                         include include/pagination.jade
         +includeScriptFiles("js/mkt_gift_records.js")
