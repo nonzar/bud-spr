@@ -12,15 +12,11 @@ var ctrl = {
         };
     },
     getPage: function () {
-        $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/quser", function (_data) {
-            _data = {
-                // sort: ctrl.pagination.sort,
-                times: parseInt($(".form-search select").val()),
-                page: ctrl.pagination.page
-            };
-            console.log(_data);
-            return _data;
-        }({}), function (data) {
+        $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/quser", {
+            times: parseInt($(".form-search select").val()),
+            page: ctrl.pagination.page,
+            ptl: localStorage.getItem("userType") == "1" ? "main" : localStorage.getItem("userName")
+        }, function (data) {
             console.log(data = JSON.parse(data));
             if (data.code == 0) {
                 alert("没有记录");
