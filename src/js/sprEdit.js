@@ -1,8 +1,29 @@
 if (!common.isLogin()) {
     window.location.href = "login.html";
 }
-$(function () {
-    $(".btn-getInfo").on("click", function () {
+var ctrl = {}, app = angular.module("app", []);
+app.controller("ngCtrl", function ($scope) {
+    ctrl.$scope = $scope;
+    $scope.txtCode = "006494";
+    $scope.txtName = "";
+    $scope.txtRegion = "";
+    $scope.txtCity = "";
+    $scope.txtQtype = "";
+    $scope.radIsover = "";
+    $scope.f_submit = function () {
+        Api.setSprInfo({
+            code: $scope.txtCode,
+            name: $scope.txtName,
+            region: $scope.txtRegion,
+            city: $scope.txtCity,
+            qtype: $scope.txtQtype,
+            isover: $scope.radIsover
+        }, function (data) {
+            // debugger;
+            alert(data.msg);
+        });
+    };
+    $scope.f_getInfo = function () {
         Api.getSprInfo({
             sprCode: $("#code").val()
         }, function (data) {
@@ -11,32 +32,20 @@ $(function () {
                 return;
             }
             // debugger;
-            $("#code").val(data.data.code);
-            $("#name").val(data.data.name);
-            $("#region").val(data.data.region);
-            $("#city").val(data.data.city);
-            $("#qtype").val(data.data.type);
-            $("input[name='isover']")[data.data.isover == "1" ? 1 : 0].checked = true;
+            $scope.txtCode = data.data.code;
+            $scope.txtName = data.data.name;
+            $scope.txtRegion = data.data.region;
+            $scope.txtCity = data.data.city;
+            $scope.txtQtype = data.data.type;
+            $scope.radIsover = data.data.isover;
+            $scope.$apply();
         });
-    });
-
-    $(".btn-submit").on("click", function () {
-        Api.setSprInfo({
-            code: $("#code").val(),
-            name: $("#name").val(),
-            region: $("#region").val(),
-            city: $("#city").val(),
-            qtype: $("#qtype").val(),
-            isover: $("input[name='isover']:checked").val()
-        }, function (data) {
-            // debugger;
-            alert(data.msg);
-        });
-    });
+    };
     var url_code = common.getURLParameter("code");
     console.log(url_code);
     if (url_code) {
-        $("#code").val(url_code);
-        $(".btn-getInfo").click();
+        $scope.txtCode = url_code;
+        $scope.$apply();
+        $scope.f_getInfo();
     }
 });
