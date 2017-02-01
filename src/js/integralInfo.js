@@ -70,7 +70,7 @@ var ctrl = {
     }
 };
 var app = angular.module('app', []);
-app.controller('customersCtrl', function ($scope) {
+app.controller('ngCtrl', function ($scope) {
     ctrl.$scope = $scope;
     $scope.ths = [
         // "#",

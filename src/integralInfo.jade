@@ -8,7 +8,7 @@ html(lang='zh-cn',ng-app="app")
         title 积分记录查询
         link(href='css/bootstrap.min.css', rel='stylesheet')
         link(href="css/global.css",rel="stylesheet")
-    body
+    body(ng-controller="ngCtrl")
         .container-fluid.header
             .row
                 .col-sm-12
@@ -17,16 +17,16 @@ html(lang='zh-cn',ng-app="app")
             .row
                 .col-sm-12.contaner
                     h3.page-header 积分记录查询
-                    form.form-inline.form-search(role="form")
+                    .form-inline.form-search(role="form")
                         .input-group
                             .input-group-btn
-                                select.form-control
+                                select.form-control(ng-model="selFormSearch",ng-options="str in ['spr','openid']")
                                     option(value="spr") SPR验证码
                                     option(value="openid") OpenId
                             input.form-control(type="text",placeholder="请输入",value="862094")
                             span.input-group-btn
                                 button.btn.btn-default(type="button") 搜索
-                    .wbTable(ng-controller="customersCtrl")
+                    .wbTable
                         table.table.table-bordered
                             thead
                                 tr
