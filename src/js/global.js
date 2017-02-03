@@ -133,8 +133,8 @@ Api.cancleIntegral = function (para, callback) {
     Api._setOpenid(para, callback);
 };
 //获取ptl名下促销员
-Api.getAllSpr = function (para, callback) {
-    $.post(para.ptl ? "http://120.77.53.178/baiwei/baiweistat.php/home/index/qptl" : "http://120.77.53.178/baiwei/baiweistat.php/home/index/qmain", {
+Api.getAllSprByPtl = function (para, callback) {
+    $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qptl", {
         ptl: localStorage.getItem("userName"),
         page: para.page
     }, function (data) {
@@ -144,7 +144,22 @@ Api.getAllSpr = function (para, callback) {
         }
     });
 };
-
+//获取待确认促销员
+Api.getModifyConfirmation = function (para, callback) {
+    if (callback) {
+        callback({
+            code: 0,
+            msg: "没有此接口。"
+        });
+    }
+    return;
+    $.post("", {}, function (data) {
+        console.log(data = JSON.parse(data));
+        if (callback) {
+            callback(data);
+        }
+    });
+};
 //修改快递资料
 Api.editExpress = function (para, callback) {
     $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/upak", {

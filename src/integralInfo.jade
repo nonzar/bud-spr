@@ -17,12 +17,10 @@ html(lang='zh-cn',ng-app="app")
             .row
                 .col-sm-12.contaner
                     h3.page-header 积分记录查询
-                    .form-inline.form-search(role="form")
+                    .form-inline.form-search
                         .input-group
                             .input-group-btn
-                                select.form-control(ng-model="selFormSearch",ng-options="str in ['spr','openid']")
-                                    option(value="spr") SPR验证码
-                                    option(value="openid") OpenId
+                                select.form-control(ng-model="selFormSearch",ng-options="x.text for x in FSKeys track by x.value")
                             input.form-control(type="text",placeholder="请输入",value="862094")
                             span.input-group-btn
                                 button.btn.btn-default(type="button") 搜索

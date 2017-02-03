@@ -9,8 +9,17 @@
 .sidebar {
   margin-top: 20px; }
 
+.page-header span {
+  font-size: 16px;
+  font-style: italic;
+  color: #888; }
+
 .form-search {
   margin-bottom: 20px; }
+  .form-search label span {
+    font-size: 12px;
+    font-style: italic;
+    color: #888; }
   .form-search input[type="text"] {
     width: 500px; }
 

@@ -20,7 +20,9 @@ html(lang='zh-cn',ng-app="app")
                 .col-sm-10.contaner
                     .row
                         .col-sm-12
-                            h3.page-header 累计可疑OpenId
+                            h3.page-header
+                                | 累计可疑OpenId
+                                span (一天内出现3次积分，被认为有1天可疑，累计出现3天3次积分的openid需要进行稽查)
                             include include/illicit_1_form-search.jade
                             .wbTable(ng-controller="customersCtrl")
                                 include include/ptl_illicit_1-table.jade

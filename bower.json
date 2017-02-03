@@ -15,7 +15,6 @@
     "tests"
   ],
   "dependencies": {
-    "angular-ui-grid": "^4.0.2",
     "angular": "angularjs#^1.6.1",
     "jquery": "1.11.1"
   }

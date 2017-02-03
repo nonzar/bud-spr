@@ -72,6 +72,16 @@ var ctrl = {
 var app = angular.module('app', []);
 app.controller('ngCtrl', function ($scope) {
     ctrl.$scope = $scope;
+    $scope.FSKeys = [
+        {
+            value: "spr",
+            text: "SPR验证码"
+        }, {
+            value: "openid",
+            text: "OpenId"
+        }
+    ];
+    $scope.selFormSearch = $scope.FSKeys[0];
     $scope.ths = [
         // "#",
         "openid",

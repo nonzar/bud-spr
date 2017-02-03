@@ -46,9 +46,13 @@ var ctrl = {
         };
     },
     getPage: function () {
-        Api.getAllSpr({
+        Api.getModifyConfirmation({
             page: ctrl.page
         }, function (data) {
+            alert(data.msg);
+            if (data.code == 0) {
+                return;
+            }
             ctrl.pagination.totalPage = parseInt(data.data.totalpages);
             $(".paginationer .lab-total").text(ctrl.pagination.totalPage);
             $(".paginationer .lab-index").text(ctrl.pagination.page);

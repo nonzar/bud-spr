@@ -26,14 +26,12 @@
         <div class="col-sm-10 contaner">
           <div class="row">
             <div class="col-sm-12">
-              <h3 class="page-header">累计可疑OpenId</h3>
-              <form class="form-horizontal form-search" role="form">
+              <h3 class="page-header">累计可疑OpenId<span>(一天内出现3次积分，被认为有1天可疑，累计出现3天3次积分的openid需要进行稽查)</span></h3>
+              <div class="form-horizontal form-search">
                 <div class="form-group">
-                  <label class="col-sm-1 control-label">可疑天数</label>
+                  <label class="col-sm-1 control-label">可疑天数<span>(当前标准为3天以上)</span></label>
                   <div class="col-sm-10">
                     <select class="form-control">
-                      <option value="1">1以上</option>
-                      <option value="2">2以上</option>
                       <option value="3">3以上</option>
                       <option value="4">4以上</option>
                       <option value="5">5以上</option>
@@ -44,7 +42,7 @@
                     <button class="btn btn-default">搜索</button>
                   </div>
                 </div>
-              </form>
+              </div>
               <div class="wbTable" ng-controller="customersCtrl">
                 <table class="table table-bordered">
                   <thead>
@@ -61,7 +59,7 @@
                       <td>{{item.lastspr}}</td>
                       <td>{{item.score_times}}</td>
                       <td><a class="btn btn-info btn-sm" target="_blank" href="integralInfo.html?openid={{item.openid}}">查看</a>
-                        <button class="btn btn-danger btn-sm" ng-click="setOpenidForIllicit($event,item.openid)">列入可疑</button>
+                        <button class="btn btn-danger btn-sm" ng-click="setOpenidForIllicit($event,item.openid)">取消积分</button>
                       </td>
                     </tr>
                   </tbody>
@@ -80,7 +78,7 @@
       </div>
     </div>
     <script src="js/jquery.min.js"></script>
-    <script src="js/angular.min-1.5.10.js"></script>
+    <script src="js/angular.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/global.js"></script>
     <script src="js/ptl_illicit_1.js"></script>

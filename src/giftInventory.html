@@ -33,8 +33,9 @@
                   <td>{{item.name}}</td>
                   <td>{{item.jifen}}</td>
                   <td>{{item.total}}</td>
+                  <td>{{item.total-item.number}}</td>
                   <td>{{item.number}}</td>
-                  <td>{{(item.number/item.total*100) + '%'}}</td>
+                  <td>{{Math.round((item.total-item.number)/item.total*100) + '%'}}</td>
                 </tr>
               </tbody>
             </table>
@@ -43,7 +44,7 @@
       </div>
     </div>
     <script src="js/jquery.min.js"></script>
-    <script src="js/angular.min-1.5.10.js"></script>
+    <script src="js/angular.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/global.js"></script>
     <script src="js/giftInventory.js"></script>

@@ -40,7 +40,7 @@ var ctrl = {
         };
     },
     getPage: function () {
-        Api.getAllSpr({
+        Api.getAllSprByPtl({
             page: ctrl.page
         }, function (data) {
             ctrl.pagination.totalPage = parseInt(data.data.totalpages);

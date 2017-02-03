@@ -46,12 +46,14 @@ var ctrl = {
 var app = angular.module('app', []);
 app.controller('customersCtrl', function ($scope) {
     ctrl.$scope = $scope;
+    $scope.Math = window.Math;
     $scope.ths = [
         '奖品Type',
-        '名称',
+        '奖品名称',
         '兑换积分',
-        '总量',
+        '礼品总量',
         '兑换数量',
+        '剩余数量',
         '兑换率'
     ];
     ctrl.reset();

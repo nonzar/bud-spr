@@ -20,13 +20,10 @@
       <div class="row">
         <div class="col-sm-12 contaner">
           <h3 class="page-header">积分记录查询</h3>
-          <div class="form-inline form-search" role="form">
+          <div class="form-inline form-search">
             <div class="input-group">
               <div class="input-group-btn">
-                <select class="form-control" ng-model="selFormSearch" ng-options="str in ['spr','openid']">
-                  <option value="spr">SPR验证码</option>
-                  <option value="openid">OpenId</option>
-                </select>
+                <select class="form-control" ng-model="selFormSearch" ng-options="x.text for x in FSKeys track by x.value"></select>
               </div>
               <input class="form-control" type="text" placeholder="请输入" value="862094"><span class="input-group-btn">
                 <button class="btn btn-default" type="button">搜索</button></span>
@@ -64,7 +61,7 @@
       </div>
     </div>
     <script src="js/jquery.min.js"></script>
-    <script src="js/angular.min-1.5.10.js"></script>
+    <script src="js/angular.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/global.js"></script>
     <script src="js/integralInfo.js"></script>

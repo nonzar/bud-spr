@@ -17,10 +17,26 @@ body {
 }
 
 .contaner {
+
+}
+
+.page-header {
+  span {
+    font-size: 16px;
+    font-style: italic;
+    color: #888;
+  }
 }
 
 .form-search {
   margin-bottom: 20px;
+  label {
+    span {
+      font-size: 12px;
+      font-style: italic;
+      color: #888;
+    }
+  }
   input[type="text"] {
     width: 500px;
   }
