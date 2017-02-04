@@ -21,8 +21,8 @@ app.controller("ctrlLogin", function ($rootScope, $scope) {
             pw: $scope.txtPass
         }, function (data) {
             console.log(data = JSON.parse(data));
-            alert(data.msg);
             if (data.code == 0) {
+                alert(data.msg);
                 return;
             }
             localStorage.setItem("userType", data.data.role);

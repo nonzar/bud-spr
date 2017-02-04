@@ -31,7 +31,10 @@ var common = {
             localStorage.setItem("userType", "");
             localStorage.setItem("userName", "");
             localStorage.setItem("loginTime", "");
-            alert(data.msg);
+            if (data.code == 0) {
+                alert(data.msg);
+                return;
+            }
             window.location.href = "login.html";
         });
     },
