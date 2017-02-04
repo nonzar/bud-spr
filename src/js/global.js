@@ -214,6 +214,11 @@ Api.getIllicit = function (para, callback) {
     });
 };
 $(function () {
+    if (!common.isLogin()) {
+        if (window.location.href.indexOf("login.html") == -1) {
+            window.location.href = "login.html";
+        }
+    }
     $("#userName").text(localStorage.getItem("userName"));
 });
 

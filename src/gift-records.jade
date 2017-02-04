@@ -8,6 +8,7 @@ html(lang='zh-cn',ng-app="app")
         title 兑奖记录
         link(href='css/bootstrap.min.css', rel='stylesheet')
         link(href="css/global.css",rel="stylesheet")
+        link(href="css/gift-records.css",rel="stylesheet")
     body
         .container-fluid.header
             .row
@@ -17,9 +18,22 @@ html(lang='zh-cn',ng-app="app")
             .row
                 .col-sm-2.sidebar(ng-controller="ctrlSidebar")
                     include include/sidebar.jade
-                .col-sm-10.contaner
+                .col-sm-10.contaner(ng-controller="customersCtrl")
                     h3.page-header 兑奖记录
-                    .wbTable(ng-controller="customersCtrl")
+                    .wbFilter.form-inline
+                        .form-group
+                            label.control-label 快递单号：
+                            label.radio-inline
+                                input(type='radio',name='pkg',ng-model="filter.pkg",ng-value="2")
+                                | 全部
+                            label.radio-inline
+                                input(type='radio',name='pkg',ng-model="filter.pkg",ng-value="1")
+                                | 已填单号
+                            label.radio-inline
+                                input(type='radio',name='pkg',ng-model="filter.pkg",ng-value="0")
+                                | 未填单号
+                        button.btn.btn-sm.btn-success(ng-click="getPage()") 确定
+                    .wbTable
                         table.table.table-bordered
                             thead
                                 tr
@@ -34,5 +48,12 @@ html(lang='zh-cn',ng-app="app")
                                     td
                                         a.btn.btn-info.btn-sm(target="_blank",href="openid-info.html?openid={{item.openid}}") 查看
                                         button.btn.btn-success.btn-sm(ng-if="user.type==userType.courier",ng-click="inputPak($event,item.id)") 录入单号
-                        include include/pagination.jade
+                        .paginationer
+                            label.pull-left
+                                b.lab-index {{pagination.page}}
+                                | /
+                                b.lab-total {{pagination.total}}
+                            .pull-right
+                                button.btn.btn-default.btn-prev(ng-click="getPrevPage()") 上一页
+                                button.btn.btn-default.btn-next(ng-click="getNextPage()") 下一页
         +includeScriptFiles("js/gift-records.js")

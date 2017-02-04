@@ -1,6 +1,4 @@
-if (!common.isLogin()) {
-    window.location.href = "login.html";
-}
+
 
 app.controller('customersCtrl', function ($scope) {
     $scope.ths = [

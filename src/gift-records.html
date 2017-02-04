@@ -7,6 +7,7 @@
     <title>兑奖记录</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/global.css" rel="stylesheet">
+    <link href="css/gift-records.css" rel="stylesheet">
   </head>
   <body>
     <div class="container-fluid header">
@@ -32,9 +33,24 @@
             <div class="list-group"><a class="list-group-item active" href="javascript:;">SPR管理</a><a class="list-group-item" href="spr-handle.html">SPR状态查询</a></div>
           </div>
         </div>
-        <div class="col-sm-10 contaner">
+        <div class="col-sm-10 contaner" ng-controller="customersCtrl">
           <h3 class="page-header">兑奖记录</h3>
-          <div class="wbTable" ng-controller="customersCtrl">
+          <div class="wbFilter form-inline">
+            <div class="form-group">
+              <label class="control-label">快递单号：</label>
+              <label class="radio-inline">
+                <input type="radio" name="pkg" ng-model="filter.pkg" ng-value="2">全部
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="pkg" ng-model="filter.pkg" ng-value="1">已填单号
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="pkg" ng-model="filter.pkg" ng-value="0">未填单号
+              </label>
+            </div>
+            <button class="btn btn-sm btn-success" ng-click="getPage()">确定</button>
+          </div>
+          <div class="wbTable">
             <table class="table table-bordered">
               <thead>
                 <tr>
@@ -55,10 +71,10 @@
               </tbody>
             </table>
             <div class="paginationer">
-              <label class="pull-left"><b class="lab-index">1</b>/<b class="lab-total">1</b></label>
+              <label class="pull-left"><b class="lab-index">{{pagination.page}}</b>/<b class="lab-total">{{pagination.total}}</b></label>
               <div class="pull-right">
-                <button class="btn btn-default btn-prev">上一页</button>
-                <button class="btn btn-default btn-next">下一页</button>
+                <button class="btn btn-default btn-prev" ng-click="getPrevPage()">上一页</button>
+                <button class="btn btn-default btn-next" ng-click="getNextPage()">下一页</button>
               </div>
             </div>
           </div>

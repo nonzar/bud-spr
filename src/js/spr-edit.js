@@ -1,6 +1,4 @@
-if (!common.isLogin()) {
-    window.location.href = "login.html";
-}
+
 var ctrl = {}, app = angular.module("app", []);
 app.controller("ngCtrl", function ($scope) {
     ctrl.$scope = $scope;
