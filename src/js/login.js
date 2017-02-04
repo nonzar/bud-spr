@@ -1,11 +1,10 @@
-var app = angular.module("app", []);
-app.controller("ctrlLogin", function ($scope) {
+app.controller("ctrlLogin", function ($rootScope, $scope) {
     if (common.isLogin()) {
         //市场部1,快递2,ptl3
         window.location.href = common.userIndexUrl[localStorage.getItem("userType")];
     }
-    $scope.txtUser = "test";
-    $scope.txtPass = "test";
+    $scope.txtUser = "";
+    $scope.txtPass = "";
     $scope.btnLogin = "登录";
     $scope.login = function ($event) {
         if (!$scope.txtUser.length) {
@@ -34,4 +33,22 @@ app.controller("ctrlLogin", function ($scope) {
             window.location.href = common.userIndexUrl[data.data.role.toString()];
         });
     };
+    //test code
+    $scope.testInput = function (type) {
+        switch (type) {
+            case $rootScope.userType.ptl:
+                $scope.txtUser = "csq";
+                $scope.txtPass = "3ij21k";
+                break;
+            case $rootScope.userType.mkt:
+                $scope.txtUser = "market";
+                $scope.txtPass = "1x0i5q";
+                break;
+            case $rootScope.userType.courier:
+                $scope.txtUser = "express";
+                $scope.txtPass = "sfvkj1";
+                break;
+            default:
+        }
+    }
 });

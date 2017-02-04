@@ -28,5 +28,13 @@ html(lang='zh-cn',ng-app="app")
                     br
                     .row
                         .col-sm-12
-                            input.btn.btn-info.col-sm-12(type="submit",ng-model="btnLogin",ng-click="login($event)")
+                            input.btn.btn-primary.col-sm-12(type="submit",ng-model="btnLogin",ng-click="login($event)")
+                    br
+                    .row
+                        .col-sm-4
+                            .btn.btn-primary.col-sm-12(ng-click="testInput(userType.ptl)") ptl
+                        .col-sm-4
+                            .btn.btn-primary.col-sm-12(ng-click="testInput(userType.mkt)") mkt
+                        .col-sm-4
+                            .btn.btn-primary.col-sm-12(ng-click="testInput(userType.courier)") courier
         +includeScriptFiles("js/login.js")

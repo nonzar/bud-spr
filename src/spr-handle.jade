@@ -1,0 +1,74 @@
+include include/mixin.jade
+doctype html
+html(lang='zh-cn',ng-app="app")
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        title SPR查询
+        link(href='css/bootstrap.min.css', rel='stylesheet')
+        link(href="css/global.css",rel="stylesheet")
+    body
+        .container-fluid.header
+            .row
+                .col-sm-12
+                    include include/header.jade
+        .container-fluid
+            .row
+                .col-sm-2.sidebar(ng-controller="ctrlSidebar")
+                    include include/sidebar.jade
+                .col-sm-10.contaner
+                    .row
+                        .col-sm-12
+                            h3.page-header SPR查询
+                            .wbSearch.form-inline
+                                .input-group
+                                    span.input-group-addon SPR状态码
+                                    input.form-control(type="text",placeholder="请输入",value="862094")
+                                    span.input-group-btn
+                                        button.btn.btn-default.btn-search(type="button") 搜索
+                            .wbTable(ng-controller="customersCtrl")
+                                table.table.table-bordered
+                                    thead
+                                        tr
+                                            th(ng-repeat="item in ths") {{item}}
+                                    tbody
+                                        tr(ng-repeat="item in tds")
+                                            td {{item.id}}
+                                            td {{item.code}}
+                                            td {{item.region}}
+                                            td {{item.city}}
+                                            td {{item.citytype}}
+                                            td {{item.name}}
+                                            td {{item.type}}
+                                            td {{item.ptl}}
+                                            td {{item.isover=="1"?"在职":"离职"}}
+                                            td
+                                                a.btn.btn-sm.btn-primary(target="_blank",href="spr-edit.html?code={{item.code}}") 修改
+                                                button.btn.btn-sm.btn-success(ng-if="user.type==userType.mkt",ng-click="confirmChange($event)") 确认修改
+                                                button.btn.btn-sm.btn-danger(ng-if="user.type==userType.mkt",ng-click="cancelChange($event)") 取消修改
+                        .col-sm-12
+                            h3.page-header(ng-if="user.type==userType.ptl") 名下所有SPR
+                            h3.page-header(ng-if="user.type==userType.mkt") 待确认SPR修改请求
+                            .wbAllSpr(ng-controller="customersCtrl2")
+                                table.table.table-bordered
+                                    thead
+                                        tr
+                                            th(ng-repeat="item in ths") {{item}}
+                                    tbody
+                                        tr(ng-repeat="item in tds")
+                                            td {{item.id}}
+                                            td {{item.code}}
+                                            td {{item.region}}
+                                            td {{item.city}}
+                                            td {{item.citytype}}
+                                            td {{item.name}}
+                                            td {{item.type}}
+                                            td {{item.ptl}}
+                                            td {{item.isover=="1"?"在职":"离职"}}
+                                            td
+                                                a.btn.btn-sm.btn-primary(target="_blank",href="spr-edit.html?code={{item.code}}") 修改
+                                                button.btn.btn-sm.btn-success(ng-if="user.type==userType.mkt",ng-click="confirmChange($event)") 确认修改
+                                                button.btn.btn-sm.btn-danger(ng-if="user.type==userType.mkt",ng-click="cancelChange($event)") 取消修改
+                                include include/pagination.jade
+        +includeScriptFiles("js/spr-handle.js")

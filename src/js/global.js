@@ -1,8 +1,8 @@
 var common = {
-    userIndexUrl: {
-        "1": "mkt_illicit_1.html",//市场部
-        "2": "courier_gift_records.html",//快递
-        "3": "ptl_illicit_1.html"//ptl
+    userIndexUrl: {//用户类型对应之首页
+        "1": "illicit-list.html",//市场部
+        "2": "gift-records.html",//快递
+        "3": "illicit-list.html"//ptl
     },
     loginValidityTime: 1 * 24 * 60 * 60 * 1000,
     getURLParameter: function (sParam) {
@@ -145,7 +145,7 @@ Api.getAllSprByPtl = function (para, callback) {
     });
 };
 //获取待确认促销员
-Api.getModifyConfirmation = function (para, callback) {
+Api.getModifyConfirmationSpr = function (para, callback) {
     if (callback) {
         callback({
             code: 0,
@@ -214,5 +214,16 @@ $(function () {
     $("#userName").text(localStorage.getItem("userName"));
 });
 
-
+var app = angular.module('app', []).run(function ($rootScope) {
+    $rootScope.userType = {
+        mkt: 1,
+        courier: 2,
+        ptl: 3
+    };
+    //用户信息
+    $rootScope.user = {};
+    $rootScope.user.type = parseInt(localStorage.getItem("userType"));
+});
+app.controller("ctrlSidebar", function ($rootScope, $scope) {
+});
 

@@ -1,0 +1,51 @@
+include include/mixin.jade
+doctype html
+html(lang='zh-cn',ng-app="app")
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        title 累计可疑OpenId
+        link(href='css/bootstrap.min.css', rel='stylesheet')
+        link(href="css/global.css",rel="stylesheet")
+    body
+        .container-fluid.header
+            .row
+                .col-sm-12
+                    include include/header.jade
+        .container-fluid
+            .row
+                .col-sm-2.sidebar(ng-controller="ctrlSidebar")
+                    include include/sidebar.jade
+                .col-sm-10.contaner
+                    h3.page-header
+                        | 累计可疑OpenId
+                        span (一天内出现3次积分，被认为有1天可疑，累计出现3天3次积分的openid需要进行稽查)
+                    .form-horizontal.form-search
+                        .form-group
+                            label.col-sm-1.control-label
+                                | 可疑天数
+                                span (当前标准为3天以上)
+                            .col-sm-10
+                                select.form-control
+                                    - for(var i=2;i<6;i++)
+                                        option(value=i + 1) #{i + 1}以上
+                            .col-sm-1
+                                button.btn.btn-default 搜索
+                    .wbTable(ng-controller="customersCtrl")
+                        table.table.table-bordered
+                            thead
+                                tr
+                                    th(ng-repeat="item in ths") {{item}}
+                            tbody
+                                tr(ng-repeat="item in tds")
+                                    td
+                                        input(type="checkbox",ng-model="checkeds[$index]",ng-change="setOpenidForChecked($index,item.openid)")
+                                    td {{item.openid}}
+                                    td {{item.lastspr}}
+                                    td {{item.score_times}}
+                                    td
+                                        a.btn.btn-info.btn-sm(target="_blank",href="integral-info.html?openid={{item.openid}}") 查看
+                                        button.btn.btn-danger.btn-sm(ng-click="setOpenidForIllicit($event,item.openid)") 取消积分
+                        include include/pagination.jade
+        +includeScriptFiles("js/illicit-list.js")

@@ -32,7 +32,18 @@
           </div><br>
           <div class="row">
             <div class="col-sm-12">
-              <input class="btn btn-info col-sm-12" type="submit" ng-model="btnLogin" ng-click="login($event)">
+              <input class="btn btn-primary col-sm-12" type="submit" ng-model="btnLogin" ng-click="login($event)">
+            </div>
+          </div><br>
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="btn btn-primary col-sm-12" ng-click="testInput(userType.ptl)">ptl</div>
+            </div>
+            <div class="col-sm-4">
+              <div class="btn btn-primary col-sm-12" ng-click="testInput(userType.mkt)">mkt</div>
+            </div>
+            <div class="col-sm-4">
+              <div class="btn btn-primary col-sm-12" ng-click="testInput(userType.courier)">courier</div>
             </div>
           </div>
         </form>

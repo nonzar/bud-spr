@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-cn" ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>库存情况</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/global.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container-fluid header">
+      <div class="row">
+        <div class="col-sm-12">
+          <p>你好，<a id="userName" href="all.html"></a><a class="pull-right" href="javascript:common.loginOut();">退出</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-2 sidebar" ng-controller="ctrlSidebar">
+          <div class="section" ng-if="user.type==userType.mkt">
+            <div class="list-group"><a class="list-group-item active" href="javascript:;">可疑稽查</a><a class="list-group-item" href="illicit-list.html">累计可疑OpenId</a><a class="list-group-item" href="illicit-handle.html">待处理可疑OpenId</a></div>
+            <div class="list-group"><a class="list-group-item active" href="javascript:;">SPR管理</a><a class="list-group-item" href="spr-handle.html">SPR状态查询</a></div>
+            <div class="list-group"><a class="list-group-item active" href="javascript:;">礼物管理</a><a class="list-group-item" href="gift-records.html">兑奖记录</a><a class="list-group-item" href="gift-inventory.html">库存情况</a></div>
+          </div>
+          <div class="section" ng-if="user.type==userType.courier">
+            <div class="list-group"><a class="list-group-item active" href="javascript:;">礼物管理</a><a class="list-group-item" href="gift-records.html">兑奖记录</a><a class="list-group-item" href="gift-inventory.html">库存情况</a></div>
+          </div>
+          <div class="section" ng-if="user.type==userType.ptl">
+            <div class="list-group"><a class="list-group-item active" href="javascript:;">可疑稽查</a><a class="list-group-item" href="illicit-list.html">累计可疑OpenId</a><a class="list-group-item" href="illicit-handle.html">待确认可疑OpenId</a></div>
+            <div class="list-group"><a class="list-group-item active" href="javascript:;">SPR管理</a><a class="list-group-item" href="spr-handle.html">SPR状态查询</a></div>
+          </div>
+        </div>
+        <div class="col-sm-10 contaner">
+          <h3 class="page-header">库存情况</h3>
+          <div class="wbTable" ng-controller="customersCtrl">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th ng-repeat="item in ths">{{item}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="item in tds">
+                  <td>{{item.type}}</td>
+                  <td>{{item.name}}</td>
+                  <td>{{item.jifen}}</td>
+                  <td>{{item.total}}</td>
+                  <td>{{item.total-item.number}}</td>
+                  <td>{{item.number}}</td>
+                  <td>{{Math.round((item.total-item.number)/item.total*100) + '%'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/gift-inventory.js"></script>
+  </body>
+</html>
