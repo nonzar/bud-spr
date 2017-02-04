@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "AAEI,0CAAgB;EACd,gBAAgB,EAAE,IAAI;EACtB,KAAK,EAAE,IAAI",
-"sources": ["integralInfo.scss"],
+"mappings": "",
+"sources": [],
 "names": [],
-"file": "integralInfo.css"
+"file": "integral-info.css"
 }

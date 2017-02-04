@@ -9,7 +9,7 @@
     <link href="css/global.css" rel="stylesheet">
     <link href="css/integral-info.css" rel="stylesheet">
   </head>
-  <body ng-controller="ngCtrl">
+  <body>
     <div class="container-fluid header">
       <div class="row">
         <div class="col-sm-12">
@@ -19,22 +19,29 @@
     </div>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-12 contaner">
+        <div class="col-sm-12 contaner" ng-controller="customersCtrl">
           <h3 class="page-header">积分记录查询</h3>
           <div class="form-inline form-search">
             <div class="input-group">
               <div class="input-group-btn">
                 <select class="form-control" ng-model="selFormSearch" ng-options="x.text for x in FSKeys track by x.value"></select>
               </div>
-              <input class="form-control" type="text" placeholder="请输入" value="862094"><span class="input-group-btn">
-                <button class="btn btn-default" type="button">搜索</button></span>
+              <input class="form-control" type="text" placeholder="请输入" ng-model="txtText"><span class="input-group-btn">
+                <button class="btn btn-default" ng-click="pagination.getPage()">搜索</button></span>
             </div>
           </div>
           <div class="wbTable">
             <table class="table table-bordered">
               <thead>
                 <tr>
-                  <th ng-repeat="item in ths">{{item}}</th>
+                  <th>openid</th>
+                  <th>购买产品</th>
+                  <th>促销员id</th>
+                  <th>积分时间</th>
+                  <th>店铺分类</th>
+                  <th>大区</th>
+                  <th>城市</th>
+                  <th>促销员</th>
                 </tr>
               </thead>
               <tbody>
@@ -42,7 +49,7 @@
                   <td>{{item.openid}}i</td>
                   <td>{{item.obj}}</td>
                   <td>{{item.vendor}}</td>
-                  <td>{{item.act_time}}</td>
+                  <td style="background-color:{{setDateColor(item.act_time)}}">{{item.act_time}}</td>
                   <td>{{item.sprtype}}</td>
                   <td>{{item.sprregion}}</td>
                   <td>{{item.sprcity}}</td>
@@ -51,10 +58,10 @@
               </tbody>
             </table>
             <div class="paginationer">
-              <label class="pull-left"><b class="lab-index">1</b>/<b class="lab-total">1</b></label>
+              <label class="pull-left"><b class="lab-index">{{pagination.page}}</b>/<b class="lab-total">{{pagination.total}}</b></label>
               <div class="pull-right">
-                <button class="btn btn-default btn-prev">上一页</button>
-                <button class="btn btn-default btn-next">下一页</button>
+                <button class="btn btn-default btn-prev" ng-click="pagination.getPrevPage()">上一页</button>
+                <button class="btn btn-default btn-next" ng-click="pagination.getNextPage()">下一页</button>
               </div>
             </div>
           </div>
@@ -65,6 +72,6 @@
     <script src="js/angular.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/global.js"></script>
-    <script src="js/integral-nfo.js"></script>
+    <script src="js/integral-info.js"></script>
   </body>
 </html>

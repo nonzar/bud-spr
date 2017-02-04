@@ -19,19 +19,28 @@ html(lang='zh-cn',ng-app="app")
                     include include/sidebar.jade
                 .col-sm-10.contaner
                     .row
-                        .col-sm-12
+                        .col-sm-12(ng-controller="customersCtrl2")
                             h3.page-header SPR查询
                             .wbSearch.form-inline
                                 .input-group
                                     span.input-group-addon SPR状态码
-                                    input.form-control(type="text",placeholder="请输入",value="862094")
+                                    input.form-control(type="text",placeholder="请输入",value="",ng-model="txtSpr")
                                     span.input-group-btn
-                                        button.btn.btn-default.btn-search(type="button") 搜索
-                            .wbTable(ng-controller="customersCtrl")
+                                        button.btn.btn-default.btn-search(ng-click="getSprInfo()") 搜索
+                            .wbTable
                                 table.table.table-bordered
                                     thead
                                         tr
-                                            th(ng-repeat="item in ths") {{item}}
+                                            th 促销员id
+                                            th 验证码
+                                            th 大区
+                                            th 城市
+                                            th 城市等级
+                                            th 促销员名称
+                                            th 渠道
+                                            th PTL
+                                            th 状态
+                                            th 操作
                                     tbody
                                         tr(ng-repeat="item in tds")
                                             td {{item.id}}
@@ -47,14 +56,23 @@ html(lang='zh-cn',ng-app="app")
                                                 a.btn.btn-sm.btn-primary(target="_blank",href="spr-edit.html?code={{item.code}}") 修改
                                                 button.btn.btn-sm.btn-success(ng-if="user.type==userType.mkt",ng-click="confirmChange($event)") 确认修改
                                                 button.btn.btn-sm.btn-danger(ng-if="user.type==userType.mkt",ng-click="cancelChange($event)") 取消修改
-                        .col-sm-12
+                        .col-sm-12(ng-controller="customersCtrl")
                             h3.page-header(ng-if="user.type==userType.ptl") 名下所有SPR
                             h3.page-header(ng-if="user.type==userType.mkt") 待确认SPR修改请求
                             .wbAllSpr(ng-controller="customersCtrl2")
                                 table.table.table-bordered
                                     thead
                                         tr
-                                            th(ng-repeat="item in ths") {{item}}
+                                            th 促销员id
+                                            th 验证码
+                                            th 大区
+                                            th 城市
+                                            th 城市等级
+                                            th 促销员名称
+                                            th 渠道
+                                            th PTL
+                                            th 状态
+                                            th 操作
                                     tbody
                                         tr(ng-repeat="item in tds")
                                             td {{item.id}}
@@ -70,5 +88,5 @@ html(lang='zh-cn',ng-app="app")
                                                 a.btn.btn-sm.btn-primary(target="_blank",href="spr-edit.html?code={{item.code}}") 修改
                                                 button.btn.btn-sm.btn-success(ng-if="user.type==userType.mkt",ng-click="confirmChange($event)") 确认修改
                                                 button.btn.btn-sm.btn-danger(ng-if="user.type==userType.mkt",ng-click="cancelChange($event)") 取消修改
-                                include include/pagination.jade
+                                include include/paginationer.jade
         +includeScriptFiles("js/spr-handle.js")

@@ -1,75 +1,54 @@
-
-var ctrl = {
-    $scope: null,
-    pagination: {},
-    reset: function () {
-        ctrl.pagination = {
-            totalPage: -1,
-            sort: 0,
-            page: 1
-        };
-    },
-    getPage: function () {
-        $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qscore", function (_data) {
-            _data = {
-                sort: ctrl.pagination.sort,
-                page: ctrl.pagination.page
-            };
-            if ($(".form-search select").val() == "spr") {
-                _data.spr = $(".form-search input[type='text']").val();
-            } else {
-                _data.openid = $(".form-search input[type='text']").val();
-            }
-            console.log(_data);
-            return _data;
-        }({}), function (data) {
-            console.log(data = JSON.parse(data));
-            if (data.code == 0) {
-                ctrl.$scope.$apply(function () {
-                    ctrl.$scope.tds = function (arr) {
-                        for (var i = 0; i < ctrl.$scope.ths.length; i++) {
-                            arr[ctrl.$scope.ths[i]] = "";
-                        }
-                        return arr;
-                    }([]);
-                });
-                alert("没有记录");
+app.controller('customersCtrl', function ($rootScope, $scope) {
+    $scope.pagination = {
+        total: -1,
+        page: 1,
+        getPage: function () {
+            $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qscore", {
+                spr: $scope.selFormSearch.value == "spr" ? $scope.txtText : "",
+                openid: $scope.selFormSearch.value == "openid" ? $scope.txtText : "",
+                sort: 0,
+                page: $scope.pagination.page
+            }, function (data) {
+                console.log(data = JSON.parse(data));
+                if (data.code == 0) {
+                    alert(data.msg);
+                    $scope.tds = [];
+                    $scope.$apply();
+                    return;
+                }
+                $scope.pagination.page = data.data.curpage;
+                $scope.pagination.total = data.data.totalpages;
+                $scope.tds = data.data.data;
+                $scope.$apply();
+            });
+        },
+        getPrevPage: function () {
+            if ($scope.pagination.total == -1) {
                 return;
             }
-            ctrl.pagination.totalPage = parseInt(data.data.totalpages);
-            $(".paginationer .lab-total").text(ctrl.pagination.totalPage);
-            $(".paginationer .lab-index").text(ctrl.pagination.page);
-            ctrl.$scope.$apply(function () {
-                ctrl.$scope.tds = data.data.data;
-            });
-        });
-    },
-    getPrevPage: function () {
-        if (ctrl.pagination.totalPage == -1) {
-            return;
+            if ($scope.pagination.page <= 1) {
+                alert("已经是第一页。");
+                return;
+            }
+            $scope.pagination.page--;
+            $scope.pagination.getPage();
+        },
+        getNextPage: function () {
+            if ($scope.pagination.total == -1) {
+                return;
+            }
+            else if ($scope.pagination.page >= $scope.pagination.total) {
+                alert("已经是最后一页。");
+                return;
+            }
+            $scope.pagination.page++;
+            $scope.pagination.getPage();
         }
-        if (ctrl.pagination.page <= 1) {
-            alert("已经是第一页。");
-            return;
-        }
-        ctrl.pagination.page--;
-        ctrl.getPage();
-    },
-    getNextPage: function () {
-        if (ctrl.pagination.totalPage == -1) {
-            return;
-        }
-        else if (ctrl.pagination.page >= ctrl.pagination.totalPage) {
-            alert("已经是最后一页。");
-            return;
-        }
-        ctrl.pagination.page++;
-        ctrl.getPage();
-    }
-};
-
-app.controller('ngCtrl', function ($scope) {
-    ctrl.$scope = $scope;
+    };
+    $scope.setDateColor = function (time) {
+        var time = new Date(time);
+        return $rootScope.dateColors[time.getDate() - 1];
+    };
     $scope.FSKeys = [
         {
             value: "spr",
@@ -80,35 +59,19 @@ app.controller('ngCtrl', function ($scope) {
         }
     ];
     $scope.selFormSearch = $scope.FSKeys[0];
-    $scope.ths = [
-        // "#",
-        "openid",
-        "购买产品",
-        "促销员id",
-        "积分时间",
-        "店铺分类",
-        "大区",
-        "城市",
-        "促销员"
-    ];
-});
-ctrl.reset();
-$(".form-search button").on("click", function () {
-    ctrl.getPage();
-});
-$(".wbTable .btn-prev").on("click", function () {
-    ctrl.getPrevPage();
-});
-$(".wbTable .btn-next").on("click", function () {
-    ctrl.getNextPage();
-});
-$(function () {
-    var url_openid = common.getURLParameter("openid");
-    console.log(url_openid);
-    if (url_openid) {
-        $(".form-search input[type='text']").val(url_openid);
-        $(".form-search select").val("openid")
-        $(".form-search button").click();
+    $scope.txtText = "862094";
+    //自动显示
+    var url_spr = common.getURLParameter("spr"),
+        url_openid = common.getURLParameter("openid");
+    if (url_spr) {
+        console.log(url_spr);
+        $scope.txtText = url_spr;
+        $scope.selFormSearch = $scope.FSKeys[0];
+        $scope.pagination.getPage();
+    } else if (url_openid) {
+        console.log(url_openid);
+        $scope.txtText = url_openid;
+        $scope.selFormSearch = $scope.FSKeys[1];
+        $scope.pagination.getPage();
     }
-    // debugger;
 });

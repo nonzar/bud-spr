@@ -66,8 +66,8 @@ var common = {
 var Api = {
     channel: {
         "1": "中餐",
-        "2": "晚餐",
-        "3": "夜店"
+        "2": "西餐",
+        "3": "夜场"
     },
     userType: {
         ptl: 0,
@@ -119,11 +119,6 @@ Api._setOpenid = function (para, callback) {
         }
     });
 };
-//设置openid为可疑
-Api.setOpenidForIllicit = function (para, callback) {
-    para.type = 0;
-    Api._setOpenid(para, callback);
-};
 //排除可疑openid
 Api.setOpenidForLegal = function (para, callback) {
     para.type = 1;
@@ -134,34 +129,6 @@ Api.setOpenidForLegal = function (para, callback) {
 Api.cancleIntegral = function (para, callback) {
     para.type = 2;
     Api._setOpenid(para, callback);
-};
-//获取ptl名下促销员
-Api.getAllSprByPtl = function (para, callback) {
-    $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qptl", {
-        ptl: localStorage.getItem("userName"),
-        page: para.page
-    }, function (data) {
-        console.log(data = JSON.parse(data));
-        if (callback) {
-            callback(data);
-        }
-    });
-};
-//获取待确认促销员
-Api.getModifyConfirmationSpr = function (para, callback) {
-    if (callback) {
-        callback({
-            code: 0,
-            msg: "没有此接口。"
-        });
-    }
-    return;
-    $.post("", {}, function (data) {
-        console.log(data = JSON.parse(data));
-        if (callback) {
-            callback(data);
-        }
-    });
 };
 //修改快递资料
 Api.editExpress = function (para, callback) {
@@ -188,31 +155,57 @@ Api.getOpenidInfo = function (para, callback) {
     });
 };
 
-//设置已核查Openid
-Api.setOpenidForChecked = function (para, callback) {
-    $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/uchecked", {
-        openid: para.openid,
-        ischecked: para.ischecked
-    }, function (data) {
-        console.log(data = JSON.parse(data));
-        if (callback) {
-            callback(data);
-        }
-    });
-};
-//累计可疑
-Api.getIllicit = function (para, callback) {
-    $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/quser", {
-        times: para.times,
-        page: para.page,
-        ptl: para.ptl
-    }, function (data) {
-        console.log(data = JSON.parse(data));
-        if (callback) {
-            callback(data);
-        }
-    });
-};
+
+var app = angular.module('app', []).run(function ($rootScope) {
+    $rootScope.userType = {
+        mkt: 1,
+        courier: 2,
+        ptl: 3
+    };
+    $rootScope.dateColors = [
+        "#FAFAD2",
+        "#F8F8FF",
+        "#F5F5DC",
+        "#F2F2F2",
+        "#F0F0F0",
+        "#EEEED1",
+        "#EEE8CD",
+        "#EEE0E5",
+        "#EED5D2",
+        "#EECBAD",
+        //max
+        "#FAFAD2",
+        "#F8F8FF",
+        "#F5F5DC",
+        "#F2F2F2",
+        "#F0F0F0",
+        "#EEEED1",
+        "#EEE8CD",
+        "#EEE0E5",
+        "#EED5D2",
+        "#EECBAD",
+        //max
+        "#FAFAD2",
+        "#F8F8FF",
+        "#F5F5DC",
+        "#F2F2F2",
+        "#F0F0F0",
+        "#EEEED1",
+        "#EEE8CD",
+        "#EEE0E5",
+        "#EED5D2",
+        "#EECBAD",
+        //max
+        "#FAFAD2"
+    ];
+    //用户信息
+    $rootScope.user = {};
+    $rootScope.user.type = parseInt(localStorage.getItem("userType"));
+    $rootScope.user.name = localStorage.getItem("userName");
+});
+app.controller("ctrlSidebar", function ($rootScope, $scope) {
+});
+
 $(function () {
     if (!common.isLogin()) {
         if (window.location.href.indexOf("login.html") == -1) {
@@ -221,17 +214,3 @@ $(function () {
     }
     $("#userName").text(localStorage.getItem("userName"));
 });
-
-var app = angular.module('app', []).run(function ($rootScope) {
-    $rootScope.userType = {
-        mkt: 1,
-        courier: 2,
-        ptl: 3
-    };
-    //用户信息
-    $rootScope.user = {};
-    $rootScope.user.type = parseInt(localStorage.getItem("userType"));
-});
-app.controller("ctrlSidebar", function ($rootScope, $scope) {
-});
-

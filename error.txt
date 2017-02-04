@@ -1,1 +1,4 @@
-none
+1.[illicit-list.html]缺[正在稽查]接口。#后台处理#
+2.[gift-records.html]按[时间]字段[倒序]。#后台处理#
+3.[gift-records.html]缺[根据OpenId查询兑奖记录]接口。#后台处理#
+4.[illicit-list.html]点击[按钮:取消积分]后刷新页面依然显示该条记录。#后台处理#

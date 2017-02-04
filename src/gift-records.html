@@ -33,48 +33,92 @@
             <div class="list-group"><a class="list-group-item active" href="javascript:;">SPR管理</a><a class="list-group-item" href="spr-handle.html">SPR状态查询</a></div>
           </div>
         </div>
-        <div class="col-sm-10 contaner" ng-controller="customersCtrl">
-          <h3 class="page-header">兑奖记录</h3>
-          <div class="wbFilter form-inline">
-            <div class="form-group">
-              <label class="control-label">快递单号：</label>
-              <label class="radio-inline">
-                <input type="radio" name="pkg" ng-model="filter.pkg" ng-value="2">全部
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="pkg" ng-model="filter.pkg" ng-value="1">已填单号
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="pkg" ng-model="filter.pkg" ng-value="0">未填单号
-              </label>
+        <div class="col-sm-10 contaner">
+          <div class="row">
+            <div class="col-sm-12" ng-controller="customersCtrl2">
+              <h3 class="page-header">兑奖信息查询</h3>
+              <div class="wbSearch form-inline">
+                <div class="input-group"><span class="input-group-addon">OpenId</span>
+                  <input class="form-control" type="text" placeholder="请输入" ng-model="txtOpenid"><span class="input-group-btn">
+                    <button class="btn btn-default btn-search" ng-click="getInfo()">搜索</button></span>
+                </div>
+              </div>
+              <div class="wbTable">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>记录id</th>
+                      <th>openid</th>
+                      <th>产品名称</th>
+                      <th>兑奖时间</th>
+                      <th>快递单号</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="item in tds">
+                      <td>{{item.id}}</td>
+                      <td>{{item.openid}}</td>
+                      <td>{{item.obj}}</td>
+                      <td>{{item.act_time}}</td>
+                      <td class="tdPackage">{{item.package}}</td>
+                      <td><a class="btn btn-info btn-sm" target="_blank" href="openid-info.html?openid={{item.openid}}">查看</a>
+                        <button class="btn btn-success btn-sm" ng-if="user.type==userType.courier" ng-click="inputPak($event,item.id)">录入单号</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-            <button class="btn btn-sm btn-success" ng-click="getPage()">确定</button>
-          </div>
-          <div class="wbTable">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th ng-repeat="item in ths">{{item}}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr ng-repeat="item in tds">
-                  <td>{{item.id}}</td>
-                  <td>{{item.openid}}</td>
-                  <td>{{item.obj}}</td>
-                  <td>{{item.act_time}}</td>
-                  <td class="tdPackage">{{item.package}}</td>
-                  <td><a class="btn btn-info btn-sm" target="_blank" href="openid-info.html?openid={{item.openid}}">查看</a>
-                    <button class="btn btn-success btn-sm" ng-if="user.type==userType.courier" ng-click="inputPak($event,item.id)">录入单号</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <div class="paginationer">
-              <label class="pull-left"><b class="lab-index">{{pagination.page}}</b>/<b class="lab-total">{{pagination.total}}</b></label>
-              <div class="pull-right">
-                <button class="btn btn-default btn-prev" ng-click="getPrevPage()">上一页</button>
-                <button class="btn btn-default btn-next" ng-click="getNextPage()">下一页</button>
+            <div class="col-sm-12" ng-controller="customersCtrl">
+              <h3 class="page-header">兑奖记录</h3>
+              <div class="wbFilter form-inline">
+                <div class="form-group">
+                  <label class="control-label">快递单号：</label>
+                  <label class="radio-inline">
+                    <input type="radio" name="pkg" ng-model="filter.pkg" ng-value="2">全部
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="pkg" ng-model="filter.pkg" ng-value="1">已填单号
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="pkg" ng-model="filter.pkg" ng-value="0">未填单号
+                  </label>
+                </div>
+                <button class="btn btn-sm btn-success" ng-click="pagination.getPage()">确定</button>
+              </div>
+              <div class="wbTable">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>记录id</th>
+                      <th>openid</th>
+                      <th>产品名称</th>
+                      <th>兑奖时间</th>
+                      <th>快递单号</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="item in tds">
+                      <td>{{item.id}}</td>
+                      <td>{{item.openid}}</td>
+                      <td>{{item.obj}}</td>
+                      <td>{{item.act_time}}</td>
+                      <td class="tdPackage">{{item.package}}</td>
+                      <td><a class="btn btn-info btn-sm" target="_blank" href="openid-info.html?openid={{item.openid}}">查看</a>
+                        <button class="btn btn-success btn-sm" ng-if="user.type==userType.courier" ng-click="inputPak($event,item.id)">录入单号</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="paginationer">
+                  <label class="pull-left"><b class="lab-index">{{pagination.page}}</b>/<b class="lab-total">{{pagination.total}}</b></label>
+                  <div class="pull-right">
+                    <button class="btn btn-default btn-prev" ng-click="pagination.getPrevPage()">上一页</button>
+                    <button class="btn btn-default btn-next" ng-click="pagination.getNextPage()">下一页</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

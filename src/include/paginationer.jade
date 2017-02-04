@@ -1,0 +1,8 @@
+.paginationer
+    label.pull-left
+        b.lab-index {{pagination.page}}
+        | /
+        b.lab-total {{pagination.total}}
+    .pull-right
+        button.btn.btn-default.btn-prev(ng-click="pagination.getPrevPage()") 上一页
+        button.btn.btn-default.btn-next(ng-click="pagination.getNextPage()") 下一页
