@@ -34,8 +34,8 @@
             <div class="col-sm-12">
               <input class="btn btn-primary col-sm-12" type="submit" ng-model="btnLogin" ng-click="login($event)">
             </div>
-          </div><br>
-          <div class="row">
+          </div><br ng-if="debug==1">
+          <div class="row" ng-if="debug==1">
             <div class="col-sm-4">
               <div class="btn btn-primary col-sm-12" ng-click="testInput(userType.ptl)">ptl</div>
             </div>

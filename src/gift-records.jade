@@ -27,7 +27,7 @@ html(lang='zh-cn',ng-app="app")
                                     span.input-group-addon OpenId
                                     input.form-control(type="text",placeholder="请输入",ng-model="txtOpenid")
                                     span.input-group-btn
-                                        button.btn.btn-default.btn-search(ng-click="getInfo()") 搜索
+                                        button.btn.btn-default.btn-search(ng-click="pagination.getPage()") 搜索
                             .wbTable
                                 table.table.table-bordered
                                     thead
@@ -48,6 +48,7 @@ html(lang='zh-cn',ng-app="app")
                                             td
                                                 a.btn.btn-info.btn-sm(target="_blank",href="openid-info.html?openid={{item.openid}}") 查看
                                                 button.btn.btn-success.btn-sm(ng-if="user.type==userType.courier",ng-click="inputPak($event,item.id)") 录入单号
+                                include include/paginationer.jade
                         .col-sm-12(ng-controller="customersCtrl")
                             h3.page-header 兑奖记录
                             .wbFilter.form-inline

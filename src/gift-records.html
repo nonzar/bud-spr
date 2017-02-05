@@ -40,7 +40,7 @@
               <div class="wbSearch form-inline">
                 <div class="input-group"><span class="input-group-addon">OpenId</span>
                   <input class="form-control" type="text" placeholder="请输入" ng-model="txtOpenid"><span class="input-group-btn">
-                    <button class="btn btn-default btn-search" ng-click="getInfo()">搜索</button></span>
+                    <button class="btn btn-default btn-search" ng-click="pagination.getPage()">搜索</button></span>
                 </div>
               </div>
               <div class="wbTable">
@@ -68,6 +68,13 @@
                     </tr>
                   </tbody>
                 </table>
+                <div class="paginationer">
+                  <label class="pull-left"><b class="lab-index">{{pagination.page}}</b>/<b class="lab-total">{{pagination.total}}</b></label>
+                  <div class="pull-right">
+                    <button class="btn btn-default btn-prev" ng-click="pagination.getPrevPage()">上一页</button>
+                    <button class="btn btn-default btn-next" ng-click="pagination.getNextPage()">下一页</button>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="col-sm-12" ng-controller="customersCtrl">

@@ -28,6 +28,7 @@ app.controller("ctrlLogin", function ($rootScope, $scope) {
             localStorage.setItem("userType", data.data.role);
             localStorage.setItem("userName", data.data.name);
             localStorage.setItem("loginTime", +new Date());
+            localStorage.setItem("debug", localStorage.getItem("debug"));
             $scope.btnLogin = "登录成功，跳转中...";
             //市场部1,快递2,ptl3
             window.location.href = common.userIndexUrl[data.data.role.toString()];
@@ -37,8 +38,8 @@ app.controller("ctrlLogin", function ($rootScope, $scope) {
     $scope.testInput = function (type) {
         switch (type) {
             case $rootScope.userType.ptl:
-                $scope.txtUser = "csq";
-                $scope.txtPass = "3ij21k";
+                $scope.txtUser = "mqp";
+                $scope.txtPass = "7qo3xm";
                 break;
             case $rootScope.userType.mkt:
                 $scope.txtUser = "market";

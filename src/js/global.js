@@ -157,6 +157,7 @@ Api.getOpenidInfo = function (para, callback) {
 
 
 var app = angular.module('app', []).run(function ($rootScope) {
+    $rootScope.debug = parseInt(localStorage.getItem("debug"));
     $rootScope.userType = {
         mkt: 1,
         courier: 2,

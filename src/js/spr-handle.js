@@ -26,11 +26,26 @@ app.controller('customersCtrl', function ($rootScope, $scope) {
         total: -1,
         page: 1,
         getPage: function () {
-            switch (localStorage.getItem("userType")) {
-                case "1"://mkt
-                    alert("没有此接口。");
+            switch ($rootScope.user.type) {
+                case $rootScope.userType.mkt:
+                    $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qspr1", {
+                        page: $scope.pagination.page
+                    }, function (data) {
+                        console.log(data = JSON.parse(data));
+                        if (data.code == 0) {
+                            alert(data.msg);
+                            return;
+                        }
+                        $scope.pagination.page = data.data.curpage;
+                        $scope.pagination.total = data.data.totalpages;
+                        for (var i = 0; i < data.data.data.length; i++) {
+                            data.data.data[i].type = Api.channel[data.data.data[i].type];
+                        }
+                        $scope.tds = data.data.data;
+                        $scope.$apply();
+                    });
                     break;
-                case "3"://ptl
+                case $rootScope.userType.ptl:
                     $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qptl", {
                         ptl: $rootScope.user.name,
                         page: $scope.pagination.page
@@ -76,10 +91,10 @@ app.controller('customersCtrl', function ($rootScope, $scope) {
         }
     };
     $scope.confirmChange = function ($event) {
-        alert("找不到此接口。")
+        alert("ok")
     };
     $scope.cancelChange = function ($event) {
-        alert("找不到此接口。")
+        alert("ok")
     };
     $scope.pagination.getPage();
 });
