@@ -5,7 +5,7 @@ html(lang='zh-cn',ng-app="app")
         meta(charset='utf-8')
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
         meta(name='viewport', content='width=device-width, initial-scale=1')
-        title 待处理可疑OpenId
+        title 已取消积分OpenId
         link(href='css/bootstrap.min.css', rel='stylesheet')
         link(href="css/global.css",rel="stylesheet")
     body
@@ -18,12 +18,13 @@ html(lang='zh-cn',ng-app="app")
                 .col-sm-2.sidebar(ng-controller="ctrlSidebar")
                     include include/sidebar.jade
                 .col-sm-10.contaner
-                    h3.page-header 待处理可疑OpenId
+                    h3.page-header 已取消积分OpenId
                     .wbTable(ng-controller="customersCtrl")
                         table.table.table-bordered
                             thead
                                 tr
-                                    th(ng-repeat="item in ths") {{item}}
+                                    th openid
+                                    th 操作
                             tbody
                                 tr(ng-repeat="item in tds")
                                     td {{item.openid}}
@@ -31,5 +32,5 @@ html(lang='zh-cn',ng-app="app")
                                         a.btn.btn-info.btn-sm(target="_blank",href="integral-info.html?openid={{item.openid}}") 查看
                                         button.btn.btn-success.btn-sm(ng-if="user.type==userType.mkt",ng-click="setLegal($event,item.openid)") 确认正常
                                         button.btn.btn-danger.btn-sm(ng-if="user.type==userType.mkt",ng-click="cancleIntegral($event,item.openid)") 取消积分
-                        include include/pagination.jade
+                        include include/paginationer.jade
         +includeScriptFiles("js/illicit-handle.js")

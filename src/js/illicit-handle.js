@@ -1,58 +1,48 @@
-var ctrl = {
-    $scope: null,
-    pagination: {},
-    reset: function () {
-        ctrl.pagination = {
-            totalPage: -1,
-            sort: 0,
-            page: 1
-        };
-    },
-    getPage: function () {
-        $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qwarn", {
-            page: ctrl.pagination.page,
-            name: $rootScope.user.name,
-            type: $rootScope.user.type
-        }, function (data) {
-            console.log(data = JSON.parse(data));
-            ctrl.pagination.totalPage = parseInt(data.data.totalpages);
-            $(".paginationer .lab-total").text(ctrl.pagination.totalPage);
-            $(".paginationer .lab-index").text(ctrl.pagination.page);
-            ctrl.$scope.$apply(function () {
-                ctrl.$scope.tds = data.data.data;
-            });
-        });
-    },
-    getPrevPage: function () {
-        if (ctrl.pagination.totalPage == -1) {
-            return;
-        }
-        if (ctrl.pagination.page <= 1) {
-            alert("已经是第一页。");
-            return;
-        }
-        ctrl.pagination.page--;
-        ctrl.getPage();
-    },
-    getNextPage: function () {
-        if (ctrl.pagination.totalPage == -1) {
-            return;
-        }
-        else if (ctrl.pagination.page >= ctrl.pagination.totalPage) {
-            alert("已经是最后一页。");
-            return;
-        }
-        ctrl.pagination.page++;
-        ctrl.getPage();
-    }
-};
+app.controller('customersCtrl', function ($rootScope,$scope) {
+    $scope.pagination = {
+        total: -1,
+        page: 1,
+        getPage: function () {
 
-app.controller('customersCtrl', function ($scope) {
-    ctrl.$scope = $scope;
-    $scope.ths = [
-        "openid",
-        "操作"
-    ];
+            $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qwarn", {
+                page: $scope.pagination.page,
+                name: $rootScope.user.name,
+                type: $rootScope.user.type
+            }, function (data) {
+                console.log(data = JSON.parse(data));
+                if (data.code == 0) {
+                    alert(data.msg);
+                    return;
+                }
+                $scope.pagination.page = data.data.curpage;
+                $scope.pagination.total = data.data.totalpages;
+                $scope.tds = data.data.data;
+                $scope.$apply();
+            });
+        },
+        getPrevPage: function () {
+            if ($scope.pagination.total == -1) {
+                return;
+            }
+            if ($scope.pagination.page <= 1) {
+                alert("已经是第一页。");
+                return;
+            }
+            $scope.pagination.page--;
+            $scope.pagination.getPage();
+        },
+        getNextPage: function () {
+            if ($scope.pagination.total == -1) {
+                return;
+            }
+            else if ($scope.pagination.page >= $scope.pagination.total) {
+                alert("已经是最后一页。");
+                return;
+            }
+            $scope.pagination.page++;
+            $scope.pagination.getPage();
+        }
+    };
     $scope.setLegal = function ($event, openid) {
         if ($event.target.classList.contains("disabled")) {
             return;
@@ -81,12 +71,5 @@ app.controller('customersCtrl', function ($scope) {
             }
         });
     };
-    ctrl.reset();
-    ctrl.getPage();
-});
-$(".wbTable .btn-prev").on("click", function () {
-    ctrl.getPrevPage();
-});
-$(".wbTable .btn-next").on("click", function () {
-    ctrl.getNextPage();
+    $scope.pagination.getPage();
 });
