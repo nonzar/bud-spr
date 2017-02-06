@@ -28,15 +28,15 @@ html(lang='zh-cn',ng-app="app")
                         .form-group
                             label.col-sm-1.control-label(for='name') spr名字
                             .col-sm-11
-                                input#name.form-control(type='text',placeholder='spr名字',ng-model="txtName")
+                                input#name.form-control(type='text',placeholder='spr名字',ng-model="txtName",readonly="readonly")
                         .form-group
                             label.col-sm-1.control-label(for='region') 大区
                             .col-sm-11
-                                input#region.form-control(type='text',placeholder='大区',ng-model="txtRegion")
+                                input#region.form-control(type='text',placeholder='大区',ng-model="txtRegion",readonly="readonly")
                         .form-group
                             label.col-sm-1.control-label(for='city') 城市
                             .col-sm-11
-                                input#city.form-control(type='text',placeholder='城市',ng-model="txtCity")
+                                input#city.form-control(type='text',placeholder='城市',ng-model="txtCity",readonly="readonly")
                         .form-group
                             label.col-sm-1.control-label(for='qtype') 店铺类型
                             .col-sm-11

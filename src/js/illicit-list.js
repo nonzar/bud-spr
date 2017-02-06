@@ -1,3 +1,4 @@
+var test = {};
 app.controller('customersCtrl', function ($rootScope, $scope) {
     $scope.pagination = {
         total: -1,
@@ -93,9 +94,9 @@ app.controller('customersCtrl', function ($rootScope, $scope) {
             ischecked: ischeckec
         }, function (data) {
             console.log(data = JSON.parse(data));
+            alert(data.msg);
             if (data.code == 0) {
-                alert(data.msg);
-                return;
+                // return;
             }
         });
     };

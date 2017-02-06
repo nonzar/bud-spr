@@ -1,7 +1,5 @@
-
-var ctrl = {}, app = angular.module("app", []);
-app.controller("ngCtrl", function ($scope) {
-    ctrl.$scope = $scope;
+var app = angular.module("app", []);
+app.controller("ngCtrl", function ($rootScope, $scope) {
     $scope.txtCode = "006494";
     $scope.txtName = "";
     $scope.txtRegion = "";
@@ -17,19 +15,17 @@ app.controller("ngCtrl", function ($scope) {
             qtype: $scope.txtQtype,
             isover: $scope.radIsover
         }, function (data) {
-            // debugger;
             alert(data.msg);
         });
     };
     $scope.f_getInfo = function () {
         Api.getSprInfo({
-            sprCode: $("#code").val()
+            sprCode: $scope.txtCode
         }, function (data) {
             if (data.code == 0) {
                 alert(data.msg);
                 return;
             }
-            // debugger;
             $scope.txtCode = data.data.code;
             $scope.txtName = data.data.name;
             $scope.txtRegion = data.data.region;
@@ -43,7 +39,6 @@ app.controller("ngCtrl", function ($scope) {
     console.log(url_code);
     if (url_code) {
         $scope.txtCode = url_code;
-        $scope.$apply();
         $scope.f_getInfo();
     }
 });
