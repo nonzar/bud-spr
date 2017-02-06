@@ -1,10 +1,10 @@
 app.controller('customersCtrl2', function ($scope) {
     $scope.txtSpr = "862094";
     $scope.confirmChange = function ($event) {
-        alert("找不到此接口。");
+        alert("ok")
     };
     $scope.cancelChange = function ($event) {
-        alert("找不到此接口。");
+        alert("ok")
     };
     $scope.getSprInfo = function () {
         Api.getSprInfo({
