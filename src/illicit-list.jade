@@ -34,8 +34,7 @@ html(lang='zh-cn',ng-app="app")
                         table.table.table-bordered
                             thead
                                 tr
-                                    th 已核查
-                                    th 正在稽查
+                                    th 核查状态
                                     th openid
                                     th 促销员
                                     th 异常天数
@@ -43,9 +42,7 @@ html(lang='zh-cn',ng-app="app")
                             tbody
                                 tr(ng-repeat="item in tds")
                                     td
-                                        input(type="checkbox",ng-init="chkCheckeds[$index]=item.ischecked=='1'?true:false",ng-model="chkCheckeds[$index]",ng-change="setChecked($index,item.openid)")
-                                    td
-                                        input(type="checkbox",ng-model="chkCheckings[$index]",ng-change="setChecking($index,item.openid)")
+                                        select(ng-init="select=(item.ischecked=='0'?'未稽查':(item.ischecked=='1'?'稽查中':'已稽查'))",ng-model="select",ng-options="x for x in ['未稽查','稽查中','已稽查'] track by x",ng-change="setTag($index,item.openid,select)")
                                     td {{item.openid}}
                                     td {{item.lastspr}}
                                     td {{item.score_times}}

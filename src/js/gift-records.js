@@ -18,7 +18,7 @@ app.controller('customersCtrl2', function ($rootScope,$scope) {
                 $scope.pagination.page = data.data.curpage;
                 $scope.pagination.total = data.data.totalpages;
                 for (var i = 0; i < data.data.data.length; i++) {
-                    data.data.data[i].obj = common.gifts[data.data.data[i].obj];
+                    data.data.data[i].obj = $rootScope.gifts[data.data.data[i].obj];
                 }
                 $scope.tds = data.data.data;
                 $scope.$apply();
@@ -84,7 +84,7 @@ app.controller('customersCtrl', function ($rootScope, $scope) {
                 $scope.pagination.page = data.data.curpage;
                 $scope.pagination.total = data.data.totalpages;
                 for (var i = 0; i < data.data.data.length; i++) {
-                    data.data.data[i].obj = common.gifts[data.data.data[i].obj];
+                    data.data.data[i].obj = $rootScope.gifts[data.data.data[i].obj];
                 }
                 $scope.tds = data.data.data;
                 $scope.$apply();
@@ -114,7 +114,7 @@ app.controller('customersCtrl', function ($rootScope, $scope) {
         }
     };
     $scope.filter = {
-        pkg: 2
+        pkg: 0
     };
     $scope.inputPak = function ($event, id) {
         var pak = prompt("录入修改快递单号");

@@ -1,4 +1,3 @@
-
 var ctrl = {
     $scope: null,
     pagination: {},
@@ -12,7 +11,8 @@ var ctrl = {
     getPage: function () {
         $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qwarn", {
             page: ctrl.pagination.page,
-            type: localStorage.getItem("userType")
+            name: $rootScope.user.name,
+            type: $rootScope.user.type
         }, function (data) {
             console.log(data = JSON.parse(data));
             ctrl.pagination.totalPage = parseInt(data.data.totalpages);
@@ -50,7 +50,6 @@ var ctrl = {
 app.controller('customersCtrl', function ($scope) {
     ctrl.$scope = $scope;
     $scope.ths = [
-        // "#",
         "openid",
         "操作"
     ];

@@ -56,8 +56,6 @@ app.controller('customersCtrl', function ($rootScope, $scope) {
     $scope.filter = {
         day: 3
     };
-    $scope.chkCheckeds = [];
-    $scope.chkCheckings = [];
     $scope.setIllicit = function ($event, openid) {
         if ($event.target.classList.contains("disabled")) {
             alert("已列入可疑");
@@ -76,25 +74,28 @@ app.controller('customersCtrl', function ($rootScope, $scope) {
             $event.target.classList.add("disabled");
         });
     };
-    $scope.setChecked = function ($index, openid) {
+    $scope.setTag = function ($index, openid, select) {
+        var ischeckec = 0;
+        switch (select) {
+            case "未稽查":
+                ischeckec = 0;
+                break;
+            case "稽查中":
+                ischeckec = 1;
+                break;
+            case "已稽查":
+                ischeckec = 2;
+                break;
+            default:
+        }
         $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/uchecked", {
             openid: openid,
-            ischecked: $scope.chkCheckeds[$index] && 1 || 0
+            ischecked: ischeckec
         }, function (data) {
             console.log(data = JSON.parse(data));
-            alert(data.msg);
             if (data.code == 0) {
-            }
-        });
-    };
-    $scope.setChecking = function ($index, openid) {
-        $.post("", {
-            openid: openid,
-            ischecked: $scope.chkCheckings[$index] && 1 || 0
-        }, function (data) {
-            console.log(data = JSON.parse(data));
-            alert(data.msg);
-            if (data.code == 0) {
+                alert(data.msg);
+                return;
             }
         });
     };
