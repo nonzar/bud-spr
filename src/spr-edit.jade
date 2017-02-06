@@ -40,16 +40,16 @@ html(lang='zh-cn',ng-app="app")
                         .form-group
                             label.col-sm-1.control-label(for='qtype') 店铺类型
                             .col-sm-11
-                                input#qtype.form-control(type='text',placeholder='店铺类型',ng-model="txtQtype")
+                                select#qtype.form-control(ng-model="txtQtype",ng-options="x for x in ['中餐','西餐','夜场'] track by x")
                         .form-group
-                            label.col-sm-1.control-label(for='') 离职
+                            label.col-sm-1.control-label(for='') 离职状态
                             .col-sm-11
                                 label.radio-inline
                                     input(type="radio",name="isover",value="0",ng-model="radIsover")
-                                    |  是
+                                    |  离职
                                 label.radio-inline
                                     input(type="radio",name="isover", value="1",ng-model="radIsover")
-                                    |  否
+                                    |  在职
                         .form-group
                             .col-sm-offset-1.col-sm-11
                                 button.btn.btn-primary.btn-submit(ng-click="f_submit()") 提交

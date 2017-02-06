@@ -95,9 +95,27 @@ app.controller('customersCtrl', function ($rootScope, $scope) {
         }, function (data) {
             console.log(data = JSON.parse(data));
             alert(data.msg);
+            $scope.setColor($index, ischeckec.toString());
             if (data.code == 0) {
-                // return;
+                return;
             }
         });
+    };
+    $scope.setColor = function ($index, ischecked) {
+        var color = "#fff";
+        switch (ischecked) {
+            case "0":
+
+                break;
+            case "1":
+                color = "#529BDA";
+                break;
+            case "2":
+                color = "#5cb85c";
+                break;
+            default:
+
+        }
+        $(".wbTable tr").eq($index+1).css("background-color", color);
     };
 });

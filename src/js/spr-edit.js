@@ -1,5 +1,20 @@
 var app = angular.module("app", []);
 app.controller("ngCtrl", function ($rootScope, $scope) {
+    $scope.getNameByType = function (type) {
+        type = parseInt(type);
+        switch (type) {
+            case 0:
+                return '中餐';
+                break;
+            case 1:
+                return '西餐';
+                break;
+            case 2:
+                return '夜场';
+                break;
+            default:
+        }
+    };
     $scope.txtCode = "006494";
     $scope.txtName = "";
     $scope.txtRegion = "";
@@ -30,7 +45,7 @@ app.controller("ngCtrl", function ($rootScope, $scope) {
             $scope.txtName = data.data.name;
             $scope.txtRegion = data.data.region;
             $scope.txtCity = data.data.city;
-            $scope.txtQtype = data.data.type;
+            $scope.txtQtype = $scope.getNameByType(data.data.type);
             $scope.radIsover = data.data.isover;
             $scope.$apply();
         });

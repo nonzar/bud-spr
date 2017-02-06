@@ -40,7 +40,7 @@ html(lang='zh-cn',ng-app="app")
                                     th 异常天数
                                     th 处理
                             tbody
-                                tr(ng-repeat="item in tds")
+                                tr(ng-repeat="item in tds",ng-init="setColor($index,item.ischecked)")
                                     td
                                         select(ng-init="select=(item.ischecked=='0'?'未稽查':(item.ischecked=='1'?'稽查中':'已稽查'))",ng-model="select",ng-options="x for x in ['未稽查','稽查中','已稽查'] track by x",ng-change="setTag($index,item.openid,select)")
                                     td {{item.openid}}
