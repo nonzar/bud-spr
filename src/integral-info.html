@@ -46,8 +46,8 @@
               </thead>
               <tbody>
                 <tr ng-repeat="item in tds">
-                  <td>{{item.openid}}i</td>
-                  <td>{{item.obj}}</td>
+                  <td>{{item.openid}}</td>
+                  <td>{{products[item.obj]}}</td>
                   <td>{{item.vendor}}</td>
                   <td style="background-color:{{setDateColor(item.act_time)}}">{{item.act_time}}</td>
                   <td>{{item.sprtype}}</td>
