@@ -84,5 +84,20 @@ app.controller('customersCtrl', function ($rootScope, $scope) {
             $scope.pagination.getPage();
         }
     };
+    $scope.getNameByType = function (type) {
+        type = parseInt(type);
+        switch (type) {
+            case 0:
+                return '中餐';
+                break;
+            case 1:
+                return '西餐';
+                break;
+            case 2:
+                return '夜场';
+                break;
+            default:
+        }
+    };
     $scope.pagination.getPage();
 });

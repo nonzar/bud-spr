@@ -1,32 +1,18 @@
 var app = angular.module("app", []);
 app.controller("ngCtrl", function ($rootScope, $scope) {
-    $scope.getNameByType = function (type) {
-        type = parseInt(type);
-        switch (type) {
-            case 0:
-                return '中餐';
-                break;
-            case 1:
-                return '西餐';
-                break;
-            case 2:
-                return '夜场';
-                break;
-            default:
-        }
-    };
-    $scope.txtCode = "006494";
+    $scope.txtCode = "";
     $scope.txtName = "";
     $scope.txtRegion = "";
     $scope.txtCity = "";
+    $scope.qtype = [{value: 0, text: '中餐'}, {value: 1, text: '西餐'}, {value: 2, text: '夜场'}];
     $scope.txtQtype = "";
     $scope.radIsover = "";
     $scope.f_submit = function () {
         Api.setSprInfo({
             code: $scope.txtCode,
-            name: $scope.txtName,
-            region: $scope.txtRegion,
-            city: $scope.txtCity,
+            // name: $scope.txtName,
+            // region: $scope.txtRegion,
+            // city: $scope.txtCity,
             qtype: $scope.txtQtype,
             isover: $scope.radIsover
         }, function (data) {
@@ -45,10 +31,25 @@ app.controller("ngCtrl", function ($rootScope, $scope) {
             $scope.txtName = data.data.name;
             $scope.txtRegion = data.data.region;
             $scope.txtCity = data.data.city;
-            $scope.txtQtype = $scope.getNameByType(data.data.type);
+            $scope.txtQtype = $scope.qtype[parseInt(data.data.type)];
             $scope.radIsover = data.data.isover;
             $scope.$apply();
         });
+    };
+    $scope.getNameByType = function (type) {
+        type = parseInt(type);
+        switch (type) {
+            case 0:
+                return '中餐';
+                break;
+            case 1:
+                return '西餐';
+                break;
+            case 2:
+                return '夜场';
+                break;
+            default:
+        }
     };
     var url_code = common.getURLParameter("code");
     console.log(url_code);

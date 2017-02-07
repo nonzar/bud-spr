@@ -40,7 +40,7 @@ html(lang='zh-cn',ng-app="app")
                         .form-group
                             label.col-sm-1.control-label(for='qtype') 店铺类型
                             .col-sm-11
-                                select#qtype.form-control(ng-model="txtQtype",ng-options="x for x in ['中餐','西餐','夜场'] track by x")
+                                select#qtype.form-control(ng-model="txtQtype",ng-options="x.text for x in qtype track by x.value")
                         .form-group
                             label.col-sm-1.control-label(for='') 离职状态
                             .col-sm-11
