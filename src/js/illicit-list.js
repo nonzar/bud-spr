@@ -3,10 +3,10 @@ app.controller('customersCtrl', function ($rootScope, $scope) {
     $scope.pagination = {
         total: -1,
         page: 1,
-        getPage: function () {
+        getPage: function (page) {
             $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/quser", {
                 times: $scope.filter.day,
-                page: $scope.pagination.page,
+                page: page == undefined ? $scope.pagination.page : $scope.pagination.jumpPage,
                 ptl: function () {
                     switch ($rootScope.user.type) {
                         case $rootScope.userType.ptl:

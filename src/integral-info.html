@@ -60,8 +60,18 @@
             <div class="paginationer">
               <label class="pull-left"><b class="lab-index">{{pagination.page}}</b>/<b class="lab-total">{{pagination.total}}</b></label>
               <div class="pull-right">
-                <button class="btn btn-default btn-prev" ng-click="pagination.getPrevPage()">上一页</button>
-                <button class="btn btn-default btn-next" ng-click="pagination.getNextPage()">下一页</button>
+                <div class="form-inline">
+                  <div class="input-group">
+                    <button class="btn btn-default btn-prev" ng-click="pagination.getPrevPage()">上一页</button>
+                  </div>
+                  <div class="input-group">
+                    <button class="btn btn-default btn-next" ng-click="pagination.getNextPage()">下一页</button>
+                  </div>
+                  <div class="input-group"><span class="input-group-addon">页码</span>
+                    <input class="form-control" type="text" placeholder="请输入" ng-model="pagination.jumpPage"><span class="input-group-btn">
+                      <button class="btn btn-default btn-jump" ng-click="pagination.getPage(pagination.jumpPage)">跳转</button></span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
