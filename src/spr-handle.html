@@ -69,10 +69,7 @@
                       <td>{{item.type}}</td>
                       <td>{{item.ptl}}</td>
                       <td>{{item.isover=="1"?"在职":"离职"}}</td>
-                      <td><a class="btn btn-sm btn-primary" target="_blank" href="spr-edit.html?code={{item.code}}">修改</a>
-                        <button class="btn btn-sm btn-success" ng-if="user.type==userType.mkt" ng-click="confirmChange($event)">确认修改</button>
-                        <button class="btn btn-sm btn-danger" ng-if="user.type==userType.mkt" ng-click="cancelChange($event)">取消修改</button>
-                      </td>
+                      <td><a class="btn btn-sm btn-primary" target="_blank" href="spr-edit.html?code={{item.code}}">修改</a></td>
                     </tr>
                   </tbody>
                 </table>
@@ -80,8 +77,7 @@
             </div>
             <div class="col-sm-12" ng-controller="customersCtrl">
               <h3 class="page-header" ng-if="user.type==userType.ptl">名下所有SPR</h3>
-              <h3 class="page-header" ng-if="user.type==userType.mkt">待确认SPR修改请求</h3>
-              <div class="wbAllSpr" ng-controller="customersCtrl2">
+              <div class="wbAllSpr" ng-controller="customersCtrl" ng-if="user.type==userType.ptl">
                 <table class="table table-bordered">
                   <thead>
                     <tr>
@@ -108,10 +104,7 @@
                       <td>{{item.type}}</td>
                       <td>{{item.ptl}}</td>
                       <td>{{item.isover=="1"?"在职":"离职"}}</td>
-                      <td><a class="btn btn-sm btn-primary" target="_blank" href="spr-edit.html?code={{item.code}}">修改</a>
-                        <button class="btn btn-sm btn-success" ng-if="user.type==userType.mkt" ng-click="confirmChange($event)">确认修改</button>
-                        <button class="btn btn-sm btn-danger" ng-if="user.type==userType.mkt" ng-click="cancelChange($event)">取消修改</button>
-                      </td>
+                      <td><a class="btn btn-sm btn-primary" target="_blank" href="spr-edit.html?code={{item.code}}">修改</a></td>
                     </tr>
                   </tbody>
                 </table>

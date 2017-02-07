@@ -1,11 +1,5 @@
 app.controller('customersCtrl2', function ($scope) {
-    $scope.txtSpr = "862094";
-    $scope.confirmChange = function ($event) {
-        alert("ok")
-    };
-    $scope.cancelChange = function ($event) {
-        alert("ok")
-    };
+    $scope.txtSpr = "";
     $scope.getSprInfo = function () {
         Api.getSprInfo({
             sprCode: $scope.txtSpr
@@ -28,22 +22,22 @@ app.controller('customersCtrl', function ($rootScope, $scope) {
         getPage: function () {
             switch ($rootScope.user.type) {
                 case $rootScope.userType.mkt:
-                    $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qspr1", {
-                        page: $scope.pagination.page
-                    }, function (data) {
-                        console.log(data = JSON.parse(data));
-                        if (data.code == 0) {
-                            alert(data.msg);
-                            return;
-                        }
-                        $scope.pagination.page = data.data.curpage;
-                        $scope.pagination.total = data.data.totalpages;
-                        for (var i = 0; i < data.data.data.length; i++) {
-                            data.data.data[i].type = Api.channel[data.data.data[i].type];
-                        }
-                        $scope.tds = data.data.data;
-                        $scope.$apply();
-                    });
+                    // $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qspr1", {
+                    //     page: $scope.pagination.page
+                    // }, function (data) {
+                    //     console.log(data = JSON.parse(data));
+                    //     if (data.code == 0) {
+                    //         alert(data.msg);
+                    //         return;
+                    //     }
+                    //     $scope.pagination.page = data.data.curpage;
+                    //     $scope.pagination.total = data.data.totalpages;
+                    //     for (var i = 0; i < data.data.data.length; i++) {
+                    //         data.data.data[i].type = Api.channel[data.data.data[i].type];
+                    //     }
+                    //     $scope.tds = data.data.data;
+                    //     $scope.$apply();
+                    // });
                     break;
                 case $rootScope.userType.ptl:
                     $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qptl", {
@@ -89,12 +83,6 @@ app.controller('customersCtrl', function ($rootScope, $scope) {
             $scope.pagination.page++;
             $scope.pagination.getPage();
         }
-    };
-    $scope.confirmChange = function ($event) {
-        alert("ok")
-    };
-    $scope.cancelChange = function ($event) {
-        alert("ok")
     };
     $scope.pagination.getPage();
 });

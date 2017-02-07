@@ -59,7 +59,7 @@ app.controller('customersCtrl', function ($rootScope, $scope) {
         }
     ];
     $scope.selFormSearch = $scope.FSKeys[0];
-    $scope.txtText = "862094";
+    $scope.txtText = "";
     //自动显示
     var url_spr = common.getURLParameter("spr"),
         url_openid = common.getURLParameter("openid");

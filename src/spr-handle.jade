@@ -54,12 +54,9 @@ html(lang='zh-cn',ng-app="app")
                                             td {{item.isover=="1"?"在职":"离职"}}
                                             td
                                                 a.btn.btn-sm.btn-primary(target="_blank",href="spr-edit.html?code={{item.code}}") 修改
-                                                button.btn.btn-sm.btn-success(ng-if="user.type==userType.mkt",ng-click="confirmChange($event)") 确认修改
-                                                button.btn.btn-sm.btn-danger(ng-if="user.type==userType.mkt",ng-click="cancelChange($event)") 取消修改
                         .col-sm-12(ng-controller="customersCtrl")
                             h3.page-header(ng-if="user.type==userType.ptl") 名下所有SPR
-                            h3.page-header(ng-if="user.type==userType.mkt") 待确认SPR修改请求
-                            .wbAllSpr(ng-controller="customersCtrl2")
+                            .wbAllSpr(ng-controller="customersCtrl",ng-if="user.type==userType.ptl")
                                 table.table.table-bordered
                                     thead
                                         tr
@@ -86,7 +83,5 @@ html(lang='zh-cn',ng-app="app")
                                             td {{item.isover=="1"?"在职":"离职"}}
                                             td
                                                 a.btn.btn-sm.btn-primary(target="_blank",href="spr-edit.html?code={{item.code}}") 修改
-                                                button.btn.btn-sm.btn-success(ng-if="user.type==userType.mkt",ng-click="confirmChange($event)") 确认修改
-                                                button.btn.btn-sm.btn-danger(ng-if="user.type==userType.mkt",ng-click="cancelChange($event)") 取消修改
                                 include include/paginationer.jade
         +includeScriptFiles("js/spr-handle.js")
