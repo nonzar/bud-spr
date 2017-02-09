@@ -53,7 +53,7 @@ app.controller('customersCtrl2', function ($rootScope, $scope) {
         if (!pak) {
             return;
         }
-        Api.editExpress({
+        $rootScope.port.editExpress({
             id: id,
             pak: pak
         }, function (data) {
@@ -121,7 +121,7 @@ app.controller('customersCtrl', function ($rootScope, $scope) {
         if (!pak) {
             return;
         }
-        Api.editExpress({
+        $rootScope.port.editExpress({
             id: id,
             pak: pak
         }, function (data) {

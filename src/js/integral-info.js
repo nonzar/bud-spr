@@ -61,8 +61,8 @@ app.controller('customersCtrl', function ($rootScope, $scope) {
     $scope.selFormSearch = $scope.FSKeys[0];
     $scope.txtText = "";
     //自动显示
-    var url_spr = common.getURLParameter("spr"),
-        url_openid = common.getURLParameter("openid");
+    var url_spr = $rootScope.getURLParameter("spr"),
+        url_openid = $rootScope.getURLParameter("openid");
     if (url_spr) {
         console.log(url_spr);
         $scope.txtText = url_spr;

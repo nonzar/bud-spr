@@ -1,7 +1,6 @@
 app.controller("ctrlLogin", function ($rootScope, $scope) {
-    if (common.isLogin()) {
-        //市场部1,快递2,ptl3
-        window.location.href = common.userIndexUrl[localStorage.getItem("userType")];
+    if ($rootScope.isLogin()) {
+        window.location.href = $rootScope.userIndexUrl[$rootScope.user.type.toString()];
     }
     $scope.txtUser = "";
     $scope.txtPass = "";
@@ -31,7 +30,7 @@ app.controller("ctrlLogin", function ($rootScope, $scope) {
             localStorage.setItem("debug", localStorage.getItem("debug"));
             $scope.btnLogin = "登录成功，跳转中...";
             //市场部1,快递2,ptl3
-            window.location.href = common.userIndexUrl[data.data.role.toString()];
+            window.location.href = $rootScope.userIndexUrl[data.data.role.toString()];
         });
     };
     //test code

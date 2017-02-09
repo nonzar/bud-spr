@@ -1,14 +1,14 @@
-app.controller('customersCtrl2', function ($scope) {
+app.controller('customersCtrl2', function ($rootScope, $scope) {
     $scope.txtSpr = "";
     $scope.getSprInfo = function () {
-        Api.getSprInfo({
+        $rootScope.port.getSprInfo({
             sprCode: $scope.txtSpr
         }, function (data) {
             if (data.code == 0) {
                 alert(data.msg);
                 return;
             }
-            data.data.type = Api.channel[data.data.type];
+            data.data.type = $rootScope.getChannelName(parseInt(data.data.type));
             $scope.tds = [data.data];
             $scope.$apply();
         });
@@ -36,7 +36,7 @@ app.controller('customersCtrl', function ($rootScope, $scope) {
                         $scope.pagination.page = data.data.curpage;
                         $scope.pagination.total = data.data.totalpages;
                         for (var i = 0; i < data.data.data.length; i++) {
-                            data.data.data[i].type = Api.channel[data.data.data[i].type];
+                            data.data.data[i].type = $rootScope.getChannelName(parseInt(data.data.data[i].type));
                         }
                         $scope.tds = data.data.data;
                         $scope.$apply();

@@ -12,7 +12,7 @@
     <div class="container-fluid header">
       <div class="row">
         <div class="col-sm-12">
-          <p>你好，<a id="userName" href="all.html"></a><a class="pull-right" href="javascript:common.loginOut();">退出</a></p>
+          <p>你好，<a id="userName" href="all.html"></a><a class="pull-right" href="javascript:loginOut();">退出</a></p>
         </div>
       </div>
     </div>
@@ -22,15 +22,18 @@
           <h3 class="page-header">OpenId详情查询</h3>
           <form class="form-inline wbSearch">
             <div class="input-group"><span class="input-group-addon">OpenId</span>
-              <input class="form-control" type="text" placeholder="请输入" value="o7k0At5xSIdXErec82WB3VJ3P7Rc"><span class="input-group-btn">
-                <button class="btn btn-default btn-search" type="button">搜索</button></span>
+              <input class="form-control" type="text" placeholder="请输入" ng-model="openid"><span class="input-group-btn">
+                <button class="btn btn-default btn-search" ng-click="search()">搜索</button></span>
             </div>
           </form>
           <div class="wbTable" ng-controller="customersCtrl">
             <table class="table table-bordered">
               <thead>
                 <tr>
-                  <th ng-repeat="item in ths">{{item}}</th>
+                  <td>openid</td>
+                  <td>姓名</td>
+                  <td>电话</td>
+                  <td>地址</td>
                 </tr>
               </thead>
               <tbody>

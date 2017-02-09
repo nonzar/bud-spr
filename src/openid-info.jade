@@ -20,14 +20,17 @@ html(lang='zh-cn',ng-app="app")
                     form.form-inline.wbSearch
                         .input-group
                             span.input-group-addon OpenId
-                            input.form-control(type="text",placeholder="请输入",value="o7k0At5xSIdXErec82WB3VJ3P7Rc")
+                            input.form-control(type="text",placeholder="请输入",ng-model="openid")
                             span.input-group-btn
-                                button.btn.btn-default.btn-search(type="button") 搜索
+                                button.btn.btn-default.btn-search(ng-click="search()") 搜索
                     .wbTable(ng-controller="customersCtrl")
                         table.table.table-bordered
                             thead
                                 tr
-                                    th(ng-repeat="item in ths") {{item}}
+                                    td openid
+                                    td 姓名
+                                    td 电话
+                                    td 地址
                             tbody
                                 tr(ng-repeat="item in tds")
                                     td {{item.openid}}

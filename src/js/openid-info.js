@@ -1,29 +1,19 @@
-
-
-app.controller('customersCtrl', function ($scope) {
-    $scope.ths = [
-        // "#",
-        "openid",
-        "姓名",
-        "电话",
-        "地址"
-    ];
-    $(".wbSearch button").on("click", function () {
-        Api.getOpenidInfo({
-            openid: $(".wbSearch input[type='text']").val()
+app.controller('customersCtrl', function ($rootScope, $scope) {
+    $scope.openid = null;
+    $scope.search = function () {
+        $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qopenid", {
+            openid: $scope.openid
         }, function (data) {
-            $scope.$apply(function () {
-                data.data.type = Api.channel[data.data.type];
-                $scope.tds = [data.data];
-            });
+            console.log(data = JSON.parse(data));
+            data.data.type = $rootScope.getChannelName(parseInt(data.data.type));
+            $scope.tds = [data.data];
+            $scope.$apply();
         });
-    });
-});
-$(function () {
-    var url_openid = common.getURLParameter("openid");
-    console.log(url_openid);
+    };
+
+    var url_openid = $rootScope.getURLParameter("openid");
     if (url_openid) {
-        $(".wbSearch input[type='text']").val(url_openid);
-        $(".wbSearch button").click();
+        $scope.openid = url_openid;
+        $scope.search();
     }
 });

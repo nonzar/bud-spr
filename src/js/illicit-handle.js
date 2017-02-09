@@ -1,4 +1,4 @@
-app.controller('customersCtrl', function ($rootScope,$scope) {
+app.controller('customersCtrl', function ($rootScope, $scope) {
     $scope.pagination = {
         total: -1,
         page: 1,
@@ -47,10 +47,12 @@ app.controller('customersCtrl', function ($rootScope,$scope) {
         if ($event.target.classList.contains("disabled")) {
             return;
         }
-        Api.setOpenidForLegal({
+        $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/uopenid", {
             openid: openid,
-            usertype: Api.userType.mkt
+            type: 1,
+            main: $rootScope.user.type
         }, function (data) {
+            console.log(data = JSON.parse(data));
             alert(data.msg);
             if (data.code != 0) {
                 $event.target.classList.add("disabled");
@@ -61,10 +63,12 @@ app.controller('customersCtrl', function ($rootScope,$scope) {
         if ($event.target.classList.contains("disabled")) {
             return;
         }
-        Api.cancleIntegral({
+        $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/uopenid", {
             openid: openid,
-            usertype: Api.userType.mkt
+            type: 2,
+            usertype: $rootScope.userType.mkt
         }, function (data) {
+            console.log(data = JSON.parse(data));
             alert(data.msg);
             if (data.code != 0) {
                 $event.target.classList.add("disabled");
