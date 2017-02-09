@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn" ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>登录</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/global.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="wbLogin" ng-controller="ctrlLogin">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="page-header">登录</h1>
+          </div>
+        </div>
+        <form>
+          <div class="row">
+            <div class="col-sm-12">
+              <label for="user">账号</label>
+              <input class="form-control" id="user" type="text" placeholder="账号" ng-model="txtUser">
+            </div>
+          </div><br>
+          <div class="row">
+            <div class="col-sm-12">
+              <label for="pass">密码</label>
+              <input class="form-control" id="pass" type="password" placeholder="密码" ng-model="txtPass">
+            </div>
+          </div><br>
+          <div class="row">
+            <div class="col-sm-12">
+              <input class="btn btn-primary col-sm-12" type="submit" ng-model="btnLogin" ng-click="login($event)">
+            </div>
+          </div><br ng-if="debug==1">
+          <div class="row" ng-if="debug==1">
+            <div class="col-sm-4">
+              <div class="btn btn-primary col-sm-12" ng-click="testInput(userType.ptl)">ptl</div>
+            </div>
+            <div class="col-sm-4">
+              <div class="btn btn-primary col-sm-12" ng-click="testInput(userType.mkt)">mkt</div>
+            </div>
+            <div class="col-sm-4">
+              <div class="btn btn-primary col-sm-12" ng-click="testInput(userType.courier)">courier</div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/login.js"></script>
+  </body>
+</html>
