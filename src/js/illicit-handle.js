@@ -2,10 +2,10 @@ app.controller('customersCtrl', function ($rootScope,$scope) {
     $scope.pagination = {
         total: -1,
         page: 1,
-        getPage: function () {
+        getPage: function (page) {
 
             $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qwarn", {
-                page: $scope.pagination.page,
+                page: page == undefined ? $scope.pagination.page : $scope.pagination.jumpPage,
                 name: $rootScope.user.name,
                 type: $rootScope.user.type
             }, function (data) {

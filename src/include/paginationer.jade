@@ -4,5 +4,13 @@
         | /
         b.lab-total {{pagination.total}}
     .pull-right
-        button.btn.btn-default.btn-prev(ng-click="pagination.getPrevPage()") 上一页
-        button.btn.btn-default.btn-next(ng-click="pagination.getNextPage()") 下一页
+        .form-inline
+            .input-group
+                button.btn.btn-default.btn-prev(ng-click="pagination.getPrevPage()") 上一页
+            .input-group
+                button.btn.btn-default.btn-next(ng-click="pagination.getNextPage()") 下一页
+            .input-group
+                span.input-group-addon 页码
+                input.form-control(type="text",placeholder="请输入",ng-model="pagination.jumpPage")
+                span.input-group-btn
+                    button.btn.btn-default.btn-jump(ng-click="pagination.getPage(pagination.jumpPage)") 跳转

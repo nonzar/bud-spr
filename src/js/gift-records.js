@@ -1,14 +1,14 @@
-app.controller('customersCtrl2', function ($rootScope,$scope) {
+app.controller('customersCtrl2', function ($rootScope, $scope) {
     $scope.pagination = {
         total: -1,
         page: 1,
-        getPage: function () {
+        getPage: function (page) {
             $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qaward", {
                 openid: $scope.txtOpenid,
                 edit: 1,
                 type: 0,
                 role: $rootScope.user.type,
-                page: $scope.pagination.page
+                page: page == undefined ? $scope.pagination.page : $scope.pagination.jumpPage
             }, function (data) {
                 console.log(data = JSON.parse(data));
                 if (data.code == 0) {
@@ -69,12 +69,12 @@ app.controller('customersCtrl', function ($rootScope, $scope) {
     $scope.pagination = {
         total: -1,
         page: 1,
-        getPage: function () {
+        getPage: function (page) {
             $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qaward", {
                 edit: $scope.filter.pkg,
                 type: 0,
                 role: $rootScope.user.type,
-                page: $scope.pagination.page
+                page: page == undefined ? $scope.pagination.page : $scope.pagination.jumpPage
             }, function (data) {
                 console.log(data = JSON.parse(data));
                 if (data.code == 0) {

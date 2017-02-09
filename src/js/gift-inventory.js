@@ -9,7 +9,7 @@ var ctrl = {
             page: 1
         };
     },
-    getPage: function () {
+    getPage: function (page) {
         $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qobj", {}, function (data) {
             console.log(data = JSON.parse(data));
             ctrl.pagination.totalPage = parseInt(data.data.totalpages);

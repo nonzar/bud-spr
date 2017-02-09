@@ -19,30 +19,14 @@ app.controller('customersCtrl', function ($rootScope, $scope) {
     $scope.pagination = {
         total: -1,
         page: 1,
-        getPage: function () {
+        jumpPage: 1,
+        getPage: function (page) {
             switch ($rootScope.user.type) {
                 case $rootScope.userType.mkt:
-                    // $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qspr1", {
-                    //     page: $scope.pagination.page
-                    // }, function (data) {
-                    //     console.log(data = JSON.parse(data));
-                    //     if (data.code == 0) {
-                    //         alert(data.msg);
-                    //         return;
-                    //     }
-                    //     $scope.pagination.page = data.data.curpage;
-                    //     $scope.pagination.total = data.data.totalpages;
-                    //     for (var i = 0; i < data.data.data.length; i++) {
-                    //         data.data.data[i].type = Api.channel[data.data.data[i].type];
-                    //     }
-                    //     $scope.tds = data.data.data;
-                    //     $scope.$apply();
-                    // });
-                    break;
                 case $rootScope.userType.ptl:
                     $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qptl", {
                         ptl: $rootScope.user.name,
-                        page: $scope.pagination.page
+                        page: page == undefined ? $scope.pagination.page : $scope.pagination.jumpPage
                     }, function (data) {
                         console.log(data = JSON.parse(data));
                         if (data.code == 0) {
@@ -82,21 +66,6 @@ app.controller('customersCtrl', function ($rootScope, $scope) {
             }
             $scope.pagination.page++;
             $scope.pagination.getPage();
-        }
-    };
-    $scope.getNameByType = function (type) {
-        type = parseInt(type);
-        switch (type) {
-            case 0:
-                return '中餐';
-                break;
-            case 1:
-                return '西餐';
-                break;
-            case 2:
-                return '夜场';
-                break;
-            default:
         }
     };
     $scope.pagination.getPage();

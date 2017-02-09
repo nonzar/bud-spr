@@ -2,12 +2,12 @@ app.controller('customersCtrl', function ($rootScope, $scope) {
     $scope.pagination = {
         total: -1,
         page: 1,
-        getPage: function () {
+        getPage: function (page) {
             $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/qscore", {
                 spr: $scope.selFormSearch.value == "spr" ? $scope.txtText : "",
                 openid: $scope.selFormSearch.value == "openid" ? $scope.txtText : "",
                 sort: 0,
-                page: $scope.pagination.page
+                page: page == undefined ? $scope.pagination.page : $scope.pagination.jumpPage
             }, function (data) {
                 console.log(data = JSON.parse(data));
                 if (data.code == 0) {
