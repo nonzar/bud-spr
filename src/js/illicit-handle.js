@@ -60,7 +60,7 @@ app.controller('customersCtrl', function ($rootScope, $scope) {
         });
     };
     $scope.cancleIntegral = function ($event, openid) {
-        if ($event.target.classList.contains("disabled")) {
+        if ($event.target.classList.contains("disabled") || !confirm("确定取消积分吗？")) {
             return;
         }
         $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/uopenid", {
