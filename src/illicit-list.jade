@@ -48,6 +48,5 @@ html(lang='zh-cn',ng-app="app")
                                     td {{item.score_times}}
                                     td
                                         a.btn.btn-info.btn-sm(target="_blank",href="integral-info.html?openid={{item.openid}}") 查看
-                                        button.btn.btn-danger.btn-sm(class="{{(item.ptl_warn=='1'||item.main_warn=='1')?'disabled':''}}",ng-click="setIllicit($event,item.openid,$index)") {{(item.main_warn==1||item.ptl_warn==1)?'已取消积分':'取消积分'}}
                         include include/paginationer.jade
         +includeScriptFiles("js/illicit-list.js")

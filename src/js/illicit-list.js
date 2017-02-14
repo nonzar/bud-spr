@@ -57,25 +57,6 @@ app.controller('customersCtrl', function ($rootScope, $scope) {
     $scope.filter = {
         day: 3
     };
-    $scope.setIllicit = function ($event, openid, $index) {
-        if ($event.target.innerText == "已取消积分") {
-            return;
-        }
-        $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/uopenid", {
-            openid: openid,
-            type: 0,
-            main: $rootScope.user.type
-        }, function (data) {
-            console.log(data = JSON.parse(data));
-            alert(data.msg);
-            if (data.code == 0) {
-                return;
-            }
-            $event.target.innerText = "已取消积分";
-            $event.target.classList.add("disabled");
-            $scope.setTag($index, openid, $scope.tag["3"]);
-        });
-    };
     $scope.tag = {
         "0": "未稽查",
         "1": "稽查中",
@@ -83,6 +64,10 @@ app.controller('customersCtrl', function ($rootScope, $scope) {
         "3": "已取消积分"
     };
     $scope.setTag = function ($index, openid, select) {
+        if (select == "已取消积分") {
+            return;
+        }
+
         var ischecked = 0;
         for (var prop in $scope.tag) {
             if ($scope.tag[prop] == select) {
@@ -98,8 +83,20 @@ app.controller('customersCtrl', function ($rootScope, $scope) {
             if (data.code == 0) {
                 return;
             }
-            $(".wbTable tr").eq($index + 1).find("select")[0].value = $scope.tag[ischecked.toString()];
             $scope.setColor($index, ischecked.toString());
+            if (ischecked == 3) {
+                $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/uopenid", {
+                    openid: openid,
+                    type: 0,
+                    main: $rootScope.user.type
+                }, function (data) {
+                    console.log(data = JSON.parse(data));
+                    alert(data.msg);
+                    if (data.code == 0) {
+                        return;
+                    }
+                });
+            }
         });
     };
     $scope.setColor = function ($index, ischecked) {
