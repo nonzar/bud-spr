@@ -1,4 +1,3 @@
-var app = angular.module("app", []);
 app.controller("ngCtrl", function ($rootScope, $scope) {
     $scope.txtCode = "";
     $scope.txtName = "";

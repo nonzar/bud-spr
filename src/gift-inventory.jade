@@ -23,7 +23,13 @@ html(lang='zh-cn',ng-app="app")
                         table.table.table-bordered
                             thead
                                 tr
-                                    th(ng-repeat="item in ths") {{item}}
+                                    th 奖品Type
+                                    th 奖品名称
+                                    th 兑换积分
+                                    th 礼品总量
+                                    th 兑换数量
+                                    th 剩余数量
+                                    th 兑换率
                             tbody
                                 tr(ng-repeat="item in tds")
                                     td {{item.type}}
