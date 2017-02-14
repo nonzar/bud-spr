@@ -42,12 +42,12 @@ html(lang='zh-cn',ng-app="app")
                             tbody
                                 tr(ng-repeat="item in tds",ng-init="setColor($index,item.ischecked)")
                                     td
-                                        select(ng-init="select=(item.ischecked=='0'?'未稽查':(item.ischecked=='1'?'稽查中':'已稽查'))",ng-model="select",ng-options="x for x in ['未稽查','稽查中','已稽查'] track by x",ng-change="setTag($index,item.openid,select)")
+                                        select(ng-init="select=tag[item.ischecked]",ng-model="select",ng-options="x for x in ['未稽查','稽查中','积分有效','已取消积分'] track by x",ng-change="setTag($index,item.openid,select)")
                                     td {{item.openid}}
                                     td {{item.lastspr}}
                                     td {{item.score_times}}
                                     td
                                         a.btn.btn-info.btn-sm(target="_blank",href="integral-info.html?openid={{item.openid}}") 查看
-                                        button.btn.btn-danger.btn-sm(class="{{(item.ptl_warn=='1'||item.main_warn=='1')?'disabled':''}}",ng-click="setIllicit($event,item.openid)") 取消积分
+                                        button.btn.btn-danger.btn-sm(class="{{(item.ptl_warn=='1'||item.main_warn=='1')?'disabled':''}}",ng-click="setIllicit($event,item.openid,$index)") {{select=='已取消积分'?select:'取消积分'}}
                         include include/paginationer.jade
         +includeScriptFiles("js/illicit-list.js")

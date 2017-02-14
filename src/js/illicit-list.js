@@ -57,9 +57,8 @@ app.controller('customersCtrl', function ($rootScope, $scope) {
     $scope.filter = {
         day: 3
     };
-    $scope.setIllicit = function ($event, openid) {
-        if ($event.target.classList.contains("disabled")) {
-            alert("已列入可疑");
+    $scope.setIllicit = function ($event, openid, $index) {
+        if ($event.target.innerText == "已取消积分") {
             return;
         }
         $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/uopenid", {
@@ -72,40 +71,42 @@ app.controller('customersCtrl', function ($rootScope, $scope) {
             if (data.code == 0) {
                 return;
             }
+            $event.target.innerText = "已取消积分";
             $event.target.classList.add("disabled");
+            $scope.setTag($index, openid, $scope.tag["3"]);
         });
     };
+    $scope.tag = {
+        "0": "未稽查",
+        "1": "稽查中",
+        "2": "积分有效",
+        "3": "已取消积分"
+    };
     $scope.setTag = function ($index, openid, select) {
-        var ischeckec = 0;
-        switch (select) {
-            case "未稽查":
-                ischeckec = 0;
-                break;
-            case "稽查中":
-                ischeckec = 1;
-                break;
-            case "已稽查":
-                ischeckec = 2;
-                break;
-            default:
+        var ischecked = 0;
+        for (var prop in $scope.tag) {
+            if ($scope.tag[prop] == select) {
+                ischecked = parseInt(prop);
+            }
         }
         $.post("http://120.77.53.178/baiwei/baiweistat.php/home/index/uchecked", {
             openid: openid,
-            ischecked: ischeckec
+            ischecked: ischecked
         }, function (data) {
             console.log(data = JSON.parse(data));
             alert(data.msg);
-            $scope.setColor($index, ischeckec.toString());
             if (data.code == 0) {
                 return;
             }
+            $(".wbTable tr").eq($index + 1).find("select")[0].value = $scope.tag[ischecked.toString()];
+            $scope.setColor($index, ischecked.toString());
         });
     };
     $scope.setColor = function ($index, ischecked) {
         var color = "#fff";
         switch (ischecked) {
             case "0":
-
+                color = "#fff";
                 break;
             case "1":
                 color = "#529BDA";
@@ -114,8 +115,9 @@ app.controller('customersCtrl', function ($rootScope, $scope) {
                 color = "#5cb85c";
                 break;
             default:
-
+                color = "#fff";
         }
-        $(".wbTable tr").eq($index+1).css("background-color", color);
+        $(".wbTable tr").eq($index + 1).css("background-color", color);
     };
 });
+var sel;
